@@ -1,0 +1,48 @@
+snippet % "Template brackets"
+{% $1 %}
+endsnippet
+
+snippet if "If statement"
+{% if $1 %}
+  $2
+{% endif %}
+endsnippet
+
+snippet if- "If statement (no whitespace)"
+{%- if $1 -%}
+  $2
+{%- endif -%}
+endsnippet
+
+snippet iif "Inline if statement"
+{% if $1 %}$2{% endif %}
+endsnippet
+
+snippet for "For statement"
+{% for $1 %}
+  $2
+{% endfor %}
+endsnippet
+
+snippet unless "Unless statement"
+{% unless $1 %}
+  $2
+{% endunless %}
+endsnippet
+
+snippet comment "Comment block"
+{% comment %}$1{% endcomment %}
+endsnippet
+
+snippet assign "Assign variable"
+{% assign $1 = $2 %}
+endsnippet
+
+snippet include "Include snippet"
+{% include '$1' %}
+endsnippet
+
+snippet capture "Capture block"
+{% capture $1 %}
+{% endcapture %}
+endsnippet
