@@ -5,7 +5,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript'
 Plug 'altercation/vim-colors-solarized'
-Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'airblade/vim-gitgutter'
@@ -115,7 +116,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> ,<space> :noh<CR>
-nnoremap <C-p> :FZF<CR>
+" nnoremap <C-p> :FZF<CR>
 xnoremap \$ g_
 nnoremap <silent> tt :tabe<CR>
 
@@ -183,3 +184,7 @@ set nofoldenable
 " Vim airline buffer tabs
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" LeaderF Config
+let g:Lf_WindowPosition = 'popup'
+nnoremap <silent> <C-p> :Leaderf file<CR>
