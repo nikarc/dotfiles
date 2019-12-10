@@ -58,8 +58,6 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-set relativenumber
-
 syntax enable
 " set background=dark
 " colorscheme nord 
@@ -73,7 +71,7 @@ set guifont=Monaco:h16
 
 set ignorecase
 set smartcase
-set number
+set relativenumber
 
 set rtp+=/usr/local/opt/fzf
 set laststatus=2
