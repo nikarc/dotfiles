@@ -32,6 +32,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Valloric/MatchTagAlways'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'yuezk/vim-js'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
