@@ -74,6 +74,7 @@ set guifont=Monaco:h16
 
 set ignorecase
 set smartcase
+set number
 set relativenumber
 
 set rtp+=/usr/local/opt/fzf
@@ -120,6 +121,7 @@ nnoremap <silent> ,<space> :noh<CR>
 " nnoremap <C-p> :FZF<CR>
 xnoremap \$ g_
 nnoremap <silent> tt :tabe<CR>
+nnoremap <silent> ,; A;<Esc>
 
 " Buffer stuff
 " nnoremap <silent> bn :bn<CR>
