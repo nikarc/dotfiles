@@ -70,7 +70,7 @@ syntax enable
 colorscheme night-owl
 
 let g:gruvbox_contrast_dark = 'soft'
-set guifont=Monaco:h16
+"set guifont=Monaco:h16
 
 set ignorecase
 set smartcase
