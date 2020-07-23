@@ -9,6 +9,11 @@ export ZSH="/Users/nicholasarcuri/.oh-my-zsh"
 
 # PATH
 export PATH="/usr/local/share/python:$PATH"
+export PATH="$HOME/n:$PATH"
+export PATH="$HOME/n/bin:$PATH"
+
+# N node manager package
+export N_PREFIX="$HOME/n/"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -69,7 +74,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse bootSimulator)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bootSimulator)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -141,7 +146,9 @@ export docs="~/Documents"
 
 source /Users/nicholasarcuri/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-eval "$(rbenv init - bootSimulator)"
+# eval "$(rbenv init - bootSimulator)"
+
+fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
@@ -171,4 +178,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh" bootSimulator)"
 
-eval "$(pyenv init - bootSimulator)"
+# eval "$(pyenv init - bootSimulator)"
