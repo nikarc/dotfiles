@@ -1,0 +1,53 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+TAB="    "
+
+if [ -e ./config.yml ]; then
+  echo -e "${RED}ERROR: config.yml already exists!!${NC}";
+  exit 1;
+fi
+
+echo -e "${YELLOW}Enter the password from the Shopify private app:${NC}\n"
+
+read PASSWORD
+
+if [[ "$PASSWORD" = "" ]]; then
+  echo -e "${RED}ERROR: You must enter a password${NC}";
+  exit 1;
+fi
+
+echo -e "${YELLOW}Enter the theme id for your theme:${NC}\n"
+
+read THEME_ID
+
+if [[ "$THEME_ID" = "" ]]; then
+  echo -e "${RED}ERROR: You must enter a theme id${NC}";
+  exit 1;
+fi
+
+echo -e "${YELLOW}Enter the Shopify store url subdomain:${NC}\n"
+
+read STORE_URL
+
+if [[ "$STORE_URL" = "" ]]; then
+  echo -e "${RED}ERROR: You must enter a store url${NC}";
+  exit 1;
+fi
+
+OUTPUT="development:"
+OUTPUT="${OUTPUT}\n${TAB}password: ${PASSWORD}"
+OUTPUT="${OUTPUT}\n${TAB}theme_id: ${THEME_ID}"
+OUTPUT="${OUTPUT}\n${TAB}store: ${STORE_URL}.myshopify.com"
+OUTPUT="${OUTPUT}\n${TAB}ignore_files:"
+OUTPUT="${OUTPUT}\n${TAB}${TAB}- node_modules/"
+OUTPUT="${OUTPUT}\n${TAB}${TAB}- upload"
+OUTPUT="${OUTPUT}\n${TAB}${TAB}- deploy.log"
+OUTPUT="${OUTPUT}\n${TAB}${TAB}- config.yml"
+OUTPUT="${OUTPUT}\n${TAB}${TAB}- settings_data.json"
+
+echo -e "$OUTPUT" > "./config.yml"
+echo -e "${GREEN}Config.yml created${NC}"
