@@ -24,14 +24,14 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
-Plug '/Users/nicholasarcuri/Documents/inline_edit.vim'
+Plug 'nikarc/inline_edit.vim'
 
 " Colors
 Plug 'haishanh/night-owl.vim'
 Plug 'chuling/vim-equinusocio-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
-Plug '/Users/nicholasarcuri/Documents/vim-purpura'
+Plug 'nikarc/vim-purpura'
 Plug 'skbolton/embark'
 
 call plug#end()

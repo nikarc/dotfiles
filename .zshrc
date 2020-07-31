@@ -9,8 +9,11 @@ export ZSH="/Users/nicholasarcuri/.oh-my-zsh"
 
 # PATH
 export PATH="/usr/local/share/python:$PATH"
+## N Node version manager
 export PATH="$HOME/n:$PATH"
 export PATH="$HOME/n/bin:$PATH"
+## Emacs DOOM
+export PATH=~/.emacs.d/bin:$PATH
 
 # N node manager package
 export N_PREFIX="$HOME/n/"
@@ -92,6 +95,9 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+export VISUAL='nvim'
+export EDITOR='nvim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -110,6 +116,7 @@ alias sudo="sudo "
 alias cat=bat
 alias docs="cd ~/Documents"
 alias focs="cd ~/Documents"
+alias work="cd ~/Work"
 alias tmuxconf="sudo vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
 alias zshrc="sudo vim ~/.zshrc"
@@ -132,10 +139,9 @@ alias gl="git log"
 alias gco="git switch"
 alias gcn="gco nick"
 alias gmn="gm nick"
-alias gcm="git-push-reminder master"
-alias gcqa="git-push-reminder qa"
-alias gcb="git-branch"
-alias glo="git-log-oneline"
+# alias gcm="git-push-reminder master"
+# alias gcb="git-branch"
+# alias glo="git-log-oneline"
 alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 
