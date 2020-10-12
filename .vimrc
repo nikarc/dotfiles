@@ -31,7 +31,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'chuling/vim-equinusocio-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
-Plug 'nikarc/vim-purpura'
+Plug '~/Documents/vim-purpura'
 Plug 'skbolton/embark'
 
 call plug#end()
@@ -79,8 +79,15 @@ set undodir=~/.vim/undo//
 "  User settings
 "*****************
 
+" Clear search highlight on ESC
+nnoremap <silent> <Esc> :noh<CR><Esc>
 " Copy filename to clipboard
 nmap ,cs :let @"=substitute(expand("%:t"), "\.liquid$", "", "")<CR>
+nmap ,ccs :let @*=substitute(expand("%:t"), "\.liquid$", "", "")<CR>
+
+" Spacemacs style buffer switching
+nnoremap <space>bp :bp<CR>
+nnoremap <space>bn :bn<CR>
 
 " Set spacebar to open file explorer
 " nnoremap <silent> <Space> :Explore<CR>
@@ -101,7 +108,7 @@ nnoremap <silent> bn :bn<CR>
 nnoremap <silent> bb :bp<CR>
 nnoremap <silent> bo :%bd\|e#<CR>
 nnoremap <silent> bd :bwipeout<CR>
-set nofoldenable
+"set nofoldenable
 " LeaderF Config
 let g:Lf_WindowPosition = 'popup'
 nnoremap <silent> <C-p> :Leaderf file<CR>
