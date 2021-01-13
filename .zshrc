@@ -4,7 +4,7 @@
 # export TERM=xterm-color
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nicholasarcuri/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 # NODE_PATH="/usr/local/lib/node_modules"
 
 # PATH
@@ -152,7 +152,7 @@ export docs="~/Documents"
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
 
-source /Users/nicholasarcuri/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # eval "$(rbenv init - bootSimulator)"
 
@@ -164,15 +164,15 @@ prompt spaceship
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/nicholasarcuri/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nicholasarcuri/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/nicholasarcuri/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nicholasarcuri/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # npm global in path
-export PATH="/Users/nicholasarcuri/.npm-global/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Use homebrew python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
