@@ -14,10 +14,16 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jparise/vim-graphql'
+Plug 'heavenshell/vim-jsdoc', { 
+  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+  \ 'do': 'make install'
+\}
 " Plug 'ap/vim-css-color'
 " CSS colors
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 Plug 'vim-airline/vim-airline'
 Plug 'mileszs/ack.vim'
 Plug 'dense-analysis/ale'
@@ -25,6 +31,15 @@ Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
 Plug 'nikarc/inline_edit.vim'
+" Plug 'justinmk/vim-sneak' " Search
+
+" Snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+
+" Optional:
+Plug 'honza/vim-snippets'
 
 " Colors
 Plug 'haishanh/night-owl.vim'
@@ -33,6 +48,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
 Plug '~/Documents/vim-purpura'
 Plug 'skbolton/embark'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 call plug#end()
 " End VimPlug settings
@@ -43,8 +59,9 @@ if (has("termguicolors"))
 endif
 syntax enable
 " colorscheme night-owl
-colorscheme purpura
+" colorscheme purpura
 " colorscheme embark
+colorscheme material
 set ignorecase
 set smartcase
 set tabstop=4
@@ -122,16 +139,33 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" 
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" Use <C-l> for trigger snippet expand.
+"imap <C-l> <Plug>(coc-snippets-expand)
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-tab>'
 
 " Vim airline show buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -150,3 +184,9 @@ let g:ale_linters = {
 \   'vue': ['eslint']
 \}
 
+" Vim Sneak
+" let g:sneak#label = 1
+" map / <Plug>Sneak_s
+" map ? <Plug>Sneak_S
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F

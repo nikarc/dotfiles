@@ -117,6 +117,7 @@ alias cat=bat
 alias docs="cd ~/Documents"
 alias focs="cd ~/Documents"
 alias work="cd ~/Work"
+alias spartan="cd ~/Work/Spartan/shop/shopify"
 alias tmuxconf="sudo vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
 alias zshrc="sudo vim ~/.zshrc"
@@ -144,6 +145,7 @@ alias gmn="gm nick"
 # alias glo="git-log-oneline"
 alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
+alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
 
 export zshrc="~/.zshrc"
 export docs="~/Documents"
@@ -186,3 +188,44 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # eval "$(pyenv init - bootSimulator)"
 export PATH="/usr/local/sbin:$PATH"
+
+# Functions
+# Create new branch
+function gcbs() {
+    if [[ "$1" == "" ]]; then
+        echo "Must provide a ticket number";
+        return;
+    fi
+
+    gcb SHOP-$1
+}
+
+# Checkout existing branch
+function gcos() {
+    if [[ "$1" == "" ]]; then
+        echo "Must provide a ticket number";
+        return;
+    fi
+
+    gco SHOP-$1
+}
+
+# Git commit with message
+function ggmesg() {
+    if [[ "$1" == "" ]]; then
+        echo "Must provide a commit message";
+        return;
+    fi
+
+    gcmsg "$(git branch --show-current) $1"
+}
+
+# Git merge
+function gms() {
+    if [[ "$1" == "" ]]; then
+        echo "Must provide a branch name";
+        return;
+    fi
+
+    gm SHOP-$1
+}
