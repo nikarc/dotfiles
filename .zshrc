@@ -116,7 +116,7 @@ alias sudo="sudo "
 alias cat=bat
 alias docs="cd ~/Documents"
 alias focs="cd ~/Documents"
-alias work="cd ~/Work"
+alias work="cd ~/Work/Spartan/shop/shopify/slate-master"
 alias spartan="cd ~/Work/Spartan/shop/shopify"
 alias tmuxconf="sudo vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
@@ -229,3 +229,4 @@ function gms() {
 
     gm SHOP-$1
 }
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn

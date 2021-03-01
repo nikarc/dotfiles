@@ -3,6 +3,7 @@ set number
 set relativenumber
 set cursorline
 set hidden
+filetype plugin on
 
 call plug#begin('~/.vim/plugged')
 
@@ -31,7 +32,9 @@ Plug 'tpope/vim-liquid'
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
 Plug 'nikarc/inline_edit.vim'
+Plug 'keith/swift.vim'
 " Plug 'justinmk/vim-sneak' " Search
+" Plug 'vimpostor/vim-tpipeline'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -49,6 +52,7 @@ Plug 'rafalbromirski/vim-aurora'
 Plug '~/Documents/vim-purpura'
 Plug 'skbolton/embark'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'arzg/vim-colors-xcode'
 
 call plug#end()
 " End VimPlug settings
@@ -61,7 +65,8 @@ syntax enable
 " colorscheme night-owl
 " colorscheme purpura
 " colorscheme embark
-colorscheme material
+" colorscheme material
+colorscheme xcodedark
 set ignorecase
 set smartcase
 set tabstop=4
@@ -74,7 +79,7 @@ set expandtab
 "let g:lightline = {
 "  \ 'colorscheme': 'equinusocio_material',
 "  \ }
-let g:crystalline_theme = 'purpura'
+let g:crystalline_theme = 'onedark'
 " Hexokinase settings
 let g:Hexokinase_refreshEvents = [
     \ "BufRead",
@@ -95,6 +100,12 @@ set undodir=~/.vim/undo//
 "*****************
 "  User settings
 "*****************
+
+" Folding
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Clear search highlight on ESC
 nnoremap <silent> <Esc> :noh<CR><Esc>
@@ -125,7 +136,7 @@ nnoremap <silent> bn :bn<CR>
 nnoremap <silent> bb :bp<CR>
 nnoremap <silent> bo :%bd\|e#<CR>
 nnoremap <silent> bd :bwipeout<CR>
-"set nofoldenable
+
 " LeaderF Config
 let g:Lf_WindowPosition = 'popup'
 nnoremap <silent> <C-p> :Leaderf file<CR>
@@ -190,3 +201,4 @@ let g:ale_linters = {
 " map ? <Plug>Sneak_S
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
+
