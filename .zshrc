@@ -146,6 +146,7 @@ alias gmn="gm nick"
 alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
+alias ag="ag --path-to-ignore ~/.ignore"
 
 export zshrc="~/.zshrc"
 export docs="~/Documents"
