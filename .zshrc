@@ -77,7 +77,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse bootSimulator)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,7 +120,7 @@ alias work="cd ~/Work/Spartan/shop/shopify/slate-master"
 alias spartan="cd ~/Work/Spartan/shop/shopify"
 alias tmuxconf="sudo vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
-alias zshrc="sudo vim ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
 alias downl="cd ~/Downloads"
 alias hub="./hub.sh"
 alias gb="git branch --sort=committerdate"
@@ -130,7 +130,7 @@ alias gda="git diff origin/qa"
 alias docc="docker-compose"
 alias swatch="slate watch"
 alias hosts="sudo vim /etc/hosts"
-alias vimrc="sudo vim ~/.vimrc"
+alias vimrc="vim ~/.vimrc"
 alias dockernames="docker ps --format '{{.Names}}'"
 alias bs="browser-sync"
 alias k="kubectl"
@@ -146,13 +146,14 @@ alias gmn="gm nick"
 alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
+alias bat="batcat"
 
 export zshrc="~/.zshrc"
 export docs="~/Documents"
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
 
-source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # eval "$(rbenv init - bootSimulator)"
 
