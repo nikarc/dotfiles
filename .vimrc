@@ -33,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
 Plug 'nikarc/inline_edit.vim'
 Plug 'keith/swift.vim'
+Plug 'Yggdroot/indentLine'
 " Plug 'justinmk/vim-sneak' " Search
 " Plug 'vimpostor/vim-tpipeline'
 
@@ -63,10 +64,10 @@ if (has("termguicolors"))
 endif
 syntax enable
 " colorscheme night-owl
-" colorscheme purpura
+colorscheme purpura
 " colorscheme embark
 " colorscheme material
-colorscheme xcodedark
+" colorscheme xcodedark
 set ignorecase
 set smartcase
 set tabstop=4
@@ -181,8 +182,13 @@ let g:coc_snippet_prev = '<S-tab>'
 " Vim airline show buffers
 let g:airline#extensions#tabline#enabled = 1
 
+" ACK.vim
 " Auto close Ack pane on selection
 let g:ack_autoclose = 1
+cnoreabbrev Ack Ack!
+if executable('ag')
+    let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
+endif
 "******* End User Settings ***********
 
 " Color Stuff
@@ -202,3 +208,7 @@ let g:ale_linters = {
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
 
+" IndentLine
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json', 'dockerfile']
