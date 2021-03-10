@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 export VISUAL='nvim'
 export EDITOR='nvim'
+export VIM_COLORSCHEME="purpura"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

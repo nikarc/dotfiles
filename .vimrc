@@ -50,7 +50,8 @@ Plug 'haishanh/night-owl.vim'
 Plug 'chuling/vim-equinusocio-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
-Plug '~/Documents/vim-purpura'
+" Plug '~/Documents/vim-purpura'
+Plug 'nikarc/vim-purpura'
 Plug 'skbolton/embark'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'arzg/vim-colors-xcode'
@@ -64,10 +65,11 @@ if (has("termguicolors"))
 endif
 syntax enable
 " colorscheme night-owl
-colorscheme purpura
+" colorscheme purpura
 " colorscheme embark
 " colorscheme material
 " colorscheme xcodedark
+colorscheme $VIM_COLORSCHEME
 set ignorecase
 set smartcase
 set tabstop=4
