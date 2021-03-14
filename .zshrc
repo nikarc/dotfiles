@@ -18,6 +18,10 @@ export PATH=~/.emacs.d/bin:$PATH
 # N node manager package
 export N_PREFIX="$HOME/n/"
 
+# SSH Agent
+eval "$(ssh-agent)"
+# ssh-add
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -232,3 +236,4 @@ function gms() {
     gm SHOP-$1
 }
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+export PATH="$HOME/.local/bin:$PATH"

@@ -4,6 +4,7 @@ set relativenumber
 set cursorline
 set hidden
 filetype plugin on
+set iskeyword+="-"
 
 call plug#begin('~/.vim/plugged')
 
@@ -180,6 +181,17 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-tab>'
+
+let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-snippets',
+    \ 'coc-sourcekit',
+    \ 'coc-styled-components',
+    \ 'coc-tailwindcss',
+    \ 'coc-tsserver'
+    \]
+
+let g:snipMate = { 'snippet_version' : 1 }
 
 " Vim airline show buffers
 let g:airline#extensions#tabline#enabled = 1
