@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # export TERM=xterm-color
+export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -20,7 +21,9 @@ export N_PREFIX="$HOME/n/"
 
 # SSH Agent
 eval "$(ssh-agent)"
-# ssh-add
+
+# Rbenv
+eval "$(rbenv init -)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -101,7 +104,10 @@ source $ZSH/oh-my-zsh.sh
 
 export VISUAL='nvim'
 export EDITOR='nvim'
-export VIM_COLORSCHEME="purpura"
+export VIM_COLORSCHEME="spaceduck"
+export zshrc="~/.zshrc"
+export docs="$HOME/Documents"
+export work="$HOME/Work/Spartan"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -119,11 +125,11 @@ export VIM_COLORSCHEME="purpura"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sudo="sudo "
 alias cat=bat
-alias docs="cd ~/Documents"
+alias docs="cd $docs"
 alias focs="cd ~/Documents"
-alias work="cd ~/Work/Spartan/shop/shopify/slate-master"
+alias work="cd $work"
 alias spartan="cd ~/Work/Spartan/shop/shopify"
-alias tmuxconf="sudo vim ~/.tmux.conf"
+alias tmuxconf="vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
 alias downl="cd ~/Downloads"
@@ -153,8 +159,11 @@ alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
 alias bat="batcat"
 alias ag="ag --path-to-ignore ~/.ignore"
-export zshrc="~/.zshrc"
-export docs="~/Documents"
+
+# MacOS specific settings
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    alias bat="bat"
+fi
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
 
@@ -168,6 +177,8 @@ fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 autoload -U promptinit; promptinit
 prompt spaceship
 
+# [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+export PATH="$HOME/.local/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
@@ -235,5 +246,18 @@ function gms() {
 
     gm SHOP-$1
 }
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-export PATH="$HOME/.local/bin:$PATH"
+
+# QMK Compilation
+# function qmkcomp() {
+#     KEYBOARD="$1"
+#     KEYMAP="$2"
+# 
+#     if [[ "$KEYBOARD" == "" ]]; then
+#         KEYBOARD="thevankeyboards/minivan";
+#     fi
+#     if [[ "$KEYMAP" == "" ]]; then
+#         KEYMAP="nikarc";
+#     fi
+# 
+#     qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
+# } >&2

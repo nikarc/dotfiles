@@ -35,6 +35,8 @@ Plug 'rbong/vim-crystalline'
 Plug 'nikarc/inline_edit.vim'
 Plug 'keith/swift.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'justinmk/vim-sneak' " Search
 " Plug 'vimpostor/vim-tpipeline'
 
@@ -51,11 +53,12 @@ Plug 'haishanh/night-owl.vim'
 Plug 'chuling/vim-equinusocio-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
-" Plug '~/Documents/vim-purpura'
-Plug 'nikarc/vim-purpura'
+Plug '~/Documents/vim-purpura'
+" Plug 'nikarc/vim-purpura'
 Plug 'skbolton/embark'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'arzg/vim-colors-xcode'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
 " End VimPlug settings
@@ -66,11 +69,16 @@ if (has("termguicolors"))
 endif
 syntax enable
 " colorscheme night-owl
-" colorscheme purpura
+colorscheme purpura
 " colorscheme embark
 " colorscheme material
 " colorscheme xcodedark
-colorscheme $VIM_COLORSCHEME
+" if !empty($VIM_COLORSCHEME)
+"     colorscheme $VIM_COLORSCHEME
+" else
+"    colorscheme purpura
+" endif
+" colorscheme spaceduck
 set ignorecase
 set smartcase
 set tabstop=4
@@ -188,7 +196,8 @@ let g:coc_global_extensions = [
     \ 'coc-sourcekit',
     \ 'coc-styled-components',
     \ 'coc-tailwindcss',
-    \ 'coc-tsserver'
+    \ 'coc-tsserver',
+    \ 'coc-clangd'
     \]
 
 let g:snipMate = { 'snippet_version' : 1 }
