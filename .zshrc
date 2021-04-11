@@ -108,6 +108,7 @@ export VIM_COLORSCHEME="spaceduck"
 export zshrc="~/.zshrc"
 export docs="$HOME/Documents"
 export work="$HOME/Work/Spartan"
+export awesome_dir="$HOME/.config/awesome"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -157,12 +158,21 @@ alias gmn="gm nick"
 alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
-alias bat="batcat"
+alias igrep="grep -i"
+
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    alias bat="batcat"
+fi
 alias ag="ag --path-to-ignore ~/.ignore"
 
 # MacOS specific settings
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="bat"
+fi
+
+# Linux specific settings
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+    xset r rate 190 30
 fi
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
@@ -174,8 +184,8 @@ fi
 fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export PATH="$HOME/.local/bin:$PATH"

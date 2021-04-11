@@ -5,6 +5,7 @@ set cursorline
 set hidden
 filetype plugin on
 set iskeyword+="-"
+set clipboard+=unnamedplus
 
 call plug#begin('~/.vim/plugged')
 
@@ -53,8 +54,8 @@ Plug 'haishanh/night-owl.vim'
 Plug 'chuling/vim-equinusocio-material'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'rafalbromirski/vim-aurora'
-Plug '~/Documents/vim-purpura'
-" Plug 'nikarc/vim-purpura'
+" Plug '~/Documents/vim-purpura'
+Plug 'nikarc/vim-purpura'
 Plug 'skbolton/embark'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'arzg/vim-colors-xcode'
