@@ -35,8 +35,9 @@ local bar_themes = {
     "skyfall",      -- 3 -- Weather, taglist, window buttons, pop-up tray
     "ephemeral",    -- 4 -- Taglist, start button, tasklist, and more buttons
     "amarena",      -- 5 -- Minimal taglist and dock with autohide
+    "nikarc",
 }
-local bar_theme = bar_themes[5]
+local bar_theme = bar_themes[6]
 
 -- ===================================================================
 -- Affects which icon theme will be used by widgets that display image icons.
@@ -75,8 +76,10 @@ local exit_screen_theme = exit_screen_themes[2]
 user = {
     -- >> Default applications <<
     -- Check apps.lua for more
-    terminal = "kitty",
-    floating_terminal = "kitty",
+    -- terminal = "kitty",
+    -- floating_terminal = "kitty",
+    terminal = "alacritty",
+    floating_terminal = "alacritty",
     browser = "firefox-developer-edition",
     file_manager = "kitty -1 --class files -e ranger",
     editor = "kitty -1 --class editor -e vim",
@@ -99,7 +102,7 @@ user = {
         videos = os.getenv("XDG_VIDEOS_DIR") or "~/Videos",
         -- Make sure the directory exists so that your screenshots
         -- are not lost
-        screenshots = os.getenv("XDG_SCREENSHOTS_DIR") or "~/Pictures/Screenshots",
+        screenshots = "~/Screenshots",
     },
 
     -- >> Sidebar <<
@@ -135,6 +138,9 @@ user = {
     -- Country to check for corona statistics
     -- Uses the https://corona-stats.online API
     coronavirus_country = "USA",
+
+    -- Clock Format
+    clock_format = "%a %b %d, %I:%M %p"
 }
 -- ===================================================================
 
@@ -211,8 +217,7 @@ local helpers = require("helpers")
 
 -- >> Elements - Desktop components
 -- Statusbar(s)
--- require("elemental.bar."..bar_theme)
-require("elemental.bar.nikarc")
+require("elemental.bar."..bar_theme)
 -- Exit screen
 require("elemental.exit_screen."..exit_screen_theme)
 -- Sidebar
@@ -319,8 +324,16 @@ awful.screen.connect_for_each_screen(function(s)
         l.tile
     }
 
+    local tagnames = beautiful.tagnames
+
+    local is_primary = s.index == 1
+
     -- Tag names
-    local tagnames = beautiful.tagnames or { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"  }
+    if (is_primary == false) then
+        tagnames = { "", "", "", "", "", "", "", "", "", ""  }
+    else
+        tagnames = { "", "", "", "", "", "", "", "", "", "" }
+    end
 
     -- Create all tags at once (without seperate configuration for each tag)
     awful.tag(tagnames, s, layouts)
@@ -904,7 +917,7 @@ awful.rules.rules = {
                 "discord",
                 "TelegramDesktop",
                 "Signal",
-                "Slack",
+                -- "Slack",
                 "TeamSpeak 3",
                 "zoom",
                 "weechat",
@@ -1140,6 +1153,16 @@ awful.spawn.easy_async_with_shell("stat "..dashboard_flag_path.." >/dev/null 2>&
       awful.spawn.with_shell("rm "..dashboard_flag_path)
     end
 end)
+
+-- do
+--     local cmds =
+--     {
+--         "xrandr --output DVI-D-1 --off --output DP-1 --off --output DP-2 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate left --output DP-3 --mode 2560x1440 --pos 1125x305 --rotate normal --primary",
+--     }
+--     for _, i in pairs(cmds) do
+--         awful.util.spawn(i)
+--     end
+-- end
 
 -- Garbage collection
 -- Enable for lower memory consumption

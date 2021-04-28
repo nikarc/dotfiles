@@ -29,6 +29,7 @@ local app_config = {
     ['NetworkManager'] = { icon = "", title = true },
     ['youtube'] = { icon = "", title = true },
     ['mpd'] = { icon = "", title = true },
+    ['spotify'] = { icon = "", title = true },
     ['mpv'] = { icon = "", title = true },
     ['keyboard'] = { icon = "", title = false },
     ['email'] = { icon = "", title = true },

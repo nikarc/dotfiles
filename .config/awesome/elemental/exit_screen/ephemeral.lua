@@ -31,6 +31,29 @@ local lock_text_icon = ""
 local button_bg = x.color0
 local button_size = dpi(120)
 
+OVERLAYS = {}
+
+-- awful.screen.connect_for_each_screen(function (s)
+--     -- Overlay is only for non-primary screen
+--     if s.primary == true then return end
+-- 
+--     local overlay = wibox({
+--         visible = false,
+--         ontop = true,
+--         type = "dock",
+--         screen = s,
+--     })
+-- 
+--     overlay:setup {
+--         nil,
+--         {
+--             widget = wibox.container.background,
+--             bg = beautiful.exit_screen_bg or beautiful.wibar_bg or "#111111",
+--         },
+--         expand = "none",
+--         layout = wibox.layout.align.vertical
+--     }
+-- end)
 
 -- Commands
 local poweroff_command = function()
@@ -110,7 +133,12 @@ local exit = create_button(exit_text_icon, x.color4, "Exit", exit_command)
 local lock = create_button(lock_text_icon, x.color5, "Lock", lock_command)
 
 -- Create the exit screen wibox
-exit_screen = wibox({visible = false, ontop = true, type = "dock"})
+exit_screen = wibox({
+    visible = false,
+    ontop = true,
+    type = "dock",
+    screen = screen.primary,
+})
 awful.placement.maximize(exit_screen)
 
 exit_screen.bg = beautiful.exit_screen_bg or beautiful.wibar_bg or "#111111"
@@ -120,6 +148,10 @@ local exit_screen_grabber
 function exit_screen_hide()
     awful.keygrabber.stop(exit_screen_grabber)
     exit_screen.visible = false
+
+    for _, overlay in pairs(OVERLAYS) do
+        overlay.visible = false
+    end
 end
 
 local keybinds = {
@@ -152,6 +184,10 @@ function exit_screen_show()
         end
     end)
     exit_screen.visible = true
+
+    for _, overlay in pairs(OVERLAYS) do
+        overlay.visible = true
+    end
 end
 
 exit_screen:buttons(gears.table.join(

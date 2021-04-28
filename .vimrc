@@ -7,6 +7,18 @@ filetype plugin on
 set iskeyword+="-"
 set clipboard+=unnamedplus
 
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript'
@@ -38,6 +50,8 @@ Plug 'keith/swift.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'sirtaj/vim-openscad'
+Plug 'ryanoasis/vim-devicons'
 " Plug 'justinmk/vim-sneak' " Search
 " Plug 'vimpostor/vim-tpipeline'
 
@@ -149,6 +163,11 @@ nnoremap <silent> bn :bn<CR>
 nnoremap <silent> bb :bp<CR>
 nnoremap <silent> bo :%bd\|e#<CR>
 nnoremap <silent> bd :bwipeout<CR>
+
+" @p - Regex search/replace to fix openening brackets with no space before it
+let @p=':%s/\(\s\|(\)\@<!{/ {/g'
+" @o - Converts Backbone event key to jQuery event handler
+let @o=":s/'\([a-zA-Z-]\+\) \(\.\|\#\)': "
 
 " LeaderF Config
 let g:Lf_WindowPosition = 'popup'

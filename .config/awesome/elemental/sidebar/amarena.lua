@@ -110,7 +110,7 @@ brightness:buttons(
         end)
 ))
 
-local hours = wibox.widget.textclock("%H")
+local hours = wibox.widget.textclock("%I")
 local minutes = wibox.widget.textclock("%M")
 
 local make_little_dot = function (color)
@@ -427,7 +427,7 @@ if user.sidebar.hide_on_mouse_leave then
 end
 -- Activate sidebar by moving the mouse at the edge of the screen
 if user.sidebar.show_on_mouse_screen_edge then
-    local sidebar_activator = wibox({y = sidebar.y, width = 1, visible = true, ontop = false, opacity = 0, below = true, screen = screen.primary})
+    local sidebar_activator = wibox({y = sidebar.y, width = 5, visible = true, ontop = false, opacity = 0, below = true, screen = screen.primary})
     sidebar_activator.height = sidebar.height
     sidebar_activator:connect_signal("mouse::enter", function ()
         sidebar.visible = true

@@ -15,15 +15,20 @@ export PATH="$HOME/n:$PATH"
 export PATH="$HOME/n/bin:$PATH"
 ## Emacs DOOM
 export PATH=~/.emacs.d/bin:$PATH
+## bin directory
+export PATH="$HOME/bin:$PATH"
+
+## Vim as manpage viewer
+export MANPAGER="nvim +Man!"
 
 # N node manager package
 export N_PREFIX="$HOME/n/"
 
-# SSH Agent
-eval "$(ssh-agent)"
-
 # Rbenv
 eval "$(rbenv init -)"
+
+# OpenSCAD
+export OPENSCADPATH="/usr/local/OpenSCAD"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -129,7 +134,7 @@ alias cat=bat
 alias docs="cd $docs"
 alias focs="cd ~/Documents"
 alias work="cd $work"
-alias spartan="cd ~/Work/Spartan/shop/shopify"
+alias spartan="cd ~/Work/Spartan/shop/shopify/slate-master"
 alias tmuxconf="vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
@@ -173,6 +178,9 @@ fi
 # Linux specific settings
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     xset r rate 190 30
+
+    # use xclip to copy from terminal
+    alias pbcopy="xclip -selection clipboard"
 fi
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
