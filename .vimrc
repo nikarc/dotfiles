@@ -217,7 +217,8 @@ let g:coc_global_extensions = [
     \ 'coc-styled-components',
     \ 'coc-tailwindcss',
     \ 'coc-tsserver',
-    \ 'coc-clangd'
+    \ 'coc-clangd',
+    \ 'coc-prettier'
     \]
 
 let g:snipMate = { 'snippet_version' : 1 }
@@ -255,3 +256,6 @@ let g:ale_linters = {
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json', 'dockerfile']
+
+" Prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')

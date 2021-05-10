@@ -294,6 +294,22 @@ font:
   #
   #indexed_colors: []
 
+colors:
+  primary:
+    background: '#1A2026'
+    foreground: '#FFFFFF'
+  cursor:
+    text: '#1A2026'
+    cursor: '#FFFFFF'
+  normal:
+    black: '#242D35'
+    red: '#F92D72'
+    green: '#6CCB6E'
+    yellow: '#94CF95'
+    blue: '#6EC1D6'
+    magenta: '#FB6396'
+    cyan: '#7FE4D2'
+    white: '#FFFFFF'
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
