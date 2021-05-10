@@ -25,7 +25,9 @@ export MANPAGER="nvim +Man!"
 export N_PREFIX="$HOME/n/"
 
 # Rbenv
-eval "$(rbenv init -)"
+if [ -x "$(command -v rbenv)" ]; then
+	eval "$(rbenv init -)"
+fi
 
 # OpenSCAD
 export OPENSCADPATH="/usr/local/OpenSCAD"
@@ -176,7 +178,7 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
 fi
 
 # Linux specific settings
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+if [ "$(uname 2> /dev/null)" = "Linux" ] && [ -x "$(command -v xset)" ]; then
     xset r rate 190 30
 
     # use xclip to copy from terminal
