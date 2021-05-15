@@ -25,7 +25,9 @@ export MANPAGER="nvim +Man!"
 export N_PREFIX="$HOME/n/"
 
 # Rbenv
-eval "$(rbenv init -)"
+if [ -x "$(command -v rbenv)" ]; then
+	eval "$(rbenv init -)"
+fi
 
 # OpenSCAD
 export OPENSCADPATH="/usr/local/OpenSCAD"
@@ -130,7 +132,9 @@ export awesome_dir="$HOME/.config/awesome"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sudo="sudo "
-alias cat=bat
+if command -v bat &> /dev/null; then
+    alias cat=bat
+fi
 alias docs="cd $docs"
 alias focs="cd ~/Documents"
 alias work="cd $work"
@@ -176,7 +180,7 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
 fi
 
 # Linux specific settings
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+if [ "$(uname 2> /dev/null)" = "Linux" ] && [ -x "$(command -v xset)" ]; then
     xset r rate 190 30
 
     # use xclip to copy from terminal

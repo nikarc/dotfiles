@@ -257,3 +257,6 @@ let g:ale_linters = {
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json', 'dockerfile']
+
+" Prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
