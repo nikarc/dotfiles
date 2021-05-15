@@ -209,6 +209,7 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-tab>'
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 let g:coc_global_extensions = [
     \ 'coc-css',
@@ -217,7 +218,8 @@ let g:coc_global_extensions = [
     \ 'coc-styled-components',
     \ 'coc-tailwindcss',
     \ 'coc-tsserver',
-    \ 'coc-clangd'
+    \ 'coc-clangd',
+    \ 'coc-prettier'
     \]
 
 let g:snipMate = { 'snippet_version' : 1 }
