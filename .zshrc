@@ -17,10 +17,6 @@ export PATH="$HOME/n/bin:$PATH"
 export PATH=~/.emacs.d/bin:$PATH
 ## bin directory
 export PATH="$HOME/bin:$PATH"
-## Add firefox to path
-if [ "$(uname 2> /dev/null)" != "Darwin" ]; then
-    export PATH="/Applications/Firefox Developer Edition.app"
-fi
 
 ## Vim as manpage viewer
 export MANPAGER="nvim +Man!"
@@ -195,17 +191,7 @@ fi
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
 
 # source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-### Fix slowness of pastes with zsh-syntax-highlighting.zsh
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
 
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
 # eval "$(rbenv init - bootSimulator)"
 
 fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")

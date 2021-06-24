@@ -16,8 +16,8 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
 
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-" autocmd FileChangedShellPost *
-"     \ echo "File changed on disk. Buffer reloaded."
+autocmd FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 call plug#begin('~/.vim/plugged')
 
@@ -261,7 +261,3 @@ let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json', 'dockerfile']
 
 " Prettier
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-" Fixes(?) unkillable netrw buffers
-" https://vi.stackexchange.com/a/20111
-let g:netrw_fastbrowse = 0
