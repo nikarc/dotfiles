@@ -54,10 +54,10 @@ theme.border_radius = dpi(6)
 
 -- Titlebars
 -- (Titlebar items can be customized in titlebars.lua)
-theme.titlebars_enabled = true
-theme.titlebar_size = dpi(35)
+theme.titlebars_enabled = false
+theme.titlebar_size = dpi(15)
 theme.titlebar_title_enabled = false
-theme.titlebar_font = "sans bold 9"
+theme.titlebar_font = "sans bold 6"
 -- Window title alignment: left, right, center
 theme.titlebar_title_align = "center"
 -- Titlebar position: top, bottom, left, right
@@ -228,7 +228,7 @@ theme.taglist_text_color_urgent   = { x.background, x.background, x.background, 
 theme.prompt_fg = x.color12
 
 -- Text Taglist (default)
-theme.taglist_font = "monospace bold 9"
+theme.taglist_font = "Font Awesome Brands 6"
 theme.taglist_bg_focus = x.background
 theme.taglist_fg_focus = x.color12
 theme.taglist_bg_occupied = x.background

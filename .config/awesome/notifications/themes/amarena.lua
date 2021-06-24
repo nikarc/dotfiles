@@ -12,7 +12,7 @@ local helpers = require("helpers")
 -- The real background color is set in the widget_template
 beautiful.notification_bg = "#00000000"
 
-local default_icon = ""
+local default_icon = ""
 
 -- Custom text icons according to the notification's app_name
 -- plus whether the title should be visible or not
@@ -36,8 +36,8 @@ local app_config = {
 }
 
 local urgency_color = {
-    ['low'] = x.color2,
-    ['normal'] = x.color4,
+    ['low'] = x.background,
+    ['normal'] = x.background,
     ['critical'] = x.color11,
 }
 
@@ -120,7 +120,7 @@ naughty.connect_signal("request::display", function(n)
                             widget = custom_notification_icon,
                         },
                         forced_width = dpi(50),
-                        bg = x.background,
+                        bg = x.color9,
                         widget  = wibox.container.background,
                     },
                     {
