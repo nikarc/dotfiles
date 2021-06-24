@@ -52,6 +52,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sirtaj/vim-openscad'
 Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/suda.vim'
 " Plug 'justinmk/vim-sneak' " Search
 " Plug 'vimpostor/vim-tpipeline'
 
