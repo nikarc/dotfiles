@@ -389,7 +389,6 @@ keys.globalkeys = gears.table.join(
             awful.spawn.with_shell("light -A 10")
         end,
         {description = "increase brightness", group = "brightness"}),
-
     -- Volume Control with volume keys
     awful.key( { }, "XF86AudioMute",
         function()
@@ -472,6 +471,27 @@ keys.globalkeys = gears.table.join(
     --     {description = "mpv previous song", group = "media"}),
     -- awful.key({ superkey, shiftkey}, "space", function() awful.spawn.with_shell("mpvc toggle") end,
     --     {description = "mpv toggle pause/play", group = "media"}),
+
+    -- Spotify play/pause
+    awful.key({ }, "XF86AudioPlay", function ()
+        awful.spawn(
+            "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+            )
+    end),
+
+    -- Spotify prev
+    awful.key({ }, "XF86AudioPrev", function ()
+        awful.spawn(
+            "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+            )
+    end),
+
+    -- Spotify next
+    awful.key({ }, "XF86AudioNext", function ()
+        awful.spawn(
+            "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+            )
+    end),
 
     awful.key({ superkey }, "F8", function() awful.spawn.with_shell("mpvc quit") end,
         {description = "mpv quit", group = "media"}),
