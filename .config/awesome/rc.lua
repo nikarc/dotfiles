@@ -10,6 +10,7 @@
 -- >> The file that binds everything together.
 --]]
 
+local lain = require('lain')
 local themes = {
     "manta",        -- 1 --
     "lovelace",     -- 2 --
@@ -250,6 +251,9 @@ require("evil")
 screen_width = awful.screen.focused().geometry.width
 screen_height = awful.screen.focused().geometry.height
 
+lain.layout.termfair.nmaster = 3
+lain.layout.termfair.ncol = 1
+
 -- Layouts
 -- ===================================================================
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -270,6 +274,7 @@ awful.layout.layouts = {
     --awful.layout.suit.corner.ne,
     --awful.layout.suit.corner.sw,
     --awful.layout.suit.corner.se,
+    lain.layout.termfair,
 }
 
 -- Wallpaper
@@ -867,7 +872,7 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "firefox",
+                -- "firefox",
                 "Nightly",
                 -- "qutebrowser",
             },
@@ -914,7 +919,7 @@ awful.rules.rules = {
             class = {
                 "Chromium",
                 "Chromium-browser",
-                "discord",
+                -- "discord",
                 "TelegramDesktop",
                 "Signal",
                 -- "Slack",
