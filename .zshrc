@@ -155,7 +155,7 @@ alias vimrc="vim ~/.vimrc"
 alias dockernames="docker ps --format '{{.Names}}'"
 alias bs="browser-sync"
 alias k="kubectl"
-alias gcqa="git checkout qa"
+# alias gcqa="git checkout qa"
 alias dcc="docker-compose"
 alias gl="git log"
 alias gco="git switch"
@@ -168,6 +168,7 @@ alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
 alias igrep="grep -i"
+alias v="nvim ."
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
@@ -267,6 +268,16 @@ function gms() {
     fi
 
     gm SHOP-$1
+}
+
+# Checkout (main-)qa
+function gcqa() {
+    branch_name="main-qa"
+    if [ `git branch --list $branch_name` ];then
+        git checkout main-qa;
+    else
+        git checkout qa;
+    fi
 }
 
 # QMK Compilation
