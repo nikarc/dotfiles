@@ -1,0 +1,11 @@
+1password
+awesome-git
+font-manager
+lain-git
+light-git
+slack-desktop
+ttf-agave
+ttf-google-sans
+ttf-material-design-icons
+ttf-typicons
+yay-git
