@@ -33,6 +33,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xset r rate 190 30 &
+xset -dpms &
+xset s off &
 picom &
 nitrogen --restore &
 exec awesome
