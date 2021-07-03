@@ -3,13 +3,14 @@ local wibox 		= require("wibox")
 local gears 		= require("gears")
 local keys  		= require("keys")
 local beautiful     = require("beautiful")
+local weather       = require("noodle/text_weather")
 
-local font_awesome_brands = "Font Awesome Brands 10"
+local font_awesome_brands = "Font Awesome Brands 18"
 local bar_font = "Agave Bold 8"
 local bar_font_size = "smaller"
 local bar_font_weight = "bold"
 local bar_height = 30
-local bar_margins = 20
+local bar_margins = 18
 local bar_opacity = 0.85
 local bar_client_type = "dock"
 local focused_color = x.color1
@@ -88,7 +89,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     local clock = wibox.widget {
-        markup = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\">"..os.date(user.clock_format).."</span>",
+        markup = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\">"..os.date("%I:%M %p").."</span>",
         -- text = os.date("%I:%M %p"),
         -- format = user.clock_format,
         -- font = bar_font,
@@ -148,9 +149,19 @@ awful.screen.connect_for_each_screen(function(s)
         end
     )
 
+    local temp_wrap = wibox.widget {
+        {
+            temp_widget,
+            wibox.widget.textbox(' | '),
+            weather,
+            layout = wibox.layout.align.horizontal,
+        },
+        widget = wibox.container.place,
+    }
+
     local right_wrap = wibox.widget {
         -- widget 1
-        temp_widget,
+        temp_wrap,
         -- widget 2
         wibox.widget.textbox(' | '),
         -- widget 3

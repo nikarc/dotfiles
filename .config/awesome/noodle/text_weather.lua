@@ -28,7 +28,7 @@ local sun_icon = ""
 local moon_icon = ""
 local dcloud_icon = ""
 local ncloud_icon = ""
-local cloud_icon = ""
+local cloud_icon = ""
 local rain_icon = ""
 local storm_icon = ""
 local snow_icon = ""
@@ -59,9 +59,9 @@ local weather_temperature = wibox.widget{
 }
 
 local weather = wibox.widget{
+    weather_temperature,
     weather_icon,
     weather_description,
-    weather_temperature,
     spacing = dpi(8),
     layout = wibox.layout.fixed.horizontal
 }
