@@ -135,6 +135,14 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 
+function! MyFoldText()
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart + 1
+    return ' ⭐️ '. foldedlinecount . line
+endfunction
+set foldtext=MyFoldText()
+set fillchars=fold:\
+
 " Clear search highlight on ESC
 nnoremap <silent> <Esc> :noh<CR><Esc>
 " Copy filename to clipboard
