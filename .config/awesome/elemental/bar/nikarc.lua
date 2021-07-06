@@ -89,9 +89,9 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     local clock = wibox.widget {
-        markup = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\">"..os.date("%I:%M %p").."</span>",
+        -- markup = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\">"..os.date("%I:%M %p").."</span>",
         -- text = os.date("%I:%M %p"),
-        -- format = user.clock_format,
+        format = "%I:%M %p",
         -- font = bar_font,
         color = x.foreground,
         widget = wibox.widget.textclock
