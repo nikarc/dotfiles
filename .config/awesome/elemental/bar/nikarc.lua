@@ -1,12 +1,12 @@
-local awful 		= require("awful")
-local wibox 		= require("wibox")
-local gears 		= require("gears")
-local keys  		= require("keys")
-local beautiful     = require("beautiful")
-local weather       = require("noodle/text_weather")
+local awful 		            = require("awful")
+local wibox 		            = require("wibox")
+local gears 		            = require("gears")
+local keys  		            = require("keys")
+local beautiful                 = require("beautiful")
+local setup_text_weather        = require("noodle/text_weather")
 
-local font_awesome_brands = "Font Awesome Brands 18"
-local bar_font = "Agave Bold 8"
+local font_awesome_brands = "Font Awesome Brands 12"
+local bar_font = "Agave Bold 6"
 local bar_font_size = "smaller"
 local bar_font_weight = "bold"
 local bar_height = 30
@@ -81,6 +81,7 @@ awful.screen.connect_for_each_screen(function(s)
         visible = true,
         fg = x.color15,
         bg = "#0000",
+        font = bar_font,
         ontop = true,
         height = bar_height,
         width = screen_width - 20,
@@ -91,8 +92,8 @@ awful.screen.connect_for_each_screen(function(s)
     local clock = wibox.widget {
         -- markup = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\">"..os.date("%I:%M %p").."</span>",
         -- text = os.date("%I:%M %p"),
-        format = "%I:%M %p",
-        -- font = bar_font,
+        format = "%b %d - %I:%M %p",
+        font = bar_font,
         color = x.foreground,
         widget = wibox.widget.textclock
     }
@@ -124,11 +125,11 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     local temp_widget = awful.widget.watch(
-        [[ bash -c "cat /sys/bus/platform/devices/coretemp.0/hwmon/hwmon4/temp1_input /sys/bus/platform/devices/coretemp.0/hwmon/hwmon4/temp2_input /sys/bus/platform/devices/coretemp.0/hwmon/hwmon4/temp3_input /sys/bus/platform/devices/coretemp.0/hwmon/hwmon4/temp4_input | awk '{print $1/1000}'" ]],
+        [[ bash -c "cat /sys/bus/platform/devices/coretemp.0/hwmon/*/temp1_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp2_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp3_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp4_input | awk '{print $1/1000}'" ]],
         temp_timer,
         function (widget, stdout)
             local output = ""
-            local span_prefix = "<span size=\""..bar_font_size.."\" weight=\""..bar_font_weight.."\" foreground="
+            local span_prefix = "<span size=\"x-small\" weight=\""..bar_font_weight.."\" foreground="
 
             for t in stdout:gmatch("[^\r\n]+") do
                 local temp = tonumber(t)
@@ -149,6 +150,8 @@ awful.screen.connect_for_each_screen(function(s)
         end
     )
 
+
+    local weather = setup_text_weather(bar_font)
     local temp_wrap = wibox.widget {
         {
             temp_widget,
@@ -181,8 +184,8 @@ awful.screen.connect_for_each_screen(function(s)
         {
             {
                 alignment_box,
-                top = bar_margins * 0.45,
-                bottom = bar_margins * 0.45,
+                top = bar_margins * 0.25,
+                bottom = bar_margins * 0.25,
                 left = bar_margins,
                 right = bar_margins,
                 widget= wibox.container.margin,
