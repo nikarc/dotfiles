@@ -17,6 +17,8 @@ local focused_color = x.color1
 local blurred_color = x.color8
 local arch_icon = ""
 local temp_timer = 2
+local temp_format = 'average' -- average | all
+local cpu_core_count = 4
 
 local update_taglist = function (item, tag, index)
     if tag.selected then
@@ -124,31 +126,64 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal
     }
 
+    function temp_color_mapper(temp)
+        if temp > 65 then
+            return "yellow"
+        elseif temp > 80 then
+            return x.color9
+        else
+            return x.color12
+        end
+    end
+
     local temp_widget = awful.widget.watch(
         [[ bash -c "cat /sys/bus/platform/devices/coretemp.0/hwmon/*/temp1_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp2_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp3_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp4_input | awk '{print $1/1000}'" ]],
         temp_timer,
         function (widget, stdout)
             local output = ""
             local span_prefix = "<span size=\"x-small\" weight=\""..bar_font_weight.."\" foreground="
+            local temp_color = x.color12
+            local temp_total = 0
+            local temp_average = 0
+            local temp_measurement = "°C"
+            local temp_template = "<span size='x-small' weight='%s' foreground='%s'>%s%s </span>"
+
+            output = output..string.format("<span font='icomoon 6' foreground='%s'> </span>", temp_color)
 
             for t in stdout:gmatch("[^\r\n]+") do
                 local temp = tonumber(t)
+                temp_total = (temp_total + temp)
 
                 if temp > 65 then
-                    output = output..span_prefix.."\"yellow\">"
+                    temp_color = "yellow"
                 elseif temp > 80 then
-                    output = output..span_prefix.."\""..x.color9.."\">"
-                else
-                    output = output..span_prefix.."\""..x.color12.."\">"
+                    temp_color = x.color9
                 end
 
-                output = output..tostring(temp)
-                output = output.."°C </span>"
+                -- If 'all', add multiple spans, one for each core
+                -- otherwise skip to show only one average temperature
+                if temp_format == "all" then
+                    output = output..string.format(temp_template, bar_font_weight, temp_color, tostring(temp), temp_measurement)
+                end
+            end
+
+            if temp_format == "average" then
+                temp_average = math.floor(temp_total / cpu_core_count)
+                output = output..string.format(temp_template, bar_font_weight, temp_color, tostring(temp_average), temp_measurement)
             end
 
             widget:set_markup(output)
         end
     )
+
+    -- Toggle between temp average and all cores on widget mouse click
+    temp_widget:connect_signal("button::press", function(c)
+        if temp_format == "all" then
+            temp_format = "average"
+        else
+            temp_format = "all"
+        end
+    end)
 
 
     local weather = setup_text_weather(bar_font)
