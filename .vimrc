@@ -53,6 +53,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'sirtaj/vim-openscad'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/suda.vim'
+" Plug 'zsugabubus/vim-paperplane'
+" Plug 'wellle/context.vim'
 " Plug 'justinmk/vim-sneak' " Search
 " Plug 'vimpostor/vim-tpipeline'
 
@@ -269,3 +271,8 @@ let g:indentLine_fileTypeExclude = ['tex', 'markdown', 'json', 'dockerfile']
 
 " Prettier
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+" Auto Pairs
+if exists("g:AutoPairsShortcutToggle")
+    unlet g:AutoPairsShortcutToggle
+endif
