@@ -230,7 +230,8 @@ let g:coc_global_extensions = [
     \ 'coc-tailwindcss',
     \ 'coc-tsserver',
     \ 'coc-clangd',
-    \ 'coc-prettier'
+    \ 'coc-prettier',
+    \ 'coc-tabnine'
     \]
 
 let g:snipMate = { 'snippet_version' : 1 }
