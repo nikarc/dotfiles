@@ -25,7 +25,7 @@ end
 -- ==================
 -- Weather widget with text icons
 local setup_text_weather = require("noodle.text_weather")
-local weather_widget = setup_text_weather()
+local weather_widget = setup_text_weather('sans 12', true)
 local weather_widget_icon = weather_widget:get_all_children()[1]
 -- weather_widget_icon.font = "Typicons 18"
 weather_widget_icon.font = "icomoon 16"

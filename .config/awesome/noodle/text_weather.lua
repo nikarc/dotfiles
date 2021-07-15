@@ -35,8 +35,9 @@ local snow_icon = ""
 local mist_icon = ""
 local whatever_icon = ""
 
-function setup_text_weather(font)
+function setup_text_weather(font, show_text)
     font = font or 'sans 12'
+    show_text = show_text or false
 
     local weather_description = wibox.widget{
         -- text = "Weather unavailable",
@@ -62,13 +63,24 @@ function setup_text_weather(font)
         widget = wibox.widget.textbox
     }
 
-    local weather = wibox.widget{
-        weather_temperature,
-        weather_icon,
-        weather_description,
-        spacing = dpi(8),
-        layout = wibox.layout.fixed.horizontal
-    }
+    local wather = nil
+
+    if show_text then
+        weather = wibox.widget{
+            weather_temperature,
+            weather_icon,
+            weather_description,
+            spacing = dpi(8),
+            layout = wibox.layout.fixed.horizontal
+        }
+    else
+        weather = wibox.widget{
+            weather_temperature,
+            weather_icon,
+            spacing = dpi(8),
+            layout = wibox.layout.fixed.horizontal
+        }
+    end
 
     local weather_icons = {
         ["01d"] = { icon = sun_icon, color = x.color3 },

@@ -186,7 +186,7 @@ awful.screen.connect_for_each_screen(function(s)
     end)
 
 
-    local weather = setup_text_weather(bar_font)
+    local weather = setup_text_weather('icomoon 8')
     local temp_wrap = wibox.widget {
         {
             temp_widget,
