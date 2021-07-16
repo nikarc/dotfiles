@@ -1,11 +1,13 @@
 1password
 awesome-git
+darkman
 font-manager
 lain-git
 light-git
+openrgb
 slack-desktop
 ttf-agave
 ttf-google-sans
 ttf-material-design-icons
 ttf-typicons
-yay-git
+yay
