@@ -231,7 +231,6 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-clangd',
     \ 'coc-prettier',
-    \ 'coc-tabnine'
     \]
 
 let g:snipMate = { 'snippet_version' : 1 }
