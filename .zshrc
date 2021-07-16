@@ -229,6 +229,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # eval "$(pyenv init - bootSimulator)"
 export PATH="/usr/local/sbin:$PATH"
 
+# ls dircolors
+eval "`dircolors -b ~/.dircolors`"
+alias ls='ls --color=auto'
+
 # Functions
 # Create new branch
 function gcbs() {
