@@ -137,42 +137,35 @@ awful.screen.connect_for_each_screen(function(s)
     end
 
     local temp_widget = awful.widget.watch(
-        [[ bash -c "cat /sys/bus/platform/devices/coretemp.0/hwmon/*/temp1_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp2_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp3_input /sys/bus/platform/devices/coretemp.0/hwmon/*/temp4_input | awk '{print $1/1000}'" ]],
+        [[ bash -c "sensors | awk '/Package id 0/' | sed -e 's/^Package id 0:\\s*+\\(.*\\)(.*)/\1/g'" ]],
+        -- [[ bash -c "sensors | awk '/Tdie/' | sed -e 's/^Tdie:\\s*+\\(.*\\)(.*)/\1/g'" ]],
         temp_timer,
         function (widget, stdout)
-            local output = ""
-            local span_prefix = "<span size=\"x-small\" weight=\""..bar_font_weight.."\" foreground="
+            -- widget:set_text(stdout)
+            local temp_digits = stdout:gsub('[^0-9\\.]', '')
+            local temp_number = tonumber(temp_digits)
             local temp_color = x.color12
-            local temp_total = 0
-            local temp_average = 0
-            local temp_measurement = "°C"
-            local temp_template = "<span size='x-small' weight='%s' foreground='%s'>%s%s </span>"
 
-            output = output..string.format("<span font='icomoon 6' foreground='%s'> </span>", temp_color)
-
-            for t in stdout:gmatch("[^\r\n]+") do
-                local temp = tonumber(t)
-                temp_total = (temp_total + temp)
-
-                if temp > 65 then
-                    temp_color = "yellow"
-                elseif temp > 80 then
-                    temp_color = x.color9
-                end
-
-                -- If 'all', add multiple spans, one for each core
-                -- otherwise skip to show only one average temperature
-                if temp_format == "all" then
-                    output = output..string.format(temp_template, bar_font_weight, temp_color, tostring(temp), temp_measurement)
-                end
+            if temp_number > 65 then
+                temp_color = "yellow"
+            elseif temp_number > 80 then
+                temp_color = x.color9
             end
 
-            if temp_format == "average" then
-                temp_average = math.floor(temp_total / cpu_core_count)
-                output = output..string.format(temp_template, bar_font_weight, temp_color, tostring(temp_average), temp_measurement)
-            end
+            local icon = string.format("<span font='icomoon 6' foreground='%s'> </span>", temp_color)
+            local text = '<span size="x-small" weight="'..bar_font_weight..'" foreground="'..temp_color..'">'..icon..stdout..'</span>'
 
-            widget:set_markup(output)
+            widget:set_markup(text)
+
+            -- widget:set_markup(
+            --     string.format(
+            --         '<span size="x-small" weight="%s" foreground="%s">%s%s</span>',
+            --         bar_font_weight,
+            --         temp_color,
+            --         icon,
+            --         stdout
+            --     )
+            -- )
         end
     )
 

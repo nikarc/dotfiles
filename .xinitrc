@@ -39,6 +39,7 @@ redshift -P -O 4900K
 xset r rate 190 30 &
 xset -dpms &
 xset s off &
+
 picom &
 nitrogen --restore &
 exec awesome
