@@ -12,28 +12,28 @@ end
 
 -- Text icons
 -- 'Typicons' font
--- local sun_icon = ""
--- local moon_icon = ""
--- local dcloud_icon = ""
--- local ncloud_icon = ""
--- local cloud_icon = ""
--- local rain_icon = ""
--- local storm_icon = ""
--- local snow_icon = ""
--- local mist_icon = ""
--- local whatever_icon = ""
+local sun_icon = ""
+local moon_icon = ""
+local dcloud_icon = ""
+local ncloud_icon = ""
+local cloud_icon = ""
+local rain_icon = ""
+local storm_icon = ""
+local snow_icon = ""
+local mist_icon = ""
+local whatever_icon = ""
 
 -- 'Icomoon' font (filled variant)
-local sun_icon = ""
-local moon_icon = ""
-local dcloud_icon = ""
-local ncloud_icon = ""
-local cloud_icon = ""
-local rain_icon = ""
-local storm_icon = ""
-local snow_icon = ""
-local mist_icon = ""
-local whatever_icon = ""
+-- local sun_icon = ""
+-- local moon_icon = ""
+-- local dcloud_icon = ""
+-- local ncloud_icon = ""
+-- local cloud_icon = ""
+-- local rain_icon = ""
+-- local storm_icon = ""
+-- local snow_icon = ""
+-- local mist_icon = ""
+-- local whatever_icon = ""
 
 function setup_text_weather(font, show_text)
     font = font or 'sans 12'

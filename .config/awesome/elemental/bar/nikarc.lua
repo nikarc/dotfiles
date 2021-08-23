@@ -137,8 +137,8 @@ awful.screen.connect_for_each_screen(function(s)
     end
 
     local temp_widget = awful.widget.watch(
-        [[ bash -c "sensors | awk '/Package id 0/' | sed -e 's/^Package id 0:\\s*+\\(.*\\)(.*)/\1/g'" ]],
-        -- [[ bash -c "sensors | awk '/Tdie/' | sed -e 's/^Tdie:\\s*+\\(.*\\)(.*)/\1/g'" ]],
+        -- [[ bash -c "sensors | awk '/Package id 0/' | sed -e 's/^Package id 0:\\s*+\\(.*\\)(.*)/\1/g'" ]],
+        [[ bash -c "sensors | awk '/Tdie/' | sed -e 's/^Tdie:\\s*+\\(.*\\)(.*)/\1/g'" ]],
         temp_timer,
         function (widget, stdout)
             -- widget:set_text(stdout)
@@ -179,7 +179,7 @@ awful.screen.connect_for_each_screen(function(s)
     end)
 
 
-    local weather = setup_text_weather('icomoon 8')
+    local weather = setup_text_weather('typicons 8')
     local temp_wrap = wibox.widget {
         {
             temp_widget,
