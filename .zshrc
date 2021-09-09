@@ -230,8 +230,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 export PATH="/usr/local/sbin:$PATH"
 
 # ls dircolors
-eval "`dircolors -b ~/.dircolors`"
-alias ls='ls --color=auto'
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+    eval "`dircolors -b ~/.dircolors`"
+    alias ls='ls --color=auto'
+fi
 
 # Functions
 # Create new branch
