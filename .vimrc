@@ -124,9 +124,19 @@ let g:Hexokinase_highlighters = ["backgroundfull"]
 
 " Swap files
 " Save swap files somewhere not in file directory
+if !isdirectory($HOME . "/.vim/backup")
+    call mkdir($HOME . "/.vim/backup", "", 0700)
+endif
+if !isdirectory($HOME . "/.vim/swap")
+    call mkdir($HOME . "/.vim/swap", "", 0700)
+endif
+if !isdirectory($HOME . "/.vim/undo")
+    call mkdir($HOME . "/.vim/undo", "", 0700)
+endif
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set undofile
 " End Swap Files
 
 "*****************
