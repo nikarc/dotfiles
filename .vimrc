@@ -276,3 +276,4 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 if exists("g:AutoPairsShortcutToggle")
     unlet g:AutoPairsShortcutToggle
 endif
+
