@@ -917,8 +917,8 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "Chromium",
-                "Chromium-browser",
+                -- "Chromium",
+                -- "Chromium-browser",
                 -- "discord",
                 "TelegramDesktop",
                 "Signal",

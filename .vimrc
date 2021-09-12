@@ -22,7 +22,9 @@ autocmd FileChangedShellPost *
 call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-eunuch'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
@@ -122,9 +124,19 @@ let g:Hexokinase_highlighters = ["backgroundfull"]
 
 " Swap files
 " Save swap files somewhere not in file directory
+if !isdirectory($HOME . "/.vim/backup")
+    call mkdir($HOME . "/.vim/backup", "", 0700)
+endif
+if !isdirectory($HOME . "/.vim/swap")
+    call mkdir($HOME . "/.vim/swap", "", 0700)
+endif
+if !isdirectory($HOME . "/.vim/undo")
+    call mkdir($HOME . "/.vim/undo", "", 0700)
+endif
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set undofile
 " End Swap Files
 
 "*****************
@@ -181,8 +193,17 @@ let @p=':%s/\(\s\|(\)\@<!{/ {/g'
 let @o=":s/'\([a-zA-Z-]\+\) \(\.\|\#\)': "
 
 " LeaderF Config
-let g:Lf_WindowPosition = 'popup'
-nnoremap <silent> <C-p> :Leaderf file<CR>
+if exists(':Leaderf')
+    let g:Lf_WindowPosition = 'popup'
+    nnoremap <silent> <C-p> :Leaderf file<CR>
+endif
+
+" Telescope config
+" Find files using Telescope command-line sugar.
+nnoremap <silent> <C-p> :Telescope find_files<cr>
+nnoremap <leader>fg :Telescope live_grep<cr>
+nnoremap <silent> <C-b> :Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Syntax highlight debug
 map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

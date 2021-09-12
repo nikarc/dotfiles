@@ -32,6 +32,10 @@ fi
 # OpenSCAD
 export OPENSCADPATH="/usr/local/OpenSCAD"
 
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    export LIBVA_DRIVER_NAME="vdpau"
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -169,6 +173,8 @@ alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
 alias igrep="grep -i"
 alias v="nvim ."
+# Open chromium without frame rate limit
+alias chromium="chromium --disable-gpu-vsync --disable-frame-rate-limit"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
@@ -230,8 +236,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 export PATH="/usr/local/sbin:$PATH"
 
 # ls dircolors
-eval "`dircolors -b ~/.dircolors`"
-alias ls='ls --color=auto'
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+    eval "`dircolors -b ~/.dircolors`"
+    alias ls='ls --color=auto'
+fi
 
 # Functions
 # Create new branch
