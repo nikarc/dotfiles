@@ -109,7 +109,7 @@ user = {
     -- >> Sidebar <<
     sidebar = {
         hide_on_mouse_leave = true,
-        show_on_mouse_screen_edge = true,
+        show_on_mouse_screen_edge = false,
     },
 
     -- >> Lock screen <<
@@ -315,9 +315,11 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     local l = awful.layout.suit -- Alias to save time :)
+    local is_primary = s.index == 1
+
     -- Tag layouts
     local layouts = {
-        l.tile,
+        is_primary and l.tile or l.tile.top,
         l.tile,
         l.tile,
         l.tile,
@@ -330,8 +332,6 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     local tagnames = beautiful.tagnames
-
-    local is_primary = s.index == 1
 
     -- Tag names
     if (is_primary == false) then
