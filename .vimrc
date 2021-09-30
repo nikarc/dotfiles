@@ -55,6 +55,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'sirtaj/vim-openscad'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/suda.vim'
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plug 'zsugabubus/vim-paperplane'
 " Plug 'wellle/context.vim'
 " Plug 'justinmk/vim-sneak' " Search
