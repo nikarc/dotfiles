@@ -1,0 +1,12 @@
+{
+  "name": "waybar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+      "start": "sass -w --no-source-map src/style.scss ./style.css"
+  },
+  "dependencies": {
+    "sass": "^1.42.1"
+  }
+}
