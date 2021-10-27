@@ -127,9 +127,9 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     function temp_color_mapper(temp)
-        if temp > 65 then
+        if temp > 75 then
             return "yellow"
-        elseif temp > 80 then
+        elseif temp > 85 then
             return x.color9
         else
             return x.color12
@@ -144,13 +144,13 @@ awful.screen.connect_for_each_screen(function(s)
             -- widget:set_text(stdout)
             local temp_digits = stdout:gsub('[^0-9\\.]', '')
             local temp_number = tonumber(temp_digits)
-            local temp_color = x.color12
+            local temp_color = temp_color_mapper(temp_number)
 
-            if temp_number > 65 then
-                temp_color = "yellow"
-            elseif temp_number > 80 then
-                temp_color = x.color9
-            end
+            -- if temp_number > 65 then
+            --     temp_color = "yellow"
+            -- elseif temp_number > 80 then
+            --     temp_color = x.color9
+            -- end
 
             local icon = string.format("<span font='icomoon 6' foreground='%s'> </span>", temp_color)
             local text = '<span size="x-small" weight="'..bar_font_weight..'" foreground="'..temp_color..'">'..icon..stdout..'</span>'
@@ -192,7 +192,8 @@ awful.screen.connect_for_each_screen(function(s)
 
     local right_wrap = wibox.widget {
         -- widget 1
-        temp_wrap,
+        -- temp_wrap,
+        weather,
         -- widget 2
         wibox.widget.textbox(' | '),
         -- widget 3
