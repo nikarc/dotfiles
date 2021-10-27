@@ -316,3 +316,7 @@ function gcqa() {
 # 
 #     qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
 # } >&2
+
+if [ -d "/mnt/c/Windows" ]; then
+    export PATH="$PATH:/mnt/c/Progarm Files"
+fi
