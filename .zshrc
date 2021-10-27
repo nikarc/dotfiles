@@ -1,6 +1,10 @@
 ## If you come from bash you might have to change your $PATH. If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	export XDG_CONFIG_HOME="$HOME/.config"
+fi
+
 # export TERM=xterm-color
 export TERM="xterm-256color"
 
@@ -118,7 +122,7 @@ export EDITOR='nvim'
 export VIM_COLORSCHEME="spaceduck"
 export zshrc="~/.zshrc"
 export docs="$HOME/Documents"
-export work="$HOME/Work/Spartan"
+export work="$HOME/Work"
 export awesome_dir="$HOME/.config/awesome"
 
 # Compilation flags
@@ -142,7 +146,7 @@ fi
 alias docs="cd $docs"
 alias focs="cd ~/Documents"
 alias work="cd $work"
-alias spartan="cd ~/Work/Spartan/shop/shopify/slate-master"
+alias bigh='cd $work/Bighuman'
 alias tmuxconf="vim ~/.tmux.conf"
 alias .zsh="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc"
@@ -175,6 +179,12 @@ alias igrep="grep -i"
 alias v="nvim ."
 # Open chromium without frame rate limit
 alias chromium="chromium --disable-gpu-vsync --disable-frame-rate-limit"
+# I can never remeber these commands
+alias dockerid="docker ps --format \"{{.ID}}\""
+alias dockeraid="docker ps -a --format \"{{.ID}}\""
+alias dockerstat="docker ps --format \"{{.ID}} -> {{.Status}}\""
+# This will change frequently most likely
+alias currp="bigh && cd sisense-nextjs"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
