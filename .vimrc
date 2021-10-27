@@ -6,6 +6,7 @@ set hidden
 filetype plugin on
 set iskeyword+="-"
 set clipboard+=unnamedplus
+set updatetime=100
 
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " Triger `autoread` when files changes on disk
@@ -55,11 +56,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'sirtaj/vim-openscad'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lambdalisue/suda.vim'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-" Plug 'zsugabubus/vim-paperplane'
-" Plug 'wellle/context.vim'
-" Plug 'justinmk/vim-sneak' " Search
-" Plug 'vimpostor/vim-tpipeline'
+Plug 'tpope/vim-commentary'
+Plug 'luukvbaal/stabilize.nvim'
+Plug 'mhinz/vim-startify'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -80,6 +79,8 @@ Plug 'skbolton/embark'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'arzg/vim-colors-xcode'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-nightfly-guicolors'
 
 call plug#end()
 " End VimPlug settings
@@ -89,21 +90,19 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-" colorscheme night-owl
-colorscheme purpura
-" colorscheme embark
-" colorscheme material
-" colorscheme xcodedark
+colorscheme nightfly
+
 " if !empty($VIM_COLORSCHEME)
 "     colorscheme $VIM_COLORSCHEME
 " else
 "    colorscheme purpura
 " endif
 " colorscheme spaceduck
+
 set ignorecase
 set smartcase
-set tabstop=4
-set shiftwidth=4
+" set tabstop=4
+" set shiftwidth=4
 set expandtab
 " Night Owl Lightline setup
 " let g:lightline = {
@@ -211,29 +210,22 @@ map ,h :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Coc.nvim
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+" ------ Coc.nvim
+" You have to remap <cr> to make sure it confirms completion when popup menu is visible
+" since default behavior of <CR> could be different regard to current completion state
+" and completeopt option.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use <C-l> for trigger snippet expand.
-"imap <C-l> <Plug>(coc-snippets-expand)
-
+" Use <Tab> or custom key for trigger completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+" Use <Tab> and <S-Tab> to navigate the completion list:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -251,9 +243,16 @@ let g:coc_global_extensions = [
     \ 'coc-styled-components',
     \ 'coc-tailwindcss',
     \ 'coc-tsserver',
+    \ 'coc-styled-components',
     \ 'coc-clangd',
     \ 'coc-prettier',
     \]
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 let g:snipMate = { 'snippet_version' : 1 }
 
