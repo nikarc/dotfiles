@@ -69,18 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LuaSnip = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/LuaSnip"
-  },
-  ["alpha-nvim"] = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/alpha-nvim"
-  },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/bufferline.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-buffer"
@@ -89,30 +77,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
   },
-  ["cmp-path"] = {
+  ["cmp-rg"] = {
     loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-path"
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-rg"
   },
-  cmp_luasnip = {
+  ["cmp-tabnine"] = {
     loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp_luasnip"
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-tabnine"
   },
-  ["feline.nvim"] = {
+  ["cmp-vsnip"] = {
     loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/feline.nvim"
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
   },
-  ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
+  ["emmet-vim"] = {
     loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
-  },
-  indentLine = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/indentLine"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -126,6 +105,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
@@ -133,10 +120,6 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -150,11 +133,24 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["vim-airline"] = {
+    loaded = true,
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-airline"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
   ["vim-eunuch"] = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-eunuch"
   },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+  },
   ["vim-nightfly-guicolors"] = {
+    config = { "\27LJ\2\nI\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\25colorscheme nightfly\17nvim_command\bapi\bvim\0" },
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors"
   },
@@ -162,17 +158,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
-  ["vista.vim"] = {
+  ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/nick/.local/share/nvim/site/pack/packer/start/vista.vim"
+    path = "/home/nick/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
+-- Config for: vim-nightfly-guicolors
+time([[Config for vim-nightfly-guicolors]], true)
+try_loadstring("\27LJ\2\nI\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\25colorscheme nightfly\17nvim_command\bapi\bvim\0", "config", "vim-nightfly-guicolors")
+time([[Config for vim-nightfly-guicolors]], false)
 if should_profile then save_profiles() end
 
 end)
