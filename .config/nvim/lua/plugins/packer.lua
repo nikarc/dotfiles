@@ -32,7 +32,7 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
   -- use 'kyazdani42/nvim-tree.lua'
-  use 'Yggdroot/indentLine'
+  -- use 'Yggdroot/indentLine'
   use 'windwp/nvim-autopairs'
   use 'kyazdani42/nvim-web-devicons'
   use 'liuchengxu/vista.vim'
@@ -74,8 +74,19 @@ return packer.startup(function(use)
   }
   use { 'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require'colorizer'.setup()
+    end}
+  use "b0o/mapx.nvim"
+
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
+  use 'mattn/emmet-vim'
+  use 'tpope/vim-fugitive'
+  use 'lambdalisue/suda.vim'
 
   -- color schemes
   use 'bluz71/vim-nightfly-guicolors'

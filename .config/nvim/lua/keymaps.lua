@@ -1,3 +1,4 @@
+-- require'mapx'.setup{global = true}
 -----------------------------------------------------------
 -- Keymaps configuration file: keymaps of neovim
 -- and plugins.
@@ -67,7 +68,7 @@ map('n', '<leader>q', ':quitall<CR>', default_opts)
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 -- open terminal
-map('n', '<C-t>', ':Term<CR>', {noremap = true})
+-- map('n', '<C-t>', ':Term<CR>', {noremap = true})
 
 -- nvim-tree
 -- map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
@@ -81,3 +82,13 @@ map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close
 map('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
 map('n', '<C-b>', ':Telescope buffers<CR>', { noremap = true, silent = true })
 map('n', '<C-f>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+
+-----------------------------------------------------------
+-- Simple tag expansion
+-----------------------------------------------------------
+-- mapx.group('slient', { ft = {
+--   'javascriptreact',
+--   'typescriptreact'
+-- }}, function()
+--   inoremap('<C-y>t', 'vBx')
+-- end)
