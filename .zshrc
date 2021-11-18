@@ -159,7 +159,9 @@ alias gda="git diff origin/qa"
 alias docc="docker-compose"
 alias swatch="slate watch"
 alias hosts="sudo vim /etc/hosts"
-alias vimrc="vim ~/.vimrc"
+# alias vimrc="vim ~/.vimrc"
+alias vimrc="vim ~/dotfiles/.config/nvim"
+alias cdvimrc="cd ~/dotfiles/.config/nvim"
 alias dockernames="docker ps --format '{{.Names}}'"
 alias bs="browser-sync"
 alias k="kubectl"
@@ -306,14 +308,14 @@ function gcqa() {
 # function qmkcomp() {
 #     KEYBOARD="$1"
 #     KEYMAP="$2"
-# 
+#
 #     if [[ "$KEYBOARD" == "" ]]; then
 #         KEYBOARD="thevankeyboards/minivan";
 #     fi
 #     if [[ "$KEYMAP" == "" ]]; then
 #         KEYMAP="nikarc";
 #     fi
-# 
+#
 #     qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
 # } >&2
 
