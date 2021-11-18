@@ -80,6 +80,16 @@ return packer.startup(function(use)
       require'colorizer'.setup()
     end}
   use "b0o/mapx.nvim"
+  use {
+    'filipdutescu/renamer.nvim',
+    branch = 'master',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+    'romgrk/nvim-treesitter-context',
+    requires = 'nvim-treesitter/nvim-treesitter'
+  }
+
 
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
@@ -89,8 +99,9 @@ return packer.startup(function(use)
   use 'lambdalisue/suda.vim'
 
   -- color schemes
-  use 'bluz71/vim-nightfly-guicolors'
+  -- use 'bluz71/vim-nightfly-guicolors'
   -- use 'tanvirtin/monokai.nvim'
+  use 'folke/tokyonight.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
