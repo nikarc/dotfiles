@@ -187,6 +187,7 @@ alias dockeraid="docker ps -a --format \"{{.ID}}\""
 alias dockerstat="docker ps --format \"{{.ID}} -> {{.Status}}\""
 # This will change frequently most likely
 alias currp="bigh && cd sisense-nextjs"
+alias gbc="git rev-parse --abbrev-ref HEAD"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
@@ -321,4 +322,9 @@ function gcqa() {
 
 if [ -d "/mnt/c/Windows" ]; then
     export PATH="$PATH:/mnt/c/Progarm Files"
+fi
+
+if command -v neofetch &> /dev/null
+then
+  neofetch
 fi
