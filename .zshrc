@@ -28,6 +28,9 @@ export MANPAGER="nvim +Man!"
 # N node manager package
 export N_PREFIX="$HOME/n/"
 
+# Histyory size
+export HISTSIZE=1000000000
+
 # Rbenv
 if [ -x "$(command -v rbenv)" ]; then
 	eval "$(rbenv init -)"
@@ -38,6 +41,10 @@ export OPENSCADPATH="/usr/local/OpenSCAD"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     export LIBVA_DRIVER_NAME="vdpau"
+fi
+
+if [ "$(uname 2> /dev/null)" == "Darwin" ]; then
+  export PATH="/usr/local/bin:$PATH"
 fi
 
 # Set name of the theme to load --- if set to "random", it will
