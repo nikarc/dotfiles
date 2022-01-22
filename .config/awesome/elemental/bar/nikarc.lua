@@ -6,7 +6,7 @@ local beautiful                 = require("beautiful")
 local setup_text_weather        = require("noodle/text_weather")
 
 local font_awesome_brands = "Font Awesome Brands 12"
-local bar_font = "Agave Bold 6"
+local bar_font = "Agave Bold 12"
 local bar_font_size = "smaller"
 local bar_font_weight = "bold"
 local bar_height = 30
@@ -179,7 +179,7 @@ awful.screen.connect_for_each_screen(function(s)
     end)
 
 
-    local weather = setup_text_weather('typicons 8')
+    local weather = setup_text_weather('typicons 12')
     local temp_wrap = wibox.widget {
         {
             temp_widget,

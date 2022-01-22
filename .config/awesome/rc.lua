@@ -10,7 +10,9 @@
 -- >> The file that binds everything together.
 --]]
 
-local lain = require('lain')
+require('./table-serialization')
+-- local lain = require('lain')
+-- local posix = require('posix')
 local themes = {
     "manta",        -- 1 --
     "lovelace",     -- 2 --
@@ -145,6 +147,30 @@ user = {
 }
 -- ===================================================================
 
+-- Load layout state before restart
+-- https://ch1p.io/awesome-reload-and-preserve-layout/
+local function restore_state()
+  if posix.stat(my_state_file) ~= nil then
+    local params = table.load(my_state_file)
+    os.remove(my_state_file)
+
+    local s = awful.screen.focused()
+    for j, p in ipairs(params) do
+      local i = p[1]
+      local layout = p[2] -- index of layout in mytags.layout table
+      local ncol = p[3]
+      local mwfact = p[4]
+      local nmaster = p[5]
+
+      local t = s.tags[i]
+      t.layout = mytags.layout[layout]
+
+      awful.tag.setncol(ncol, t)
+      awful.tag.setmwfact(mwfact, t)
+      awful.tag.setnmaster(nmaster, t)
+    end
+  end
+end
 
 -- Jit
 --pcall(function() jit.on() end)
@@ -251,8 +277,8 @@ require("evil")
 screen_width = awful.screen.focused().geometry.width
 screen_height = awful.screen.focused().geometry.height
 
-lain.layout.termfair.nmaster = 3
-lain.layout.termfair.ncol = 1
+-- lain.layout.termfair.nmaster = 3
+-- lain.layout.termfair.ncol = 1
 
 -- Layouts
 -- ===================================================================
@@ -274,7 +300,7 @@ awful.layout.layouts = {
     --awful.layout.suit.corner.ne,
     --awful.layout.suit.corner.sw,
     --awful.layout.suit.corner.se,
-    lain.layout.termfair,
+    -- lain.layout.termfair,
 }
 
 -- Wallpaper
@@ -312,14 +338,16 @@ awful.spawn.with_shell("nitrogen --restore")
 
 -- Tags
 -- ===================================================================
+mytags = {}
 awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     local l = awful.layout.suit -- Alias to save time :)
-    local is_primary = s.index == 1
+    -- local is_primary = s.index == 1
 
     -- Tag layouts
     local layouts = {
-        is_primary and l.tile or l.tile.top,
+        -- is_primary and l.tile or l.tile.top,
+        l.tile,
         l.tile,
         l.tile,
         l.tile,
@@ -334,19 +362,25 @@ awful.screen.connect_for_each_screen(function(s)
     local tagnames = beautiful.tagnames
 
     -- Tag names
-    if (is_primary == false) then
-        tagnames = { "", "", "", "", "", "", "", "", "", ""  }
-    else
-        tagnames = { "", "", "", "", "", "", "", "", "", "" }
-    end
+    -- if (is_primary == false) then
+    --     tagnames = { "", "", "", "", "", "", "", "", "", ""  }
+    -- else
+    --     tagnames = { "", "", "", "", "", "", "", "", "", "" }
+    -- end
+    tagnames = { "", "", "", "", "", "", "", "", "", "" }
 
     -- Create all tags at once (without seperate configuration for each tag)
     awful.tag(tagnames, s, layouts)
 
+    table.insert(mytags, s.index, {
+      tagnames = tagnames,
+      layouts = layouts,
+    })
+
     -- for _,i in ipairs(tagnames) do
     --     awful.tag.add(i, {
     --             layout: l.tile,
-    --             master_fill_policy: 
+    --             master_fill_policy:
     --         })
     -- end
 
@@ -1024,6 +1058,10 @@ awful.rules.rules = {
 
 -- Signals
 -- ===================================================================
+-- Startup signal
+-- awesome.connect_signal("startup", function()
+--   restore_state()
+-- end)
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     -- For debugging awful.rules
@@ -1159,15 +1197,15 @@ awful.spawn.easy_async_with_shell("stat "..dashboard_flag_path.." >/dev/null 2>&
     end
 end)
 
--- do
---     local cmds =
---     {
---         "xrandr --output DVI-D-1 --off --output DP-1 --off --output DP-2 --off --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate left --output DP-3 --mode 2560x1440 --pos 1125x305 --rotate normal --primary",
---     }
---     for _, i in pairs(cmds) do
---         awful.util.spawn(i)
---     end
--- end
+do
+    local cmds =
+    {
+        "/usr/lib/polkit-kde-authentication-agent-1 &",
+    }
+    for _, i in pairs(cmds) do
+        awful.spawn(i)
+    end
+end
 
 -- Garbage collection
 -- Enable for lower memory consumption

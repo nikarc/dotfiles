@@ -32,3 +32,5 @@ require('plugins/vista')            -- tag viewer
 require('plugins/nvim-treesitter')  -- tree-sitter interface
 require('plugins/alpha-nvim')       -- Start page plugin
 require('plugins/bufferline-nvim')  -- Buffer tabs
+require('plugins/searchbox-nvim')   -- Styled search box
+-- require('plugins/renamer')

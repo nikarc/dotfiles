@@ -52,6 +52,7 @@ function setup_text_weather(font, show_text)
         text = whatever_icon,
         -- align  = 'center',
         valign = 'center',
+        font = 'Typicons 16',
         widget = wibox.widget.textbox
     }
 

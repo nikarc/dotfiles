@@ -54,6 +54,8 @@ return packer.startup(function(use)
   use { 'famiu/feline.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
+  -- use {'glepnir/galaxyline.nvim', config = "require('lua.plugins.galaxyline')"}
+  -- use {'SmiteshP/nvim-gps', config = "require('lua.plugins.gps')", requires = 'nvim-treesitter/nvim-treesitter'}
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -89,6 +91,13 @@ return packer.startup(function(use)
     'romgrk/nvim-treesitter-context',
     requires = 'nvim-treesitter/nvim-treesitter'
   }
+  use {
+    'VonHeikemen/searchbox.nvim',
+    requires = {
+      {'MunifTanjim/nui.nvim'}
+    }
+  }
+
 
 
   use 'tpope/vim-eunuch'

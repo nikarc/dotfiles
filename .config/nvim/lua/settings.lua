@@ -19,12 +19,12 @@ local opt = vim.opt         		-- global/buffer/windows-scoped options
 -- opt.mouse = 'a'                    -- enable mouse support
 opt.clipboard     = 'unnamedplus'     -- copy/paste to system clipboard
 opt.swapfile      = false             -- don't use swapfile
-opt.undofile      = true              -- Allow unlimited undo
 -- Send swap/undo files to somewhere else on the filesystem.
 -- This avoids having to .gitignore these files in repos
 opt.backupdir       = vim.fn.stdpath('config') .. '/.vim/backup//'
 opt.directory       = vim.fn.stdpath('config') .. '/.vim/swap//'
 opt.undodir         = vim.fn.stdpath('config') .. '/.vim/undo//'
+opt.undofile        = true              -- Allow unlimited undo
 
 -----------------------------------------------------------
 -- Neovim UI

@@ -1,3 +1,5 @@
+require('./table-indexof')
+
 local awful = require("awful")
 local naughty = require("naughty")
 local gears = require("gears")
@@ -14,6 +16,35 @@ superkey = "Mod4"
 altkey = "Mod1"
 ctrlkey = "Control"
 shiftkey = "Shift"
+
+-- Keep layout on restart
+local my_state_file = awful.util.get_cache_dir() .. "/state"
+
+local function save_state()
+  for screen in ipairs({1, 2, 3}) do
+    local tags = awful.tag.gettags(screen)
+
+    local params = {}
+
+    naughty.notify({message = "The screen "..screen})
+    -- for i, t in ipairs(tags) do
+    --   table.insert(params, {
+    --     i,
+    --     table.indexof(mytags.layout, t.layout),
+    --     awful.tag.getncol(t),
+    --     awful.tag.getmwfact(t),
+    --     awful.tag.getnmaster(t)
+    --   })
+    -- end
+
+    -- table.save(params, my_state_file)
+  end
+end
+
+local function smart_restart()
+  save_state()
+  awesome.restart()
+end
 
 -- {{{ Mouse bindings on desktop
 keys.desktopbuttons = gears.table.join(
@@ -215,7 +246,7 @@ keys.globalkeys = gears.table.join(
             { description = "Move to next screen" }),
     awful.key({ superkey, altkey }, "h", function () awful.tag.setscreen(-1) end,
             { description = "Move to prev screen" }),
-    
+
     -- Urgent or Undo:
     -- Jump to urgent client or (if there is no such client) go back
     -- to the last tag
@@ -247,9 +278,11 @@ keys.globalkeys = gears.table.join(
         {description = "spawn floating terminal", group = "launcher"}),
 
     -- Reload Awesome
-    awful.key({ superkey, shiftkey }, "r", awesome.restart,
+    -- awful.key({ superkey, shiftkey }, "r", smart_restart,
+    awful.key({ superkey, shiftkey }, "r", smart_restart,
         {description = "reload awesome", group = "awesome"}),
-
+    awful.key({ superkey, ctrlkey }, "r", awesome.restart,
+        {description = "reload awesome", group = "awesome"}),
     -- Quit Awesome
     -- Logout, Shutdown, Restart, Suspend, Lock
     awful.key({ superkey, shiftkey }, "x",
@@ -269,45 +302,45 @@ keys.globalkeys = gears.table.join(
         {description = "quit awesome", group = "awesome"}),
 
     -- Number of master clients
-    awful.key({ superkey, altkey }, "h",   
-        function () 
-            awful.tag.incnmaster( 1, nil, true) 
+    awful.key({ superkey, altkey }, "h",
+        function ()
+            awful.tag.incnmaster( 1, nil, true)
         end,
         {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ superkey, altkey }, "l",   
-        function () 
-            awful.tag.incnmaster(-1, nil, true) 
+    awful.key({ superkey, altkey }, "l",
+        function ()
+            awful.tag.incnmaster(-1, nil, true)
         end,
         {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ superkey, altkey }, "Left",   
-        function () 
-            awful.tag.incnmaster( 1, nil, true) 
+    awful.key({ superkey, altkey }, "Left",
+        function ()
+            awful.tag.incnmaster( 1, nil, true)
         end,
         {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ superkey, altkey }, "Right",   
-        function () 
-            awful.tag.incnmaster(-1, nil, true) 
+    awful.key({ superkey, altkey }, "Right",
+        function ()
+            awful.tag.incnmaster(-1, nil, true)
         end,
         {description = "decrease the number of master clients", group = "layout"}),
 
     -- Number of columns
-    -- awful.key({ superkey, altkey }, "k",   
-    --     function () 
+    -- awful.key({ superkey, altkey }, "k",
+    --     function ()
     --         awful.tag.incncol( 1, nil, true)
     --     end,
     --     {description = "increase the number of columns", group = "layout"}),
-    -- awful.key({ superkey, altkey }, "j",   
-    --     function () 
+    -- awful.key({ superkey, altkey }, "j",
+    --     function ()
     --         awful.tag.incncol( -1, nil, true)
     --     end,
     --     {description = "decrease the number of columns", group = "layout"}),
-    -- awful.key({ superkey, altkey }, "Up",   
-    --     function () 
+    -- awful.key({ superkey, altkey }, "Up",
+    --     function ()
     --         awful.tag.incncol( 1, nil, true)
     --     end,
     --     {description = "increase the number of columns", group = "layout"}),
-    -- awful.key({ superkey, altkey }, "Down",   
-    --     function () 
+    -- awful.key({ superkey, altkey }, "Down",
+    --     function ()
     --         awful.tag.incncol( -1, nil, true)
     --     end,
     --     {description = "decrease the number of columns", group = "layout"}),
@@ -644,7 +677,7 @@ keys.clientkeys = gears.table.join(
         helpers.move_client_dwim(c, "right")
     end),
 
-    -- Single tap: Center client 
+    -- Single tap: Center client
     -- Double tap: Center client + Floating + Resize
     awful.key({ superkey }, "c", function (c)
         awful.placement.centered(c, {honor_workarea = true, honor_padding = true})

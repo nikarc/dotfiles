@@ -43,10 +43,6 @@ if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     export LIBVA_DRIVER_NAME="vdpau"
 fi
 
-if [ "$(uname 2> /dev/null)" == "Darwin" ]; then
-  export PATH="/usr/local/bin:$PATH"
-fi
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
