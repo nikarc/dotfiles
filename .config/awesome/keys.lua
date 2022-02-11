@@ -237,9 +237,9 @@ keys.globalkeys = gears.table.join(
     --     helpers.resize_dwim(client.focus, "right")
     -- end),
 
-    awful.key({ superkey, ctrlkey }, "j", function () awful.screen.focus_relative( 1) end,
+    awful.key({ superkey, ctrlkey }, "o", function () awful.screen.focus_relative( 1) end,
         {description = "focus the next screen", group = "screen"}),
-    awful.key({ superkey, ctrlkey }, "k", function () awful.screen.focus_relative(-1) end,
+    awful.key({ superkey, ctrlkey }, "i", function () awful.screen.focus_relative(-1) end,
         {description = "focus the previous screen", group = "screen"}),
 
     awful.key({ superkey, altkey }, "l", function () awful.tag.setscreen(1) end,
