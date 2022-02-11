@@ -88,7 +88,7 @@ https://github.com/typescript-language-server/typescript-language-server
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver', 'phpactor' }
 
 -- Set settings for language servers below
 --
@@ -110,10 +110,17 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Null ls settings
-local on_attach = function()
-  vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+local null_ls_on_attach = function(client)
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd([[
+      augroup LspFormatting
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+      augroup END
+    ]])
+  end
 end
 
-nvim_lsp['null-ls'].setup({
-  on_attach = on_attach
-})
+-- nvim_lsp['null-ls'].setup({
+--   on_attach = null_ls_on_attach
+-- })

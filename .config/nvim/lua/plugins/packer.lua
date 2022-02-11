@@ -87,10 +87,10 @@ return packer.startup(function(use)
     branch = 'master',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {
-    'romgrk/nvim-treesitter-context',
-    requires = 'nvim-treesitter/nvim-treesitter'
-  }
+  -- use {
+  --   'romgrk/nvim-treesitter-context',
+  --   requires = 'nvim-treesitter/nvim-treesitter'
+  -- }
   use {
     'VonHeikemen/searchbox.nvim',
     requires = {
@@ -106,6 +106,7 @@ return packer.startup(function(use)
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'lambdalisue/suda.vim'
+  use 'heavenshell/vim-jsdoc'
 
   -- color schemes
   -- use 'bluz71/vim-nightfly-guicolors'
