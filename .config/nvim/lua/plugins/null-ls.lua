@@ -1,10 +1,19 @@
-local null_ls = require('null-ls')
-local sources = {
-    null_ls.builtins.formatting.prettierd.with({
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.formatting.prettierd.with({
       disabled_filetypes = { "json" }
     }),
-    null_ls.builtins.diagnostics.write_good,
-    null_ls.builtins.code_actions.gitsigns,
-}
-
-null_ls.config({ sources = sources })
+    require("null-ls").builtins.diagnostics.write_good,
+    require("null-ls").builtins.code_actions.gitsigns,
+  },
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd([[
+        augroup LspFormatting
+            autocmd! * <buffer>
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        augroup END
+        ]])
+    end
+  end,
+})

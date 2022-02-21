@@ -163,7 +163,7 @@ alias docc="docker-compose"
 alias swatch="slate watch"
 alias hosts="sudo vim /etc/hosts"
 # alias vimrc="vim ~/.vimrc"
-alias vimrc="vim ~/dotfiles/.config/nvim"
+alias vimrc="cd ~/dotfiles/.config/nvim && vim $_"
 alias cdvimrc="cd ~/dotfiles/.config/nvim"
 alias dockernames="docker ps --format '{{.Names}}'"
 alias bs="browser-sync"
@@ -177,7 +177,6 @@ alias gmn="gm nick"
 # alias gcm="git-push-reminder master"
 # alias gcb="git-branch"
 # alias glo="git-log-oneline"
-alias vim="nvim"
 alias dps="docker ps --format '{{.ID}} | {{.Names}}: {{.Status}}'"
 alias node-gitignore="curl \"https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore\" >> .gitignore"
 alias igrep="grep -i"
@@ -237,7 +236,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Use homebrew python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+fi
 
 # Go in path
 export GOPATH="$HOME/go"
@@ -322,6 +323,12 @@ function gcqa() {
 #
 #     qmk compile -kb "$KEYBOARD" -km "$KEYMAP"
 # } >&2
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  # https://mac.install.guide/homebrew/3.html
+  # Add Homebrew to your PATH in ~/.zprofile:
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 if [ -d "/mnt/c/Windows" ]; then
     export PATH="$PATH:/mnt/c/Progarm Files"

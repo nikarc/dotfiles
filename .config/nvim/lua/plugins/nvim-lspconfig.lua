@@ -108,12 +108,3 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
--- Null ls settings
-local on_attach = function()
-  vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
-end
-
-nvim_lsp['null-ls'].setup({
-  on_attach = on_attach
-})

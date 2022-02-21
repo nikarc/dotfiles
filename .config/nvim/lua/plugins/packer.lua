@@ -37,6 +37,7 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'liuchengxu/vista.vim'
   use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/playground'
   use 'neovim/nvim-lspconfig'
   use { 'hrsh7th/nvim-cmp',
     requires = {
