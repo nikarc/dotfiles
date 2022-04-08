@@ -101,3 +101,9 @@ vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>',
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
+
+-----------------------------------------------------------
+-- Git
+-----------------------------------------------------------
+map('n', '[c', ':Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
+map('n', ']c', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
