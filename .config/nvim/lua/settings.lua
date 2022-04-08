@@ -39,6 +39,7 @@ opt.splitbelow      = true      -- horizontal split to the bottom
 opt.ignorecase      = true      -- ignore case letters when search
 opt.smartcase       = true      -- ignore lowercase for the whole pattern
 opt.linebreak       = true      -- wrap on word boundary
+opt.laststatus      = 3         -- Show global status line based on focused window
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
@@ -143,3 +144,6 @@ end
 
 -- disable nvim intro
 -- opt.shortmess:append "sI"
+
+require('functions/terminal')
+require('functions/buffers')

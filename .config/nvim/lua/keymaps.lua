@@ -26,7 +26,7 @@ map('n', ',,', 'A,<Esc>', { noremap = true, silent = true })
 -- Buffer stuff
 -- map('n', 'bn', ':bn<CR>', { noremap = true, silent = true })
 -- map('n', 'bb', ':bp<CR>', { noremap = true, silent = true })
-map('n', 'bw', ':bwipeout<CR>', { noremap = true, silent = true })
+map('n', 'bw', ':bp | bw#<CR>', { noremap = true, silent = true })
 --------------------
 -- Bufferline
 --------------------
@@ -68,7 +68,9 @@ map('n', '<leader>q', ':quitall<CR>', default_opts)
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 -- open terminal
--- map('n', '<C-t>', ':Term<CR>', {noremap = true})
+map('n', '<C-t>', ':CreateTerminalInstance<CR>', {noremap = true})
+-- Exit terminal mode
+map('t', '<C-t>', '<C-\\><C-n>', {noremap = true})
 
 -- nvim-tree
 -- map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
@@ -98,3 +100,7 @@ vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>',
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
+-----------------------------------------------------------
+-- sideways.vim https://github.com/AndrewRadev/sideways.vim
+-----------------------------------------------------------
+map('n', '<C-<>', ':SidewaysLeft<CR>', { noremap = true, silent = true })

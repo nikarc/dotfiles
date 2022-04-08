@@ -98,15 +98,20 @@ return packer.startup(function(use)
       {'MunifTanjim/nui.nvim'}
     }
   }
+  use {
+    'kkoomen/vim-doge'
+  }
+  use 'echasnovski/mini.nvim'
 
 
-
+  -- Not Lua
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'lambdalisue/suda.vim'
+  use 'AndrewRadev/sideways.vim'
 
   -- color schemes
   -- use 'bluz71/vim-nightfly-guicolors'
