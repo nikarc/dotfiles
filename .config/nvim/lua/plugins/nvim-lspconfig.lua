@@ -2,10 +2,13 @@
 -- Neovim LSP configuration file
 -----------------------------------------------------------
 
+local has_lsp, lspconfig = pcall(require, "lspconfig")
+if not has_lsp then
+  return
+end
+
 -- Plugin: nvim-lspconfig
 -- for language server setup see: https://github.com/neovim/nvim-lspconfig
-
-local nvim_lsp = require('lspconfig')
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -99,7 +102,7 @@ local ts_settings = function(client)
 end
 
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     ts_settings = ts_settings,
@@ -121,6 +124,6 @@ local null_ls_on_attach = function(client)
   end
 end
 
--- nvim_lsp['null-ls'].setup({
+-- lspconfig['null-ls'].setup({
 --   on_attach = null_ls_on_attach
 -- })

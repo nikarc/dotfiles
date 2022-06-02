@@ -21,9 +21,9 @@ cmd([[
 
 -- Bootstrap Packer.nvim if not installed
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 -- Add packages
@@ -58,7 +58,7 @@ return packer.startup(function(use)
   -- use {'SmiteshP/nvim-gps', config = "require('lua.plugins.gps')", requires = 'nvim-treesitter/nvim-treesitter'}
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use { 'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -68,24 +68,24 @@ return packer.startup(function(use)
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use {
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
   use { 'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons'}
+    requires = 'kyazdani42/nvim-web-devicons' }
   use {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require'colorizer'.setup()
-    end}
+      require 'colorizer'.setup()
+    end }
   use "b0o/mapx.nvim"
   use {
     'filipdutescu/renamer.nvim',
     branch = 'master',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
   -- use {
   --   'romgrk/nvim-treesitter-context',
@@ -94,10 +94,21 @@ return packer.startup(function(use)
   use {
     'VonHeikemen/searchbox.nvim',
     requires = {
-      {'MunifTanjim/nui.nvim'}
+      { 'MunifTanjim/nui.nvim' }
     }
   }
-
+  use "folke/lua-dev.nvim"
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
+  }
 
 
   use 'tpope/vim-eunuch'
@@ -106,7 +117,10 @@ return packer.startup(function(use)
   use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
   use 'lambdalisue/suda.vim'
-  use 'heavenshell/vim-jsdoc'
+  use {
+    'heavenshell/vim-jsdoc',
+    run = 'make install'
+  }
 
   -- color schemes
   -- use 'bluz71/vim-nightfly-guicolors'

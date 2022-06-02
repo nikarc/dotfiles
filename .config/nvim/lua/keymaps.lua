@@ -68,9 +68,9 @@ map('n', '<leader>q', ':quitall<CR>', default_opts)
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 -- open terminal
-map('n', '<C-t>', ':vert split | vertical resize -50 | terminal<CR>', {noremap = true})
+map('n', '<C-t>', ':CreateTerminalInstance<CR>', {noremap = true})
 -- Exit terminal mode
-map('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
+map('t', '<C-t>', '<C-\\><C-n>', {noremap = true})
 
 -- nvim-tree
 -- map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)       -- open/close
@@ -101,3 +101,9 @@ vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>',
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
+
+-----------------------------------------------------------
+-- Simple tag expansion
+-----------------------------------------------------------
+map('n', '[c', ':Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
+map('n', ']c', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
