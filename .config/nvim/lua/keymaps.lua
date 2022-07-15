@@ -68,7 +68,7 @@ map('n', '<leader>q', ':quitall<CR>', default_opts)
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 -- open terminal
-map('n', '<C-t>', ':CreateTerminalInstance<CR>', {noremap = true})
+-- map('n', '<C-t>', ':CreateTerminalInstance<CR>', {noremap = true})
 -- Exit terminal mode
 map('t', '<C-t>', '<C-\\><C-n>', {noremap = true})
 

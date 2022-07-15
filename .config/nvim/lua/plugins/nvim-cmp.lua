@@ -16,7 +16,7 @@ cmp.setup {
     end,
   },
 
--- completion settings
+  -- completion settings
   completion = {
     -- completeopt = 'menu,menuone,noselect'
     completeopt = 'menu,menuone,noselect',
@@ -60,6 +60,7 @@ cmp.setup {
   -- load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'cmp_tabnine' },
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },

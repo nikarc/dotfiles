@@ -23,7 +23,8 @@ cmd([[
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 -- Add packages
@@ -47,6 +48,10 @@ return packer.startup(function(use)
       'saadparwaiz1/cmp_luasnip',
     },
   }
+  use { 'tzachar/cmp-tabnine',
+    run = './install.sh',
+    requires = 'hrsh7th/nvim-cmp'
+  }
   use {
     'jose-elias-alvarez/null-ls.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -54,8 +59,6 @@ return packer.startup(function(use)
   use { 'famiu/feline.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
-  -- use {'glepnir/galaxyline.nvim', config = "require('lua.plugins.galaxyline')"}
-  -- use {'SmiteshP/nvim-gps', config = "require('lua.plugins.gps')", requires = 'nvim-treesitter/nvim-treesitter'}
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -109,7 +112,10 @@ return packer.startup(function(use)
       require "octo".setup()
     end
   }
-
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = 'v1.*'
+  }
 
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
@@ -121,6 +127,7 @@ return packer.startup(function(use)
     'heavenshell/vim-jsdoc',
     run = 'make install'
   }
+  use 'onsails/lspkind.nvim'
 
   -- color schemes
   -- use 'bluz71/vim-nightfly-guicolors'
