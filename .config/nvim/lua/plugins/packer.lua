@@ -120,6 +120,9 @@ return packer.startup(function(use)
     "narutoxy/dim.lua",
     requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
   }
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  })
 
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
