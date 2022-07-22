@@ -103,7 +103,7 @@ vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()
 
 
 -----------------------------------------------------------
--- Simple tag expansion
+-- Git
 -----------------------------------------------------------
 map('n', '[c', ':Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
 map('n', ']c', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
