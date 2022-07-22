@@ -116,12 +116,18 @@ return packer.startup(function(use)
     "akinsho/toggleterm.nvim",
     tag = 'v1.*'
   }
+  use {
+    "narutoxy/dim.lua",
+    requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+  }
 
   use 'tpope/vim-eunuch'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
-  use 'mattn/emmet-vim'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-dadbod'
+
+  use 'mattn/emmet-vim'
   use 'lambdalisue/suda.vim'
   use {
     'heavenshell/vim-jsdoc',

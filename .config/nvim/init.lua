@@ -35,3 +35,7 @@ require('plugins/searchbox-nvim') -- Styled search box
 require('plugins/lua-dev')
 require('plugins/renamer')
 require('plugins/telescope-nvim')
+require('plugins/luasnip')
+require('plugins/lspkind-nvim')
+require('plugins/toggleterm-nvim')
+require('plugins/dim')
