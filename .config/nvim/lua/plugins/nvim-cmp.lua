@@ -60,7 +60,7 @@ cmp.setup {
   -- load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
+    -- { name = 'cmp_tabnine' }, killin my cpu
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },

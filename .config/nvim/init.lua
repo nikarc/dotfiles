@@ -32,11 +32,10 @@ require('plugins/nvim-treesitter') -- tree-sitter interface
 require('plugins/alpha-nvim') -- Start page plugin
 require('plugins/bufferline-nvim') -- Buffer tabs
 require('plugins/searchbox-nvim') -- Styled search box
-require('plugins/lua-dev')
 require('plugins/renamer')
 require('plugins/telescope-nvim')
 require('plugins/luasnip')
 require('plugins/lspkind-nvim')
 require('plugins/toggleterm-nvim')
 require('plugins/dim')
-require('plugins/lsp_lines')
+-- require('plugins/lsp_lines')

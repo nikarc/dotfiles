@@ -48,10 +48,10 @@ return packer.startup(function(use)
       'saadparwaiz1/cmp_luasnip',
     },
   }
-  use { 'tzachar/cmp-tabnine',
-    run = './install.sh',
-    requires = 'hrsh7th/nvim-cmp'
-  }
+  -- use { 'tzachar/cmp-tabnine',
+  --   run = './install.sh',
+  --   requires = 'hrsh7th/nvim-cmp'
+  -- }
   use {
     'jose-elias-alvarez/null-ls.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -83,7 +83,8 @@ return packer.startup(function(use)
     'norcalli/nvim-colorizer.lua',
     config = function()
       require 'colorizer'.setup()
-    end }
+    end
+  }
   use "b0o/mapx.nvim"
   use {
     'filipdutescu/renamer.nvim',
@@ -100,7 +101,6 @@ return packer.startup(function(use)
       { 'MunifTanjim/nui.nvim' }
     }
   }
-  use "folke/lua-dev.nvim"
   use {
     'pwntester/octo.nvim',
     requires = {
@@ -114,7 +114,6 @@ return packer.startup(function(use)
   }
   use {
     "akinsho/toggleterm.nvim",
-    tag = 'v1.*'
   }
   use {
     "narutoxy/dim.lua",

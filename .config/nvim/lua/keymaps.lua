@@ -107,3 +107,8 @@ vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()
 -----------------------------------------------------------
 map('n', '[c', ':Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
 map('n', ']c', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
+
+-----------------------------------------------------------
+-- Rename vars
+-----------------------------------------------------------
+map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true })

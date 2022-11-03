@@ -55,14 +55,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.document_formatting = false
+  client.server_capabilities.document_range_formatting = false
 end
 
 --[[
@@ -93,13 +93,13 @@ https://github.com/typescript-language-server/typescript-language-server
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver', 'phpactor' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'tsserver', 'phpactor', 'cssls' }
 
 -- Set settings for language servers below
 --
 -- tsserver settings
 local ts_settings = function(client)
-  client.resolved_capabilities.document_formatting = false
+  client.server_capabilities.document_formatting = false
   ts_settings(client)
 end
 
@@ -114,44 +114,44 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-if not configs.ls_emmet then
-  configs.ls_emmet = {
-    default_config = {
-      cmd = { 'ls_emmet', '--stdio' };
-      filetypes = {
-        'html',
-        'css',
-        'scss',
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-        'haml',
-        'xml',
-        'xsl',
-        'pug',
-        'slim',
-        'sass',
-        'stylus',
-        'less',
-        'sss',
-        'hbs',
-        'handlebars',
-      };
-      root_dir = function(fname)
-        return vim.loop.cwd()
-      end;
-      settings = {};
-    };
-  }
-end
+-- if not configs.ls_emmet then
+--   configs.ls_emmet = {
+--     default_config = {
+--       cmd = { 'ls_emmet', '--stdio' };
+--       filetypes = {
+--         'html',
+--         'css',
+--         'scss',
+--         'javascript',
+--         'javascriptreact',
+--         'typescript',
+--         'typescriptreact',
+--         'haml',
+--         'xml',
+--         'xsl',
+--         'pug',
+--         'slim',
+--         'sass',
+--         'stylus',
+--         'less',
+--         'sss',
+--         'hbs',
+--         'handlebars',
+--       };
+--       root_dir = function(fname)
+--         return vim.loop.cwd()
+--       end;
+--       settings = {};
+--     };
+--   }
+-- end
 
-lspconfig.ls_emmet.setup { capabilities = capabilities }
+-- lspconfig.ls_emmet.setup { capabilities = capabilities }
 
 
 -- Null ls settings
 local null_ls_on_attach = function(client)
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.cmd([[
       augroup LspFormatting
         autocmd! * <buffer>

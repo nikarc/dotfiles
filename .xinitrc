@@ -43,4 +43,6 @@ unclutter --timeout 2 & # Hide cursor when not in use
 
 picom &
 nitrogen --restore &
+# export DESKTOP_SESSION=plasma
+# exec startplasma-x11
 exec awesome
