@@ -34,6 +34,7 @@ map('n', 'bw', ':bwipeout<CR>', { noremap = true, silent = true })
 -- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
 map('n', 'bn', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 map('n', 'bb', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+map('n', 'bp', ':bw#<CR>', { noremap = true, silent = true })
 
 -- These commands will move the current buffer backwards or forwards in the bufferline
 map('n', '[b', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
@@ -112,3 +113,16 @@ map('n', ']c', ':Gitsigns next_hunk<CR>', { noremap = true, silent = true })
 -- Rename vars
 -----------------------------------------------------------
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true })
+
+
+-----------------------------------------------------------
+-- Copy Paste
+-----------------------------------------------------------
+
+-- https://old.reddit.com/r/neovim/comments/ywn367/til_pasting_with_crco_instead_of_cr_in_insert/
+map(
+  'i',
+  '<C-r>',
+  '<C-r><C-o>',
+  { noremap = true, desc = "Insert contents of named register. Inserts text literally, not as if you typed it." }
+)
