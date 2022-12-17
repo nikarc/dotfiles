@@ -51,8 +51,12 @@ return require('packer').startup(function(use)
 
 	use 'theprimeagen/harpoon'
 
-    -- using packer.nvim
     use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
 
 
 	-- Non-lua packages
