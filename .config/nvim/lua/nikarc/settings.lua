@@ -1,13 +1,13 @@
-local cmd 		= vim.cmd
-local opt 		= vim.opt
-local fn 		= vim.fn
-local exec 		= vim.api.nvim_exec
+local cmd 		    = vim.cmd
+local opt 		    = vim.opt
+local fn 		    = vim.fn
+local exec 		    = vim.api.nvim_exec
 
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-vim.g.mapleader = ' '
-opt.mouse 		= ''
+vim.g.mapleader     = ' '
+opt.mouse 		    = ''
 opt.clipboard 		= 'unnamedplus'
 
 -- Send swap/undo files to somewhere else on the filesystem.
@@ -21,9 +21,9 @@ opt.undofile  		= true -- Allow unlimited undo
 -----------------------------------------------------------
 -- Indentation
 -----------------------------------------------------------
-opt.tabstop 		= 4
-opt.softtabstop 	= 4
-opt.shiftwidth 		= 4
+opt.tabstop 		= 2
+opt.softtabstop 	= 2
+opt.shiftwidth 		= 2
 opt.expandtab 	    = true
 opt.smartindent     = true
 
