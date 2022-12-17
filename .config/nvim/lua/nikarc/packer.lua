@@ -51,6 +51,9 @@ return require('packer').startup(function(use)
 
 	use 'theprimeagen/harpoon'
 
+    -- using packer.nvim
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
