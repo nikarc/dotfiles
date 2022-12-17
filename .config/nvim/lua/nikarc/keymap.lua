@@ -26,4 +26,11 @@ map('x', '<leader>p', '"_dP')
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make file executable
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+
+-- Shortcuts to add comma/semicolon
+map('n', ',,', 'A,<Esc>')
+map('n', ',;', 'A;<Esc>')
+
+map('n', 'bp', vim.cmd.bp)
+map('n', 'bn', vim.cmd.bn)
