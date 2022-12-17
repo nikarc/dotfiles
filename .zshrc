@@ -197,6 +197,7 @@ alias currp="bigh && cd sisense-nextjs"
 alias gbc="git rev-parse --abbrev-ref HEAD"
 alias ls="ls -1"
 alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
+alias f="flutter"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
