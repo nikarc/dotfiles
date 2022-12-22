@@ -1,9 +1,10 @@
-function ColorScheme(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
+local color = 'rose-pine'
+local colorscheme = require(color)
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
+colorscheme.setup({
+  dark_variant = 'moon',
+	disable_background = true,
+	disable_float_background = true,
+})
 
-ColorScheme()
+vim.cmd.colorscheme(color)

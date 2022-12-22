@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-map("n", "<leader>ex", vim.cmd.Ex)
 map('n', '<Esc>', ':noh<CR><Esc>', { noremap = true, silent = true })
 
 -- In visual mode, move entire line up or down
@@ -32,5 +31,6 @@ map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 map('n', ',,', 'A,<Esc>')
 map('n', ',;', 'A;<Esc>')
 
-map('n', 'bp', vim.cmd.bp)
+map('n', 'bb', vim.cmd.bp)
 map('n', 'bn', vim.cmd.bn)
+map('n', 'bw', vim.cmd.bw)

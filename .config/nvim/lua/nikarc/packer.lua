@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
 		'rose-pine/neovim',
 		as = 'rose-pine'
 	})
+  use 'arcticicestudio/nord-vim'
 
 	-- treesitter
 	use(
@@ -51,17 +52,21 @@ return require('packer').startup(function(use)
 
 	use 'theprimeagen/harpoon'
 
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = 'nvim-lua/plenary.nvim'
-    }
+  use {
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = 'nvim-lua/plenary.nvim'
+  }
+
+  use '0oAstro/dim.lua'
 
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-surround'
-    use 'jiangmiao/auto-pairs'
+  use 'jiangmiao/auto-pairs'
+  use 'tpope/vim-eunuch'
+  use 'tpope/vim-commentary'
 end)
