@@ -61,6 +61,7 @@ return require('packer').startup(function(use)
 
   use '0oAstro/dim.lua'
 
+  use 'echasnovski/mini.indentscope'
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
