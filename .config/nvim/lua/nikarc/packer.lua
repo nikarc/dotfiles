@@ -63,6 +63,13 @@ return require('packer').startup(function(use)
 
   use 'echasnovski/mini.indentscope'
 
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim"
+  }
+
 	-- Non-lua packages
 	use 'mbbill/undotree'
 	use 'tpope/vim-fugitive'
