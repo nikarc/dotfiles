@@ -75,6 +75,10 @@ return require('packer').startup(function(use)
 
   use 'stevearc/dressing.nvim'
 
+  use {
+    'akinsho/toggleterm.nvim',
+    tag = '*'
+  }
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
