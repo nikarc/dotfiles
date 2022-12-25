@@ -34,3 +34,7 @@ map('n', ',;', 'A;<Esc>')
 map('n', 'bb', vim.cmd.bp)
 map('n', 'bn', vim.cmd.bn)
 map('n', 'bw', vim.cmd.bw)
+
+-- Sessions
+map('n', '<Space>pp', '<cmd>SessionManager load_session<CR>')
+map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')

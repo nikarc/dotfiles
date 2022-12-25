@@ -80,6 +80,8 @@ return require('packer').startup(function(use)
     tag = '*'
   }
 
+  use 'norcalli/nvim-colorizer.lua'
+
 	-- Non-lua packages
 	use 'mbbill/undotree'
 	use 'tpope/vim-fugitive'

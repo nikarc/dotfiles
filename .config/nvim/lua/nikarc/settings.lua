@@ -6,7 +6,7 @@ local exec 		    = vim.api.nvim_exec
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
-vim.g.mapleader     = ' '
+vim.g.mapleader     = '<Space>'
 opt.mouse 		    = ''
 opt.clipboard 		= 'unnamedplus'
 
