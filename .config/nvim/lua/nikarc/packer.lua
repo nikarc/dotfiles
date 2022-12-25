@@ -7,10 +7,13 @@ return require('packer').startup(function(use)
 
 	use "nvim-lua/plenary.nvim"
 
+  -- Telescope
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  -- end Telescope
 
 	use({
 		'rose-pine/neovim',
@@ -81,6 +84,8 @@ return require('packer').startup(function(use)
   }
 
   use 'norcalli/nvim-colorizer.lua'
+
+  use 'github/copilot.vim'
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
