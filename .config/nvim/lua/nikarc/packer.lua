@@ -70,6 +70,12 @@ return require('packer').startup(function(use)
     requires = "nvim-lua/plenary.nvim"
   }
 
+  -- session management
+  use 'Shatur/neovim-session-manager'
+
+  use 'stevearc/dressing.nvim'
+
+
 	-- Non-lua packages
 	use 'mbbill/undotree'
 	use 'tpope/vim-fugitive'
