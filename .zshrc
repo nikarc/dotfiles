@@ -198,7 +198,7 @@ alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
 alias f="flutter"
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-alias nvim="env TERM=wezterm nvim"
+# alias nvim="env TERM=wezterm nvim"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"

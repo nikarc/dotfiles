@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
 		as = 'rose-pine'
 	})
   use 'arcticicestudio/nord-vim'
+  use {'nyoom-engineering/oxocarbon.nvim'}
 
 	-- treesitter
 	use(
