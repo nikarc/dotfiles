@@ -192,11 +192,13 @@ alias chromium="chromium --disable-gpu-vsync --disable-frame-rate-limit"
 alias dockerid="docker ps --format \"{{.ID}}\""
 alias dockeraid="docker ps -a --format \"{{.ID}}\""
 alias dockerstat="docker ps --format \"{{.ID}} -> {{.Status}}\""
-# This will change frequently most likely
-alias currp="bigh && cd sisense-nextjs"
 alias gbc="git rev-parse --abbrev-ref HEAD"
 alias ls="ls -1"
 alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
+alias f="flutter"
+
+# https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+alias nvim="env TERM=wezterm nvim"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
