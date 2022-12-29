@@ -196,6 +196,7 @@ alias gbc="git rev-parse --abbrev-ref HEAD"
 alias ls="ls -1"
 alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
 alias f="flutter"
+alias nemo="GTK_THEME=Adwaita:dark nemo"
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 # alias nvim="env TERM=wezterm nvim"
