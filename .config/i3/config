@@ -194,6 +194,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+o move container to output right
 bindsym $mod+i move container to output left
 
+# Screenshot
+bindsym $mod+Shift+p exec flameshot gui
+
 # Gaps
 default_border pixel 0
 for_window [class="^.*"] border pixel 0
@@ -214,3 +217,6 @@ exec --no-startup-id "nitrogen --restore"
 
 # Hide cursor after x seconds
 exec --no-startup-id "unclutter"
+
+# Key repeat
+exec --no-startup-id xset r rate 180 40
