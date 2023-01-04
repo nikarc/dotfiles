@@ -16,6 +16,16 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	[']c'] = cmp.mapping.select_next_item(cmp_select),
 	['<C-y>'] = cmp.mapping.confirm({ select = true }),
 	['<C-Space>'] = cmp.mapping.complete(),
+  -- ['<C-j>'] = cmp.mapping(function(fallback)
+  --     cmp.mapping.abort()
+  --     local copilot_keys = vim.fn["copilot#Accept"]()
+
+  --     if copilot_keys ~= "" then
+  --       vim.api.nvim_feedkeys(copilot_keys, "i", true)
+  --     else
+  --       fallback()
+  --     end
+  -- end)
 })
 
 lsp.set_preferences({

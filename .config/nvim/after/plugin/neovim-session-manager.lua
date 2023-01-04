@@ -1,1 +1,1 @@
-require('session_manager').setup({})
+-- require('session_manager').setup({})
