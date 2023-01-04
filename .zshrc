@@ -199,7 +199,7 @@ alias f="flutter"
 alias nemo="GTK_THEME=Adwaita:dark nemo"
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-# alias nvim="env TERM=wezterm nvim"
+alias nvim="env TERM=wezterm nvim"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
