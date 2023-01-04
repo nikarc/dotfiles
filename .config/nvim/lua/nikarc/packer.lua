@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
 		as = 'rose-pine'
 	})
   use 'arcticicestudio/nord-vim'
+  use {'nyoom-engineering/oxocarbon.nvim'}
 
 	-- treesitter
 	use(
@@ -86,6 +87,10 @@ return require('packer').startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
 
   use 'github/copilot.vim'
+
+  use 'lewis6991/gitsigns.nvim'
+
+  use 'wfxr/minimap.vim'
 
 	-- Non-lua packages
 	use 'mbbill/undotree'
