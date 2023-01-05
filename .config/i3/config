@@ -212,6 +212,9 @@ exec --no-startup-id "picom -b --backend glx"
 # exec --no-startup-id "polybar"
 exec --no-startup-id "~/.config/polybar/launch.sh --panels"
 
+# Notifications
+exec --no-startup-id dunst
+
 # wallpaper
 exec --no-startup-id "nitrogen --restore"
 
@@ -220,3 +223,5 @@ exec --no-startup-id "unclutter"
 
 # Key repeat
 exec --no-startup-id xset r rate 180 40
+
+exec --no-startup-id redshift -P -O 4700k
