@@ -345,3 +345,8 @@ then
 fi
 
 alias luamake=/home/nick/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+
+# Load env vars
+if test -f ~/.env; then
+  export $(cat ~/.env)
+fi

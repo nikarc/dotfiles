@@ -1,36 +1,36 @@
 local cmd 		    = vim.cmd
 local opt 		    = vim.opt
-local fn 		    = vim.fn
+local fn 		      = vim.fn
 local exec 		    = vim.api.nvim_exec
 
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
 vim.g.mapleader     = '<Space>'
-opt.mouse 		    = ''
-opt.clipboard 		= 'unnamedplus'
+opt.mouse 		      = ''
+opt.clipboard 		  = 'unnamedplus'
 
 -- Send swap/undo files to somewhere else on the filesystem.
 -- This avoids having to .gitignore these files in repos
-opt.swapfile 		= false
+opt.swapfile 		    = false
 opt.backup          = false
-opt.undodir   		= os.getenv('HOME') .. '/.vim/undo//'
-opt.undofile  		= true -- Allow unlimited undo
+opt.undodir   		  = os.getenv('HOME') .. '/.vim/undo//'
+opt.undofile  		  = true -- Allow unlimited undo
 
 
 -----------------------------------------------------------
 -- Indentation
 -----------------------------------------------------------
-opt.tabstop 		= 2
-opt.softtabstop 	= 2
-opt.shiftwidth 		= 2
+opt.tabstop 		    = 2
+opt.softtabstop 	  = 2
+opt.shiftwidth 		  = 2
 opt.expandtab 	    = true
 opt.smartindent     = true
 
 -----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
-opt.number 		    = true
+opt.number 		      = true
 opt.relativenumber	= true
 opt.showmatch      	= true -- highlight matching parenthesis
 -- opt.foldmethod     	= 'none' -- enable folding (default 'foldmarker')
@@ -40,6 +40,7 @@ opt.splitbelow     	= true -- horizontal split to the bottom
 opt.ignorecase     	= true -- ignore case letters when search
 opt.smartcase      	= true -- ignore lowercase for the whole pattern
 opt.linebreak      	= true -- wrap on word boundary
+opt.wrap            = false
 opt.laststatus     	= 3 -- Global status line
 opt.scrolloff       = 8 -- Guarantee at least 8 lines above/below cursor when scrolling
 

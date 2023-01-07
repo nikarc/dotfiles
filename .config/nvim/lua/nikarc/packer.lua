@@ -74,8 +74,23 @@ return require('packer').startup(function(use)
     requires = "nvim-lua/plenary.nvim"
   }
 
-  -- session management
-  use 'Shatur/neovim-session-manager'
+  use {
+    'ckolkey/ts-node-action',
+    requires = { 'nvim-treesitter' },
+    config = function ()
+      require('ts-node-action').setup({})
+    end
+  }
+
+  use 'folke/which-key.nvim'
+
+  -- -- session management
+  -- use {
+  --   'Shatur/neovim-session-manager',
+  --   config = function()
+  --     require('session_manager').setup({})
+  --   end
+  -- }
 
   use 'stevearc/dressing.nvim'
 
@@ -89,42 +104,43 @@ return require('packer').startup(function(use)
   use {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup({
-          panel = {
-            auto_refresh = false,
-            keymap = {
-              accept = "<CR>",
-              jump_prev = "[[",
-              jump_next = "]]",
-              refresh = "gr",
-              open = "<M-CR>",
-            },
-          },
-          suggestion = {
-            auto_trigger = true,
-            keymap = {
-              accept = "<M-l>",
-              prev = "<M-[>",
-              next = "<M-]>",
-              dismiss = "<C-]>",
-            },
-          },
-        })
-      end, 100)
-    end,
+    config = vim.defer_fn(function()
+      require("copilot").setup()
+    end, 100),
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup {
+        method = "getCompletionsCycling",
+        formatters = {
+          label = require("copilot_cmp.format").format_label_text,
+          insert_text = require("copilot_cmp.format").format_insert_text,
+          preview = require("copilot_cmp.format").deindent,
+        },
+      }
+    end
   }
 
   use 'lewis6991/gitsigns.nvim'
 
   use 'wfxr/minimap.vim'
 
+  use 'mrjones2014/nvim-ts-rainbow'
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+
 	-- Non-lua packages
 	use 'mbbill/undotree'
 	use 'tpope/vim-fugitive'
 	use 'tpope/vim-surround'
-  use 'jiangmiao/auto-pairs'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-commentary'
 end)
