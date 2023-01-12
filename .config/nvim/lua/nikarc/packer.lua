@@ -13,14 +13,17 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
   use 'nvim-telescope/telescope-file-browser.nvim'
-  -- end Telescope
+  -- END Telescope
 
+  -- colorschemes
 	use({
 		'rose-pine/neovim',
 		as = 'rose-pine'
 	})
   use 'arcticicestudio/nord-vim'
   use {'nyoom-engineering/oxocarbon.nvim'}
+  use "EdenEast/nightfox.nvim"
+  -- END colorschemes
 
 	-- treesitter
 	use(
@@ -56,7 +59,11 @@ return require('packer').startup(function(use)
 
 	use 'theprimeagen/harpoon'
 
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
 
   use {
       'jose-elias-alvarez/null-ls.nvim',
@@ -84,13 +91,13 @@ return require('packer').startup(function(use)
 
   use 'folke/which-key.nvim'
 
-  -- -- session management
-  -- use {
-  --   'Shatur/neovim-session-manager',
-  --   config = function()
-  --     require('session_manager').setup({})
-  --   end
-  -- }
+  -- session management
+  use {
+    'Shatur/neovim-session-manager',
+    config = function()
+      require('session_manager').setup({})
+    end
+  }
 
   use 'stevearc/dressing.nvim'
 
@@ -101,34 +108,34 @@ return require('packer').startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
-  use {
-    "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
-    config = vim.defer_fn(function()
-      require("copilot").setup()
-    end, 100),
-  }
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "InsertEnter",
+  --   config = vim.defer_fn(function()
+  --     require("copilot").setup()
+  --   end, 100),
+  -- }
 
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup {
-        method = "getCompletionsCycling",
-        formatters = {
-          label = require("copilot_cmp.format").format_label_text,
-          insert_text = require("copilot_cmp.format").format_insert_text,
-          preview = require("copilot_cmp.format").deindent,
-        },
-      }
-    end
-  }
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function ()
+  --     require("copilot_cmp").setup {
+  --       method = "getCompletionsCycling",
+  --       formatters = {
+  --         label = require("copilot_cmp.format").format_label_text,
+  --         insert_text = require("copilot_cmp.format").format_insert_text,
+  --         preview = require("copilot_cmp.format").deindent,
+  --       },
+  --     }
+  --   end
+  -- }
 
   use 'lewis6991/gitsigns.nvim'
 
   use 'wfxr/minimap.vim'
 
-  use 'mrjones2014/nvim-ts-rainbow'
+  -- use 'mrjones2014/nvim-ts-rainbow'
 
   use {
     "windwp/nvim-autopairs",
