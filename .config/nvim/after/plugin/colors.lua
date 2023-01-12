@@ -9,4 +9,4 @@
 
 -- vim.cmd.colorscheme(color)
 vim.opt.background = 'dark'
-vim.cmd.colorscheme 'oxocarbon'
+vim.cmd.colorscheme 'nightfox'
