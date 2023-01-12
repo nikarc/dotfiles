@@ -105,7 +105,10 @@ return require('packer').startup(function(use)
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     config = vim.defer_fn(function()
-      require("copilot").setup()
+      require("copilot").setup({
+        suggestion = false,
+        panel = false,
+      })
     end, 100),
   }
 
