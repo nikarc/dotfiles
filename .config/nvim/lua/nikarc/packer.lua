@@ -94,10 +94,10 @@ return require('packer').startup(function(use)
   -- session management
 
   -- use {
-  --     'Shatur/neovim-session-manager',
-  --     config = function()
-  --         require('session_manager').setup({})
-  --     end
+  --   'Shatur/neovim-session-manager',
+  --   config = function()
+  --     require('session_manager').setup({})
+  --   end
   -- }
 
   use 'stevearc/dressing.nvim'
