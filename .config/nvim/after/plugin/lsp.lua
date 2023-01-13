@@ -33,7 +33,10 @@ lsp.set_preferences({
 })
 
 lsp.setup_nvim_cmp({
-	mapping =  cmp_mappings
+	mapping =  cmp_mappings,
+    sources = {
+        { name = "copilot", group_index = 2 },
+    }
 })
 
 lsp.on_attach(function(client, bufnr)
