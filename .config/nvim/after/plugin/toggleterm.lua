@@ -1,5 +1,6 @@
 require("toggleterm").setup({
   open_mapping = [[<C-t>]],
+  size = 50,
   -- direction = 'tab',
 })
 
