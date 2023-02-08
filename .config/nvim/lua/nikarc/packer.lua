@@ -1,4 +1,3 @@
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -108,35 +107,16 @@ return require('packer').startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
-  use {
-    "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
-    config = vim.defer_fn(function()
-      require("copilot").setup({
-        suggestion = false,
-        panel = false,
-      })
-    end, 100),
-  }
-
-  -- use {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
-  --   config = function ()
-  --     require("copilot_cmp").setup {
-  --       method = "getCompletionsCycling",
-  --       formatters = {
-  --         label = require("copilot_cmp.format").format_label_text,
-  --         insert_text = require("copilot_cmp.format").format_insert_text,
-  --         preview = require("copilot_cmp.format").deindent,
-  --       },
-  --     }
-  --   end
-  -- }
-
   use 'lewis6991/gitsigns.nvim'
 
-  use 'wfxr/minimap.vim'
+  -- use {
+  --   'wfxr/minimap.vim',
+  --   config = function()
+  --     vim.g.minimap_width = 10
+  --     vim.g.minimap_auto_start = 1
+  --     vim.g.minimap_auto_start_win_enter = 1
+  --   end
+  -- }
 
   -- use 'mrjones2014/nvim-ts-rainbow'
 
