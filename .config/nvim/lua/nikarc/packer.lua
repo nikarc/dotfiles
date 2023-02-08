@@ -23,6 +23,10 @@ return require('packer').startup(function(use)
   use 'arcticicestudio/nord-vim'
   use {'nyoom-engineering/oxocarbon.nvim'}
   use "EdenEast/nightfox.nvim"
+  use {
+    'AlexvZyl/nordic.nvim',
+    as = 'nordic'
+  }
   -- END colorschemes
 
   -- treesitter
@@ -93,12 +97,12 @@ return require('packer').startup(function(use)
 
   -- session management
 
-  -- use {
-  --   'Shatur/neovim-session-manager',
-  --   config = function()
-  --     require('session_manager').setup({})
-  --   end
-  -- }
+  use {
+    'Shatur/neovim-session-manager',
+    config = function()
+      require('session_manager').setup({})
+    end
+  }
 
   use 'stevearc/dressing.nvim'
 
@@ -116,16 +120,14 @@ return require('packer').startup(function(use)
     cmd = "Copilot",
     event = "VimEnter",
     config = function()
-      vim.defer_fn(function()
-        require("copilot").setup({
-          panel = {
-            enabled = false,
-          },
-          suggestion = {
-            enabled = false,
-          },
-        })
-      end, 100)
+      require("copilot").setup({
+        panel = {
+          enabled = false,
+        },
+        suggestion = {
+          enabled = false,
+        },
+      })
     end,
   }
 
@@ -156,12 +158,46 @@ return require('packer').startup(function(use)
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup {}
-end
+    end
   }
 
--- Non-lua packages
+  use({
+    "jackMort/pommodoro-clock.nvim",
+      config = function()
+          require("pommodoro-clock").setup({
+        -- optional configuration
+      })
+        end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+      }
+  })
+
+  use({
+    'Wansmer/sibling-swap.nvim',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('sibling-swap').setup({
+        use_default_keymaps = true,
+      })
+    end,
+  })
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  }
+
+  use {
+    "jcdickinson/wpm.nvim",
+    config = function()
+      require("wpm").setup({})
+    end
+  }
+
+  -- Non-lua packages
   use 'mbbill/undotree'
-use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-commentary'
