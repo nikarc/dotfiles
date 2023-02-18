@@ -22,6 +22,9 @@ export PATH=~/.emacs.d/bin:$PATH
 ## bin directory
 export PATH="$HOME/bin:$PATH"
 
+## Rust Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 ## Vim as manpage viewer
 export MANPAGER="nvim +Man!"
 
@@ -144,6 +147,7 @@ export awesome_dir="$HOME/.config/awesome"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias sudo="sudo "
 if command -v bat &> /dev/null; then
+    alias og_cat=cat
     alias cat=bat
 fi
 alias docs="cd $docs"
@@ -188,9 +192,15 @@ alias chromium="chromium --disable-gpu-vsync --disable-frame-rate-limit"
 alias dockerid="docker ps --format \"{{.ID}}\""
 alias dockeraid="docker ps -a --format \"{{.ID}}\""
 alias dockerstat="docker ps --format \"{{.ID}} -> {{.Status}}\""
-# This will change frequently most likely
-alias currp="bigh && cd sisense-nextjs"
 alias gbc="git rev-parse --abbrev-ref HEAD"
+alias ls="ls -1"
+alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
+alias f="flutter"
+alias nemo="GTK_THEME=Adwaita:dark nemo"
+alias lg="lazygit"
+
+# https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+alias nvim="env TERM=wezterm nvim"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
@@ -206,8 +216,11 @@ fi
 if [ "$(uname 2> /dev/null)" = "Linux" ] && [ -x "$(command -v xset)" ]; then
     xset r rate 190 30
 
-    # use xclip to copy from terminal
+    # use xclip to copy/paste from terminal
     alias pbcopy="xclip -selection clipboard"
+    alias pbpaste="xclip -selection clipboard -o"
+    alias pacman-update="sudo pacman -Syu --assume-installed nodejs"
+    alias paru-update="paru -Syu --assume-installed nodejs"
 fi
 
 # export FZF_DEFAULT_COMMAND='ag --ignore node_modules'
@@ -257,7 +270,7 @@ export PATH="/usr/local/sbin:$PATH"
 # ls dircolors
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
     eval "`dircolors -b ~/.dircolors`"
-    alias ls='ls --color=auto'
+    alias ls='ls -1 --color=auto'
 fi
 
 # Functions
@@ -347,3 +360,8 @@ if [ -f '/Users/nick/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nick
 # Flutter
 export PATH=$PATH:/usr/local/flutter/bin
 export PATH="$PATH":"/opt/homebrew/Caskroom/flutter/3.3.8/flutter/.pub-cache/bin"
+
+# Load env vars
+if test -f ~/.env; then
+  export $(cat ~/.env)
+fi

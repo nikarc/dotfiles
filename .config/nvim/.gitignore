@@ -1,2 +1,3 @@
 .vim/undo/*
 .vim/backup/*
+plugin/packer_compiled.lua

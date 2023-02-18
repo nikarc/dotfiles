@@ -1,1 +1,3 @@
 .vim/plugged/*
+.fonts
+**/.DS_Store
