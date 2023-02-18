@@ -16,6 +16,14 @@ vim.keymap.set(
 )
 
 telescope.setup({
+  defaults = {
+    layout_config = {
+      horizontal = {
+        width = 0.9,
+        preview_width = 80
+      }
+    }
+  },
   extensions = {
     file_browser = {
       hijack_netrw = true,
