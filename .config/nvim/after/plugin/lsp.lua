@@ -51,6 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       opts
     )
     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', '<Space>e', function() vim.diagnostic.open_float() end, opts)
   end
 })
 
