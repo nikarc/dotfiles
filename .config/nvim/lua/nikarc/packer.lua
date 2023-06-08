@@ -77,6 +77,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'L3MON4D3/LuaSnip'
   -- END LSP
 
   -- use 'theprimeagen/harpoon'
@@ -146,7 +147,7 @@ return require('packer').startup(function(use)
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<C-Enter>",
+            accept = "<C-e>",
           }
         },
       })
