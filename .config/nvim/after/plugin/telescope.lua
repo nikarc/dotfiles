@@ -3,6 +3,7 @@ local builtin = require('telescope.builtin')
 local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.load_extension('file_browser')
+telescope.load_extension('fzy_native')
 
 -- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
@@ -16,6 +17,14 @@ vim.keymap.set(
 )
 
 telescope.setup({
+  defaults = {
+    layout_config = {
+      horizontal = {
+        width = 0.9,
+        preview_width = 80
+      }
+    }
+  },
   extensions = {
     file_browser = {
       hijack_netrw = true,

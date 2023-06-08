@@ -235,6 +235,9 @@ fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 # autoload -U promptinit; promptinit
 # prompt spaceship
 
+# Homebrew path
+export PATH="/opt/homebrew/bin:$PATH"
+
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -346,6 +349,17 @@ then
 fi
 
 alias luamake=/home/nick/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+export PATH=$PATH:/Users/nick/n/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/nick/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nick/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/nick/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nick/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Flutter
+export PATH=$PATH:/usr/local/flutter/bin
+export PATH="$PATH":"/opt/homebrew/Caskroom/flutter/3.3.8/flutter/.pub-cache/bin"
 
 # Load env vars
 if test -f ~/.env; then

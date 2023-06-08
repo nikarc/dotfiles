@@ -40,7 +40,7 @@ opt.splitbelow     	= true -- horizontal split to the bottom
 opt.ignorecase     	= true -- ignore case letters when search
 opt.smartcase      	= true -- ignore lowercase for the whole pattern
 opt.linebreak      	= true -- wrap on word boundary
-opt.wrap            = false
+opt.wrap            = true
 opt.laststatus     	= 3 -- Global status line
 opt.scrolloff       = 8 -- Guarantee at least 8 lines above/below cursor when scrolling
 
