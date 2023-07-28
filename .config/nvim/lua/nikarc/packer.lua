@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
   --   as = 'rose-pine'
   -- })
   use 'arcticicestudio/nord-vim'
+  use 'AlexvZyl/nordic.nvim'
   use {'nyoom-engineering/oxocarbon.nvim'}
   use "EdenEast/nightfox.nvim"
   use {
@@ -146,7 +147,7 @@ return require('packer').startup(function(use)
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<C-e>",
+            accept = "<C-Enter>",
           }
         },
       })
@@ -231,20 +232,20 @@ return require('packer').startup(function(use)
     end
   }
 
-  use({
-    "glepnir/lspsaga.nvim",
-    opt = true,
-    branch = "main",
-    event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({})
-    end,
-    requires = {
-      {"nvim-tree/nvim-web-devicons"},
-      --Please make sure you install markdown and markdown_inline parser
-      {"nvim-treesitter/nvim-treesitter"}
-    }
-  })
+  --use({
+  --  "glepnir/lspsaga.nvim",
+  --  opt = true,
+  --  branch = "main",
+  --  event = "LspAttach",
+  --  config = function()
+  --    require("lspsaga").setup({})
+  --  end,
+  --  requires = {
+  --    {"nvim-tree/nvim-web-devicons"},
+  --    --Please make sure you install markdown and markdown_inline parser
+  --    {"nvim-treesitter/nvim-treesitter"}
+  --  }
+  --})
 
   use {
     "nvim-neo-tree/neo-tree.nvim",
@@ -256,6 +257,13 @@ return require('packer').startup(function(use)
     },
     config = function ()
       vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+    end
+  }
+
+  use {
+    'tomiis4/Hypersonic.nvim',
+    conifg = function()
+      require('hypersonic').setup()
     end
   }
 
