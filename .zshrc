@@ -34,6 +34,10 @@ export N_PREFIX="$HOME/n/"
 # Histyory size
 export HISTSIZE=1000000000
 
+# Pacman
+export PKGEXT='.pkg.tar'
+export MAKEFLAGS="-j$(nproc)"
+
 # Rbenv
 if [ -x "$(command -v rbenv)" ]; then
 	eval "$(rbenv init -)"
@@ -105,7 +109,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse bootSimulator)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -200,7 +204,7 @@ alias nemo="GTK_THEME=Adwaita:dark nemo"
 alias lg="lazygit"
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-alias nvim="env TERM=wezterm nvim"
+# alias nvim="env TERM=wezterm nvim"
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
     alias bat="batcat"
@@ -365,3 +369,7 @@ export PATH="$PATH":"/opt/homebrew/Caskroom/flutter/3.3.8/flutter/.pub-cache/bin
 if test -f ~/.env; then
   export $(cat ~/.env)
 fi
+
+# NVIDIA/Wayland
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
