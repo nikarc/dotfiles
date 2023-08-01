@@ -1,4 +1,3 @@
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -22,6 +21,7 @@ return require('packer').startup(function(use)
   --   as = 'rose-pine'
   -- })
   use 'arcticicestudio/nord-vim'
+  use 'AlexvZyl/nordic.nvim'
   use {'nyoom-engineering/oxocarbon.nvim'}
   use "EdenEast/nightfox.nvim"
   use {
@@ -147,7 +147,7 @@ return require('packer').startup(function(use)
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<C-e>",
+            accept = "<C-Enter>",
           }
         },
       })
@@ -158,7 +158,14 @@ return require('packer').startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
 
-  use 'wfxr/minimap.vim'
+  -- use {
+  --   'wfxr/minimap.vim',
+  --   config = function()
+  --     vim.g.minimap_width = 10
+  --     vim.g.minimap_auto_start = 1
+  --     vim.g.minimap_auto_start_win_enter = 1
+  --   end
+  -- }
 
   -- use 'mrjones2014/nvim-ts-rainbow'
 
@@ -225,20 +232,40 @@ return require('packer').startup(function(use)
     end
   }
 
-  use({
-    "glepnir/lspsaga.nvim",
-    opt = true,
-    branch = "main",
-    event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({})
-    end,
+  --use({
+  --  "glepnir/lspsaga.nvim",
+  --  opt = true,
+  --  branch = "main",
+  --  event = "LspAttach",
+  --  config = function()
+  --    require("lspsaga").setup({})
+  --  end,
+  --  requires = {
+  --    {"nvim-tree/nvim-web-devicons"},
+  --    --Please make sure you install markdown and markdown_inline parser
+  --    {"nvim-treesitter/nvim-treesitter"}
+  --  }
+  --})
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
     requires = {
-      {"nvim-tree/nvim-web-devicons"},
-      --Please make sure you install markdown and markdown_inline parser
-      {"nvim-treesitter/nvim-treesitter"}
-    }
-  })
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    config = function ()
+      vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+    end
+  }
+
+  use {
+    'tomiis4/Hypersonic.nvim',
+    conifg = function()
+      require('hypersonic').setup()
+    end
+  }
 
   -- Non-lua packages
   use 'mbbill/undotree'

@@ -1,6 +1,7 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local fb_actions = require "telescope".extensions.file_browser.actions
+local utils = require('nikarc.utils')
 
 telescope.load_extension('file_browser')
 telescope.load_extension('fzy_native')
@@ -18,6 +19,14 @@ vim.keymap.set(
 
 telescope.setup({
   defaults = {
+    borderchars = {
+      prompt = { '▔', '▕', ' ', '▏', '🭽', '🭾', '▕', '▏' },
+      results = utils.border_chars_outer_thin_telescope,
+      preview = utils.border_chars_outer_thin_telescope,
+    },
+    path_display = {
+      'smart'
+    },
     layout_config = {
       horizontal = {
         width = 0.9,
