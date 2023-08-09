@@ -1,3 +1,6 @@
+local lspconfig = require('lspconfig')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local ensure_installed = {
   'tsserver',
   'eslint',
@@ -72,10 +75,18 @@ lspSymbol('Warn', '⚠️')
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = ensure_installed,
+ -- handlers = {
+ --   ['tsserver'] = function()
+ --     lspconfig.tsserver.setup({
+ --       init_options = {
+ --         preferences = {
+ --           includeCompletionsForModuleExports = false,
+ --         },
+ --       }
+ --     })
+ --   end
+ -- }
 })
-
-local lspconfig = require('lspconfig')
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason-lspconfig').setup_handlers({
   function(server_name)
