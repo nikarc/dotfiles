@@ -43,4 +43,4 @@ map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')
 vim.api.nvim_set_keymap('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 
 -- Neotree
-map('n', '<Space>b', '<cmd>Neotree<CR>')
+map('n', '<Space>b', '<cmd>Neotree reveal<CR>')

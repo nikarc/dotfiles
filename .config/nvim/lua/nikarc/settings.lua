@@ -4,6 +4,11 @@ local fn 		      = vim.fn
 local exec 		    = vim.api.nvim_exec
 
 -----------------------------------------------------------
+-- Colorscheme
+-----------------------------------------------------------
+opt.termguicolors = true -- enable 24-bit RGB colors
+
+-----------------------------------------------------------
 -- General
 -----------------------------------------------------------
 vim.g.mapleader     = '<Space>'
@@ -17,6 +22,7 @@ opt.backup          = false
 opt.undodir   		  = os.getenv('HOME') .. '/.vim/undo//'
 opt.undofile  		  = true -- Allow unlimited undo
 
+vim.g.node_host_prog = '~/n/n/versions/node/19.5.0/bin/node'
 
 -----------------------------------------------------------
 -- Indentation
@@ -34,6 +40,7 @@ opt.number 		      = true
 opt.relativenumber	= true
 opt.showmatch      	= true -- highlight matching parenthesis
 -- opt.foldmethod     	= 'none' -- enable folding (default 'foldmarker')
+-- opt.foldmethod      = 'manual'
 opt.colorcolumn    	= '80' -- line lenght marker at 80 columns
 opt.splitright     	= true -- vertical split to the right
 opt.splitbelow     	= true -- horizontal split to the bottom
@@ -57,8 +64,3 @@ exec([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
   augroup end
 ]], false)
-
------------------------------------------------------------
--- Colorscheme
------------------------------------------------------------
-opt.termguicolors = true -- enable 24-bit RGB colors
