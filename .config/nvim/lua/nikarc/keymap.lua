@@ -44,3 +44,6 @@ vim.api.nvim_set_keymap('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {
 
 -- Neotree
 map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
+
+-- Copy filename to clipboard
+map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true })

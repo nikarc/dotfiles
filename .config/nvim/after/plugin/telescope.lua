@@ -10,6 +10,7 @@ telescope.load_extension('fzy_native')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-b>', builtin.buffers, {})
+vim.keymap.set('n', '<Space>o', builtin.resume, {})
 vim.keymap.set(
   'n',
   '<space>fb',
@@ -23,6 +24,10 @@ telescope.setup({
       prompt = { '▔', '▕', ' ', '▏', '🭽', '🭾', '▕', '▏' },
       results = utils.border_chars_outer_thin_telescope,
       preview = utils.border_chars_outer_thin_telescope,
+      cache_picker = {
+        num_pickers = 1,
+        limit_entries = 1000,
+      }
     },
     path_display = {
       'smart'

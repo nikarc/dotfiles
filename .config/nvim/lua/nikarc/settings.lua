@@ -50,6 +50,14 @@ opt.linebreak      	= true -- wrap on word boundary
 opt.wrap            = true
 opt.laststatus     	= 3 -- Global status line
 opt.scrolloff       = 8 -- Guarantee at least 8 lines above/below cursor when scrolling
+opt.guicursor       = {
+    "n-v:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "i-c-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "sm:block-blinkwait175-blinkoff150-blinkon175",
+}
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]

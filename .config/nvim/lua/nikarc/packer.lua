@@ -38,6 +38,12 @@ return require('packer').startup(function(use)
       })
     end
   }
+  use {
+    'kaiuri/nvim-juliana',
+    config = function ()
+      require('nvim-juliana').setup()
+    end
+  }
   -- END colorschemes
 
   -- treesitter
@@ -264,6 +270,29 @@ return require('packer').startup(function(use)
     'tomiis4/Hypersonic.nvim',
     conifg = function()
       require('hypersonic').setup()
+    end
+  }
+
+-- use({
+--   "jackMort/ChatGPT.nvim",
+--     config = function()
+--       require("chatgpt").setup()
+--     end,
+--     requires = {
+--       "MunifTanjim/nui.nvim",
+--       "nvim-lua/plenary.nvim",
+--       "nvim-telescope/telescope.nvim"
+--     }
+-- })
+
+  use {
+    "dpayne/CodeGPT.nvim",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require("codegpt.config")
     end
   }
 
