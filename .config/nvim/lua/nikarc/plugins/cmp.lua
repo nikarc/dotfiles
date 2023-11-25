@@ -1,3 +1,5 @@
+local kind_icons = require("nikarc.utils").kind_icons
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -9,10 +11,12 @@ return {
     "rafamadriz/friendly-snippets",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-cmdline",
+    "onsails/lspkind.nvim",
   },
   opts = function ()
     local cmp = require"cmp"
     local luasnip = require"luasnip"
+    local lspkind = require"lspkind"
 
     require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -24,6 +28,9 @@ return {
         expand = function (args)
           luasnip.lsp_expand(args.body)
         end,
+      },
+      formatting = {
+        format = lspkind.cmp_format(),
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping.select_next_item(),
