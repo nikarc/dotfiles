@@ -9,10 +9,12 @@
 
 
 Neovim init file
-Version: 0.0.10 - 2022/12/17
+Version: 0.1.0 - 2023/11/23 🦃
 Maintainer: nikarc
 Website: https://github.com/nikarc/dotfiles
 
 --]]
 
-require('nikarc')
+require("nikarc.keymap")
+require("nikarc.opt")
+require("nikarc.lazy")

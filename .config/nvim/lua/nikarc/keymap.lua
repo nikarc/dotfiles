@@ -1,5 +1,8 @@
 local map = vim.keymap.set
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 map('n', '<Esc>', ':noh<CR><Esc>', { noremap = true, silent = true })
 
 -- In visual mode, move entire line up or down
@@ -38,9 +41,6 @@ map('n', 'bw', vim.cmd.bw)
 -- Sessions
 map('n', '<Space>pp', '<cmd>SessionManager load_session<CR>')
 map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')
-
--- Renamer
-vim.api.nvim_set_keymap('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 
 -- Neotree
 map('n', '<Space>b', '<cmd>Neotree reveal<CR>')

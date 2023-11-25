@@ -1,6 +1,5 @@
 local cmd 		    = vim.cmd
 local opt 		    = vim.opt
-local fn 		      = vim.fn
 local exec 		    = vim.api.nvim_exec
 
 -----------------------------------------------------------
