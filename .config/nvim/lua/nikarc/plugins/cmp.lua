@@ -7,16 +7,16 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
-    -- "hrsh7th/cmp-nvim-lsp",
-    -- "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-cmdline",
   },
-  config = function ()
+  opts = function ()
     local cmp = require"cmp"
     local luasnip = require"luasnip"
 
     require('luasnip.loaders.from_vscode').lazy_load()
 
-    cmp.setup({
+    return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
@@ -34,9 +34,9 @@ return {
       sources = {
         {name = 'path'},
         {name = 'luasnip', keyword_length = 2},
-        -- {name = 'nvim_lsp', keyword_length = 1},
+        {name = 'nvim_lsp', keyword_length = 1},
         {name = 'buffer', keyword_length = 3},
       }
-    })
+    }
   end
 }
