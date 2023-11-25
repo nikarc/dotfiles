@@ -373,3 +373,4 @@ fi
 # NVIDIA/Wayland
 export GBM_BACKEND=nvidia-drm
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export NODE_OPTIONS="--max-old-space-size=8192"

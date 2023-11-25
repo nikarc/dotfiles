@@ -44,3 +44,6 @@ map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')
 
 -- Neotree
 map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
+
+-- Copy filename to clipboard
+map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true })
