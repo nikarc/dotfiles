@@ -1,3 +1,5 @@
+local utils = require('nikarc.utils')
+
 return {
   'akinsho/toggleterm.nvim',
   version = "*",
@@ -20,22 +22,37 @@ return {
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
+    local function float_opts()
+      if utils.is_linux() then
+        return {
+          border = 'curved',
+          winblend = 3,
+          highlights = {
+            border = "Normal",
+            background = "Normal",
+          }
+        }
+      else
+        return {
+          border = 'curved',
+          width = 150,
+          height = 60,
+          winblend = 3,
+          highlights = {
+            border = "Normal",
+            background = "Normal",
+          }
+        }
+      end
+    end
+
     local Terminal  = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({
       cmd = "lazygit",
       hidden = true,
       direction = 'float',
       autochdir = true,
-      float_opts = {
-        border = 'curved',
-        width = 150,
-        height = 60,
-        winblend = 3,
-        highlights = {
-          border = "Normal",
-          background = "Normal",
-        }
-      }
+      float_opts = float_opts(),
     })
 
     function _lazygit_toggle()

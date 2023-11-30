@@ -41,7 +41,7 @@ M.mason_packages = {
     "taplo",
     "typescript-language-server",
     "yaml-language-server",
-    "gopls",
+    -- "gopls",
     "editorconfig-checker"
 }
 M.lsp_servers = {
@@ -58,7 +58,7 @@ M.lsp_servers = {
     "html",
     "graphql",
     "tailwindcss",
-    "gopls",
+    -- "gopls",
 }
 
 M.kind_icons = {
@@ -88,5 +88,9 @@ M.kind_icons = {
   Operator = "󰆕",
   TypeParameter = "󰅲",
 }
+
+M.is_linux = function ()
+ return vim.uv.os_uname().sysname == 'Linux'
+end
 
 return M

@@ -22,13 +22,13 @@ map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
 
 -- Paste without yanking underneath
-map('x', '<leader>p', '"_dP')
+map('x', '<Space>p', '"_dP')
 
 -- Serach and replace using the current cursor word
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<Space>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- make file executable
-map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+map('n', '<Space>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
 -- Shortcuts to add comma/semicolon
 map('n', ',,', 'A,<Esc>')

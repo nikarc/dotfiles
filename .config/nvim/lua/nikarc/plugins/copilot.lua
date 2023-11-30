@@ -1,15 +1,23 @@
+local utils = require('nikarc.utils')
+
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
   config = function ()
+    local accept_keymap = '<C-Enter>'
+
+    if not utils.is_linux() then
+      accept_keymap = '<C-e>'
+    end
+
     require('copilot').setup({
       suggestion = {
         enabled = true,
         auto_trigger = true,
         debounce = 75,
         keymap = {
-          accept = "<C-e>",
+          accept = accept_keymap,
           accept_word = false,
           accept_line = false,
           next = "<M-]>",

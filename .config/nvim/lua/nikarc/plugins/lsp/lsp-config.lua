@@ -15,39 +15,63 @@ return {
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    local keymap = vim.keymap
+    local function filterReactDTS(value)
+      return string.match(value.filename, 'react/index.d.ts') == nil and
+        string.match(value.filename, 'styled-components/index.d.ts') == nil
+    end
 
-    local opts = { noremap = true, silent = true }
-    local on_attach = function ()
+    local function filter(arr, fn)
+      if type(arr) ~= "table" then
+        return arr
+      end
+
+      local filtered = {}
+      for k, v in pairs(arr) do
+        if fn(v, k, arr) then
+          table.insert(filtered, v)
+        end
+      end
+
+      return filtered
+    end
+
+    local function on_list(options)
+      -- [https://github.com/typescript-language-server/typescript-language-server/issues/216](https://github.com/typescript-language-server/typescript-language-server/issues/216)
+      local items = options.items
+      if #items > 1 then
+        items = filter(items, filterReactDTS)
+      end
+
+      vim.fn.setqflist({}, ' ', {
+        title = options.title,
+        items = items,
+        context = options.context
+      })
+      vim.api.nvim_command('cfirst')
+    end
+
+    local on_attach = function (_, bufnr)
+      local opts = { noremap = true, silent = true }
       opts.buffer = bufnr
 
       -- Keymaps
-      opts.desc = "Show LSP references"
-      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+      opts.desc = "Go to Definition"
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({on_list=on_list}) end, opts)
 
-      opts.desc = "Go to declaration"
-      keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
+      opts.desc = "Hover typedef"
+      vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
 
-      opts.desc = "Show LSP declarations"
-      keymap.set("n", "gD", "<cmd>Telescope lsp_definitions<CR>", opts)
+      opts.desc = "Show diagnostic float"
+      vim.keymap.set('n', '<Space>e', function() vim.diagnostic.open_float() end, opts)
 
-      opts.desc = "Show LSP Type definitions"
-      keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions", opts)
+      opts.desc = "Previous error"
+      vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, opts)
 
-      opts.desc = "See available code actions"
-      keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+      opts.desc = "Next error"
+      vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, opts)
 
       opts.desc = "Smart rename"
-      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-      opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0", opts)
-
-      opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", vim.diagnostic.open_float)
-
-      opts.desc = "LSP Restart"
-      keymap.set("n", "<leader>rs", "<cmd>LspRestart", opts)
+      vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()

@@ -15,6 +15,19 @@ return {
     }
   },
   opts = function ()
+    local function layout()
+      if utils.is_linux() then
+        return {}
+      else
+        return {
+          horizontal = {
+            width = 0.9,
+            preview_width = 50
+          }
+        }
+      end
+    end
+
     return {
       defaults = {
         borderchars = {
@@ -25,12 +38,7 @@ return {
         path_display = {
           'smart'
         },
-        layout_config = {
-          horizontal = {
-            width = 0.9,
-            preview_width = 50
-          }
-        }
+        layout_config = layout()
       },
     }
   end
