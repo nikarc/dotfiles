@@ -11,4 +11,5 @@ if status is-interactive
 
   # ENV Vars
   set -Ux NODE_OPTIONS '--max-old-space-size=8192'
+  fish_add_path $HOME/.npm-global/bin
 end
