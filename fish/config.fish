@@ -10,6 +10,7 @@ if status is-interactive
   abbr -a !! --position anywhere --function last_history_item
 
   # ENV Vars
+  envsource ~/.env
   set -Ux NODE_OPTIONS '--max-old-space-size=8192'
   fish_add_path $HOME/.npm-global/bin
 end
