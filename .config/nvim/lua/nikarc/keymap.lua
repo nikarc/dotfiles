@@ -47,3 +47,7 @@ map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
 
 -- Copy filename to clipboard
 map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true })
+
+-- Git
+map('n', '<Space>gs', '<cmd>Git<CR>')
+map('n', '<Space>gb', '<cmd>Git blame_line<CR>')
