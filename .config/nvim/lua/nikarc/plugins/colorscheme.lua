@@ -10,6 +10,7 @@ return {
       local colors = require("nikarc.utils").git_colors
       return {
         style = "night",
+        transparent = true,
         -- hide_inactive_statusline = true,
         on_highlights = function(hl, c)
           hl.GitSignsAdd = {
