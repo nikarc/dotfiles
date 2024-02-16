@@ -14,3 +14,10 @@ if status is-interactive
   set -Ux NODE_OPTIONS '--max-old-space-size=8192'
   fish_add_path $HOME/.npm-global/bin
 end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/nick/anaconda3/bin/conda
+    eval /Users/nick/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<

@@ -22,7 +22,7 @@ return {
         return {
           horizontal = {
             width = 0.9,
-            preview_width = 50
+            -- preview_width = 50
           }
         }
       end
