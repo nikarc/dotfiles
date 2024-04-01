@@ -1,3 +1,6 @@
+status --is-interactive
+rbenv init - fish | source
+
 if status is-interactive
   # Commands to run in interactive sessions can go here
   alias 'lg'='lazygit'
@@ -12,7 +15,7 @@ if status is-interactive
   # ENV Vars
   envsource ~/.env
   set -Ux NODE_OPTIONS '--max-old-space-size=8192'
-  fish_add_path $HOME/.npm-global/bin
+  set -Ux N_PREFIX '/Users/nickarcuri'
 end
 
 # >>> conda initialize >>>
