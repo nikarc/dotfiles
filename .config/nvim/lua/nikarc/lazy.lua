@@ -14,7 +14,7 @@ vim.opt.runtimepath:prepend(lazypath)
 -- load lazy
 require("lazy").setup({
   { import = "nikarc.plugins" },
-  { import = "nikarc.plugins.lsp" }
+  { import = "nikarc.plugins.lsp" },
 }, {
   install = {
     colorscheme = { "nightfly" },

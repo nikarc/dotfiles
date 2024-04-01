@@ -1,5 +1,6 @@
 local lsp_signs = require("nikarc.utils").lsp_signs
 local lsp_servers = require("nikarc.utils").lsp_servers
+local lsp_server_handlers = require("nikarc.utils").lsp_server_handlers
 
 return {
   "neovim/nvim-lspconfig",
@@ -88,7 +89,8 @@ return {
     for _, server in ipairs(lsp_servers) do
       lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = on_attach
+        on_attach = on_attach,
+        handlers = lsp_server_handlers[server]
       })
     end
   end

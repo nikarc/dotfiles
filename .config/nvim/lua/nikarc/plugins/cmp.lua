@@ -8,7 +8,7 @@ return {
     "hrsh7th/cmp-path",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
+    -- "rafamadriz/friendly-snippets",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-cmdline",
     "onsails/lspkind.nvim",
@@ -41,8 +41,8 @@ return {
       sources = {
         {name = 'path'},
         {name = 'luasnip', keyword_length = 2},
-        {name = 'nvim_lsp', keyword_length = 1},
         {name = 'buffer', keyword_length = 3},
+        {name = 'nvim_lsp', keyword_length = 1},
       }
     }
   end

@@ -1,0 +1,112 @@
+{
+  "RN functional component": {
+    "prefix": "rnfc",
+    "description": "Create a React Native functional component",
+    "body": [
+      "import { StyleSheet, View } from 'react-native';",
+      "",
+      "import viewStyles from '@src/styles/view';",
+      "",
+      "export const ${TM_FILENAME_BASE} = () => {",
+      " return (",
+      "   <View style={styles.container}>",
+      "     $0",
+      "   </View>",
+      " );",
+      "};",
+      "",
+      "const styles = StyleSheet.create({",
+      " container: {",
+      "   ...viewStyles",
+      " }",
+      "});"
+    ]
+  },
+  "RN StyleSheet": {
+    "prefix": "ssheet",
+    "description": "RN StyleSheet",
+    "body": [
+      "export const styles = StyleSheet.create({",
+      " container: {",
+      "   $0",
+      " }",
+      "});"
+    ]
+  },
+  "useQuery axois hook": {
+    "prefix": "use",
+    "description": "creates a hook that returns a usequery hook",
+    "body": [
+      "export const use$0 = ($1) => {}",
+      "   const url = gangwayurlmap.$0;",
+      "   return usequery({",
+      "     return axios.${2:post}(url);",
+      "   })",
+      "};"
+    ]
+  },
+  "React navigation stack screen": {
+    "prefix": "stack",
+    "description": "<Stack.Screen />",
+    "body": [
+      "<Stack.Screen",
+      "   component={$1}",
+      "   name=\"$2\"",
+      "   options=${3:{{",
+      "     $4",
+      "   }}}",
+      "/>"
+    ]
+  },
+  "RN View": {
+    "prefix": "view",
+    "description": "<View></View>",
+    "body": [
+      "<View style={styles.$1}>",
+      "   $2",
+      "</View>"
+    ]
+  },
+  "RN View Empty": {
+    "prefix": "eview",
+    "description": "<View />",
+    "body": [
+      "<View style={styles.$1} />"
+    ]
+  },
+  "RN StyledText": {
+    "prefix": "StyledText",
+    "description": "<StyledText />",
+    "body": [
+      "<StyledText>$1</StyledText>"
+    ]
+  },
+  "React Props Interface": {
+    "prefix": "props",
+    "description": "React Props Interface",
+    "body": [
+      "interface Props {\n\t$1\n}"
+    ]
+  },
+  "RN Navigation": {
+    "prefix": "nav",
+    "description": "React Navigation useAppNavigation",
+    "body": [
+      "const navigation = useAppNavigation$1();"
+    ]
+  },
+  "RN Dispatch": {
+    "prefix": "dispatch",
+    "description": "React Redux useDispatch",
+    "body": [
+      "const dispatch = useDispatch$1();"
+    ]
+  },
+  "RN App selector": {
+    "prefix": "selector",
+    "description": "React Redux useSelector",
+    "body": [
+      "const $1 = useAppSelector$2($3);"
+    ]
+  }
+}
