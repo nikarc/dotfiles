@@ -43,9 +43,9 @@ return {
           results = utils.border_chars_outer_thin_telescope,
           preview = utils.border_chars_outer_thin_telescope,
         },
-        path_display = {
-          'smart'
-        },
+        -- path_display = {
+        --   'smart'
+        -- },
         layout_config = layout()
       },
     }
