@@ -12,17 +12,13 @@ return {
   font = wezterm.font 'Agave Nerd Font',
   font_size = 14,
   scrollback_lines = 10000,
-  window_background_opacity = 0.75,
+  window_background_opacity = 0.6,
+  macos_window_background_blur = 50,
   keys = {
     {
       key = 'k',
       mods = 'SUPER',
       action = act.ClearScrollback 'ScrollbackAndViewport',
     },
-    {
-      key = 'r',
-      mods = 'SUPER',
-      action = act.ClearScrollback 'ScrollbackAndViewport',
-    }
   }
 }
