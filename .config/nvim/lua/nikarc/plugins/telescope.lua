@@ -15,12 +15,28 @@ return {
     { "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>"},
     { "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>"},
     { "<C-b>", "<cmd>lua require('telescope.builtin').buffers()<CR>"},
+    { "<C-m>", "<cmd>Telescope import<CR>"},
   },
   extensions = {
     fzy_native = {
       override_generic_sorter = false,
       override_file_sorter = true,
-    }
+    },
+    import = {
+      -- Add imports to the top of the file keeping the cursor in place
+      insert_at_top = true,
+      -- Support additional languages
+      custom_languages = {
+        {
+          -- The regex pattern for the import statement
+          regex = [[^(?:import(?:[\"'\s]*([\w*{}\n, ]+)from\s*)?[\"'\s](.*?)[\"'\s].*)]],
+          -- The Vim filetypes
+          filetypes = { "typescript", "typescriptreact", "javascript", "react" },
+          -- The filetypes that ripgrep supports (find these via `rg --type-list`)
+          extensions = { "js", "ts" },
+        },
+      },
+    },
   },
   opts = function ()
     local function layout()

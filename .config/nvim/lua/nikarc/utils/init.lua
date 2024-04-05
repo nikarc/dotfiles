@@ -132,4 +132,10 @@ M.is_linux = function ()
  return vim.uv.os_uname().sysname == 'Linux'
 end
 
+-- Function to retrieve the RGB values of a highlight group
+M.get_hl_color = function(hl_group)
+    local hl = vim.api.nvim_get_hl_by_name(hl_group, true)
+    return string.format('#%06x', hl.foreground)
+end
+
 return M
