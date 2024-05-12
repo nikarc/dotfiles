@@ -1,28 +1,17 @@
 local wezterm = require 'wezterm'
-local act = wezterm.action
 
-return {
-  animation_fps = 60,
-  cursor_blink_rate = 800,
-  default_cursor_style = 'BlinkingBlock',
-  enable_wayland = false,
-  front_end = 'WebGpu',
-  -- font = wezterm.font 'Fira Code',
-  -- font = wezterm.font 'Sarasa Term SC Nerd',
-  font = wezterm.font 'Agave Nerd Font',
-  font_size = 14,
-  scrollback_lines = 10000,
-  window_background_opacity = 0.75,
-  keys = {
-    {
-      key = 'k',
-      mods = 'SUPER',
-      action = act.ClearScrollback 'ScrollbackAndViewport',
-    },
-    {
-      key = 'r',
-      mods = 'SUPER',
-      action = act.ClearScrollback 'ScrollbackAndViewport',
-    }
-  }
-}
+local platform = 'linux'
+
+if wezterm.target_triple:match 'apple' then
+  platform = 'macos'
+end
+
+local baseConfig = require('base')
+local platformConfig = require(platform)
+
+local outputConfig = baseConfig
+for key,value in pairs(platformConfig) do
+  outputConfig[key] = value
+end
+
+return outputConfig
