@@ -12,6 +12,8 @@ if status is-interactive
     alias pbcopy "xclip -selection clipboard"
     alias pbpaste "xclip -selection clipboard -o"
 
+    set -Ux MOZ_ENABLE_WAYLAND 1
+
     case Darwin
       # All macOS specific commands
   end
