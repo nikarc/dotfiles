@@ -2,7 +2,15 @@ local utils = require('nikarc.utils')
 
 return {
   'nvim-telescope/telescope.nvim', tag = '0.1.4',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim" ,
+      -- This will not install any breaking changes.
+      -- For major updates, this must be adjusted manually.
+      version = "^1.0.0",
+    },
+  },
   keys = {
     { "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>"},
     { "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>"},
@@ -22,7 +30,7 @@ return {
         return {
           horizontal = {
             width = 0.9,
-            preview_width = 50
+            -- preview_width = 50
           }
         }
       end
@@ -35,9 +43,9 @@ return {
           results = utils.border_chars_outer_thin_telescope,
           preview = utils.border_chars_outer_thin_telescope,
         },
-        path_display = {
-          'smart'
-        },
+        -- path_display = {
+        --   'smart'
+        -- },
         layout_config = layout()
       },
     }

@@ -1,9 +1,11 @@
 local map = vim.keymap.set
 
+local opts = { noremap = true, silent = true }
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-map('n', '<Esc>', ':noh<CR><Esc>', { noremap = true, silent = true })
+map('n', '<Esc>', ':noh<CR><Esc>', opts)
 
 -- In visual mode, move entire line up or down
 map('v', 'J', ":m '>+1<CR>gv=gv")
@@ -51,3 +53,6 @@ map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true
 -- Git
 map('n', '<Space>gs', '<cmd>Git<CR>')
 map('n', '<Space>gb', '<cmd>Git blame_line<CR>')
+
+-- Manually call lsp formatter
+map('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)

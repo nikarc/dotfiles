@@ -374,3 +374,19 @@ fi
 export GBM_BACKEND=nvidia-drm
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export NODE_OPTIONS="--max-old-space-size=8192"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/nick/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/nick/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/nick/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/nick/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

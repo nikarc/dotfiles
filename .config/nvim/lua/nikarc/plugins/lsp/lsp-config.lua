@@ -1,5 +1,6 @@
 local lsp_signs = require("nikarc.utils").lsp_signs
 local lsp_servers = require("nikarc.utils").lsp_servers
+local lsp_server_handlers = require("nikarc.utils").lsp_server_handlers
 
 return {
   "neovim/nvim-lspconfig",
@@ -92,6 +93,7 @@ return {
         flags = {
           allow_incremental_sync = true,
           debounce_text_changes = 500,
+          handlers = lsp_server_handlers[server],
         }
       })
     end

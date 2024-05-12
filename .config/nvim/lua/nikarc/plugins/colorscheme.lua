@@ -8,11 +8,14 @@ return {
     priority = 1000,
     opts = function()
       local colors = require("nikarc.utils").git_colors
+      local color = vim.api.nvim_get_hl_by_name("Debug", true)
+      local border_color = string.format("%06x", color.foreground)
+
       return {
         style = "night",
         transparent = true,
         -- hide_inactive_statusline = true,
-        on_highlights = function(hl, c)
+        on_highlights = function(hl)
           hl.GitSignsAdd = {
             fg = colors.GitAdd,
           }
@@ -21,6 +24,9 @@ return {
           }
           hl.GitSignsDelete = {
             fg = colors.GitDelete,
+          }
+          hl.WinSeparator = {
+            fg = "#" .. border_color,
           }
         end,
       }

@@ -1,7 +1,6 @@
 local cmd 		    = vim.cmd
 local opt 		    = vim.opt
 local exec 		    = vim.api.nvim_exec
-
 -----------------------------------------------------------
 -- Colorscheme
 -----------------------------------------------------------
@@ -57,6 +56,23 @@ opt.guicursor       = {
     "i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
     "sm:block-blinkwait175-blinkoff150-blinkon175",
 }
+
+-- opt.fillchars = {
+--   horiz     = '━',
+--   horizup   = '┻',
+--   horizdown = '┳',
+--   vert      = '┃',
+--   vertleft  = '┫',
+--   vertright = '┣',
+--   verthoriz = '╋',
+-- }
+
+local hl_group = "DiagnosticWarn"
+local hl_details = vim.api.nvim_get_hl_by_name(hl_group, true)
+-- vim.api.nvim_get_hl_by_name("DiagnosticWarn", true)
+
+-- print(vim.inspect(color))
+
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]

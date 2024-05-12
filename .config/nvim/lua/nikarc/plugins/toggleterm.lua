@@ -46,19 +46,19 @@ return {
       end
     end
 
-    local Terminal  = require('toggleterm.terminal').Terminal
-    local lazygit = Terminal:new({
-      cmd = "lazygit",
-      hidden = true,
-      direction = 'float',
-      autochdir = true,
-      float_opts = float_opts(),
-    })
+    -- local Terminal  = require('toggleterm.terminal').Terminal
+    -- local lazygit = Terminal:new({
+    --   cmd = "lazygit",
+    --   hidden = true,
+    --   direction = 'float',
+    --   autochdir = true,
+    --   float_opts = float_opts(),
+    -- })
+    --
+    -- function _lazygit_toggle()
+    --   lazygit:toggle()
+    -- end
 
-    function _lazygit_toggle()
-      lazygit:toggle()
-    end
-
-    vim.api.nvim_set_keymap("n", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    -- vim.api.nvim_set_keymap("n", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
   end,
 }

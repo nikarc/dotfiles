@@ -18,3 +18,4 @@ Website: https://github.com/nikarc/dotfiles
 require("nikarc.keymap")
 require("nikarc.opt")
 require("nikarc.lazy")
+require("nikarc.globals")
