@@ -88,7 +88,11 @@ return {
     for _, server in ipairs(lsp_servers) do
       lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = on_attach
+        on_attach = on_attach,
+        flags = {
+          allow_incremental_sync = true,
+          debounce_text_changes = 500,
+        }
       })
     end
   end
