@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
+SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/zulu\x2d17\x2ejdk/Contents/Home/
 SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d8192
 SETUVAR --export N_PREFIX:/Users/nickarcuri
 SETUVAR __fish_initialized:3400

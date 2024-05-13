@@ -5,6 +5,6 @@ return {
   config = function()
     require('treesj').setup({--[[ your config ]]})
 
-    vim.keymap.set("n", "<Space>k", require('treesj').toggle)
+    vim.keymap.set("n", "<Space>{", require('treesj').toggle)
   end,
 }

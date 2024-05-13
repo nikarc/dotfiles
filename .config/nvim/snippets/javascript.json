@@ -2,7 +2,7 @@
   "console log selection, JSON stringify": {
     "prefix": "jconsole",
     "body": [
-      "console.log(JSON.stringify(${LS_SELECT_DEDENT}, null, 2));"
+      "console.log(JSON.stringify($1, null, 2));"
     ],
     "description": "Log output to console, JSON.stringify"
   }

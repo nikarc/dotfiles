@@ -56,3 +56,6 @@ map('n', '<Space>gb', '<cmd>Git blame_line<CR>')
 
 -- Manually call lsp formatter
 map('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
+
+-- Kill all buffers
+map('n', '<Space>kb', '<cmd>%bw<CR>', opts)

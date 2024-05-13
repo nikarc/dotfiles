@@ -1,0 +1,18 @@
+{
+  "RN App selector": {
+    "prefix": "selector",
+    "description": "React Redux useSelector",
+    "body": [
+      "const $1 = useAppSelector$2($3);"
+    ]
+  },
+  "Use memo": {
+    "prefix": "memo",
+    "description": "React useMemo",
+    "body": [
+      "const $1 = useMemo(() => {",
+      "   $3",
+      "}, [$2]);"
+    ]
+  }
+}

@@ -12,7 +12,19 @@
       },
       {
         "language": "typescriptreact",
+        "path": "./typescript.json"
+      },
+      {
+        "language": "typescriptreact",
         "path": "./javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./typescript.json"
       }
     ]
   }
