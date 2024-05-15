@@ -90,7 +90,11 @@ return {
       lspconfig[server].setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        handlers = lsp_server_handlers[server]
+        flags = {
+          allow_incremental_sync = true,
+          debounce_text_changes = 500,
+          handlers = lsp_server_handlers[server],
+        }
       })
     end
   end
