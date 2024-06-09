@@ -9,13 +9,15 @@ if status is-interactive
   switch (uname)
     case Linux
       # All Linux specific commands
-    alias pbcopy "xclip -selection clipboard"
-    alias pbpaste "xclip -selection clipboard -o"
+      alias pbcopy "xclip -selection clipboard"
+      alias pbpaste "xclip -selection clipboard -o"
 
-    set -Ux MOZ_ENABLE_WAYLAND 1
+      set -Ux MOZ_ENABLE_WAYLAND 1
+      set -Ux N_PREFIX '/home/nick/node_versions'
 
     case Darwin
       # All macOS specific commands
+    set -Ux N_PREFIX '/Users/nickarcuri'
   end
 
   # Abbreviations
@@ -27,8 +29,6 @@ if status is-interactive
   # ENV Vars
   # This will run every new terminal instance
   # envsource ~/.env
-  set -Ux NODE_OPTIONS '--max-old-space-size=8192'
-  set -Ux N_PREFIX '/Users/nickarcuri'
 end
 
 # >>> conda initialize >>>
