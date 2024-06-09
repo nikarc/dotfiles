@@ -25,7 +25,8 @@ if status is-interactive
   abbr -a !! --position anywhere --function last_history_item
 
   # ENV Vars
-  envsource ~/.env
+  # This will run every new terminal instance
+  # envsource ~/.env
   set -Ux NODE_OPTIONS '--max-old-space-size=8192'
   set -Ux N_PREFIX '/Users/nickarcuri'
 end
