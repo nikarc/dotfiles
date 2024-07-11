@@ -34,6 +34,12 @@ return {
           hl.LineNr = {
             fg = colors.blue
           }
+          hl.LineNrAbove = {
+            fg = '#505A84'
+          }
+          hl.LineNrBelow = {
+            fg = '#505A84'
+          }
           hl.DiagnosticUnnecessary = {
             fg = colors.comment
           }
