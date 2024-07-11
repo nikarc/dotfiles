@@ -17,7 +17,7 @@ if status is-interactive
 
     case Darwin
       # All macOS specific commands
-    set -Ux N_PREFIX '/Users/nickarcuri'
+      set -Ux N_PREFIX '/Users/nickarcuri'
   end
 
   # Abbreviations
