@@ -109,7 +109,12 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse bootSimulator)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting dotenv)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  dotenv
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -202,6 +207,15 @@ alias myip="ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'"
 alias f="flutter"
 alias nemo="GTK_THEME=Adwaita:dark nemo"
 alias lg="lazygit"
+alias pshell="pipenv shell"
+alias pserv="pipenv run uvicorn application.main:app --reload"
+alias ahist="alembic history"
+alias auh="alembic upgrade head"
+alias adg="alembic downgrade"
+alias arev="alembic revision -m"
+alias astamp="alembic stamp"
+
+# END aliases
 
 # https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
 # alias nvim="env TERM=wezterm nvim"
@@ -390,3 +404,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+source /home/nick/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

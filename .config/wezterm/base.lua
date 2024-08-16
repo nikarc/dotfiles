@@ -16,13 +16,13 @@ return {
   animation_fps = 60,
   cursor_blink_rate = 800,
   default_cursor_style = 'BlinkingBlock',
-  enable_wayland = false,
+  enable_wayland = true,
   front_end = 'WebGpu',
   font_size = 14,
   -- font = wezterm.font 'Fira Code',
   -- font = wezterm.font 'Sarasa Term SC Nerd',
   scrollback_lines = 10000,
-  window_background_opacity = 0.75,
+  window_background_opacity = 0.82,
   keys = {
     {
       key = 'k',
