@@ -46,7 +46,7 @@ opt.ignorecase     	= true -- ignore case letters when search
 opt.smartcase      	= true -- ignore lowercase for the whole pattern
 opt.linebreak      	= true -- wrap on word boundary
 opt.wrap            = true
-opt.laststatus     	= 3 -- Global status line
+-- opt.laststatus     	= 3 -- Global status line
 opt.scrolloff       = 5 -- Guarantee at least 8 lines above/below cursor when scrolling
 opt.guicursor       = {
     "n-v:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",

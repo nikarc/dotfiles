@@ -4,8 +4,6 @@ local t = ls.text_node
 local i = ls.insert_node
 -- local typescriptreact = require("nikarc.snippets.typescriptreact")
 
-print('TEST')
-
 -- ls.add_snippets("all", s(
 --   {
 --     trig = "rnfc",
