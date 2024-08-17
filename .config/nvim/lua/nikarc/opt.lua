@@ -47,7 +47,7 @@ opt.smartcase      	= true -- ignore lowercase for the whole pattern
 opt.linebreak      	= true -- wrap on word boundary
 opt.wrap            = true
 -- opt.laststatus     	= 3 -- Global status line
-opt.scrolloff       = 5 -- Guarantee at least 8 lines above/below cursor when scrolling
+opt.scrolloff       = 5 -- Guarantee at least 5 lines above/below cursor when scrolling
 opt.guicursor       = {
     "n-v:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
     "i-c-ci-ve:ver25",
@@ -87,3 +87,81 @@ exec([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
   augroup end
 ]], false)
+
+local function center_text(strDict)
+  local output = {}
+  for _, str in ipairs(strDict) do
+    local width = vim.api.nvim_win_get_width(0)
+    local shift = math.floor(width / 2) - math.floor(string.len(str) / 2)
+    local padding = string.rep(" ", shift)
+
+    output[#output + 1] = padding .. str
+  end
+
+  return output
+end
+
+-- Custom start screen
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        local directory = vim.fn.argv(0)
+        if vim.fn.isdirectory(directory) == 1 then
+            vim.cmd("enew")  -- Create a new empty buffer
+            vim.bo.buftype = "nofile"  -- Set buffer type to "nofile" so it's not associated with a file
+            vim.bo.bufhidden = "hide"  -- Keep the buffer hidden when abandoned
+            vim.bo.swapfile = false     -- Disable swap file for this buffer
+
+            -- Set custom text
+            local custom_text = {
+              "",
+              "",
+              "",
+              "                              ███▄    █ ▓█████  ▒█████",
+              "                           ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒",
+              "                                  ▓██  ▀█ ██▒▒███   ▒██░  ██▒",
+              "                                  ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░",
+              "                                          ▒██░   ▓██░░▒████▒░ ████▓▒░",
+              "                              ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░",
+              "                       ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░",
+              "            ░   ░ ░    ░   ░ ░ ░ ▒",
+              "░    ░  ░    ░ ░",
+              "",
+              "     =====       =====   =========  ========  ========",
+              "    || . .\\\\   //. . || ||. . . .|| \\\\. . .\\\\// . . //",
+              "    ||. . ||   || . .|| ||. . . .|| || . . .\\/ . . .||",
+              "    || . .||   ||. . || || . . . || ||. . . . . . . ||",
+              "    ||. . ||   || . .|| ||. . . .|| || . | . . . . .||",
+              "    || . .||   ||. _-|| ||-_ . _-|| ||-_.|\\ . . . . ||",
+              "    ||. . ||   ||-'  || ||  `-'  || ||  `|\\_ . .|. .||",
+              "    || . _||   ||    || ||       || ||   |\\ `-_/| . ||",
+              "    ||_-' ||  .|/    || ||       || ||   | \\  / |-_.||",
+              "    ||    ||_-'      || ||       || ||   | \\  / |  `||",
+              "    ||    `'         || ||       || ||   | \\  / |   ||",
+              "    ||            .===' `===. .===' /==. |  \\/  |   ||",
+              "    ||         .=='   \\_|-_ `=' _-|/   `==  \\/  |   ||",
+              "    ||      .=='    _-'    `-_-'   `-_  /|  \\/  |   ||",
+              "    ||   .=='    _-'                  `' |. /|  |   ||",
+              "    ||.=='    _-'                         `' |  /==.||",
+              "    =='    _-'                                \\/   `==",
+              "    \\   _-'                                    `-_   /",
+              "     `''                                          ``'",
+            }
+
+            -- Set the buffer lines
+            vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
+            vim.bo.modifiable = false  -- Set buffer to non-modifiable
+            vim.bo.readonly = true      -- Optionally, set the buffer to read-only
+            vim.wo.number = false
+            vim.wo.relativenumber = false
+            vim.wo.colorcolumn = ""
+
+            vim.api.nvim_create_autocmd("WinResized", {
+              callback = function()
+                vim.bo.modifiable = true
+                vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
+                vim.bo.modifiable = false
+              end
+            })
+        end
+    end
+})
