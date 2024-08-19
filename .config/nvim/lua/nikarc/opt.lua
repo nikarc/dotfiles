@@ -107,6 +107,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
         local directory = vim.fn.argv(0)
         if vim.fn.isdirectory(directory) == 1 then
             vim.cmd("enew")  -- Create a new empty buffer
+            vim.api.nvim_buf_delete(1, { force = true })
             vim.bo.buftype = "nofile"  -- Set buffer type to "nofile" so it's not associated with a file
             vim.bo.bufhidden = "hide"  -- Keep the buffer hidden when abandoned
             vim.bo.swapfile = false     -- Disable swap file for this buffer
@@ -116,18 +117,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
               "",
               "",
               "",
-              "                              ███▄    █ ▓█████  ▒█████",
-              "                           ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒",
-              "                                  ▓██  ▀█ ██▒▒███   ▒██░  ██▒",
-              "                                  ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░",
-              "                                          ▒██░   ▓██░░▒████▒░ ████▓▒░",
-              "                              ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░",
-              "                       ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░",
-              "            ░   ░ ░    ░   ░ ░ ░ ▒",
-              "░    ░  ░    ░ ░",
+              "                                    ███▄    █ ▓█████  ▒█████",
+              "                                 ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒",
+              "                                        ▓██  ▀█ ██▒▒███   ▒██░  ██▒",
+              "                                        ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░",
+              "                                                ▒██░   ▓██░░▒████▒░ ████▓▒░",
+              "                                    ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░",
+              "                             ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░",
+              "                  ░   ░ ░    ░   ░ ░ ░ ▒",
+              "      ░    ░  ░    ░ ░",
               "",
               "     =====       =====   =========  ========  ========",
-              "    || . .\\\\   //. . || ||. . . .|| \\\\. . .\\\\// . . //",
+              "    \\\\ . .\\\\   //. . // ||. . . .|| \\\\. . .\\\\// . . //",
               "    ||. . ||   || . .|| ||. . . .|| || . . .\\/ . . .||",
               "    || . .||   ||. . || || . . . || ||. . . . . . . ||",
               "    ||. . ||   || . .|| ||. . . .|| || . | . . . . .||",
