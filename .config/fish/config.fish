@@ -1,10 +1,20 @@
 status --is-interactive
 rbenv init - fish | source
 
+dotenv ~/.env
+
 if status is-interactive
   # Commands to run in interactive sessions can go here
   alias 'lg'='lazygit'
   alias 'cat'='bat'
+  alias 'pshell'='pipenv shell'
+  alias 'pserv'='pipenv run uvicorn application.main:app --reload'
+  alias 'ahist'='pipenv run alembic history'
+  alias 'auh'='pipenv run alembic upgrade head'
+  alias 'adg'='pipenv run alembic downgrade'
+  alias 'arev'='pipenv run alembic revision -m'
+  alias 'astamp'='pipenv run alembic stamp'
+  alias 'pvpn-port'='bash -c \'while true ; do date ; natpmpc -a 1 0 udp 60 -g 10.2.0.1 && natpmpc -a 1 0 tcp 60 -g 10.2.0.1 || { echo -e "ERROR with natpmpc command \\a" ; break ; } ; sleep 45 ; done\''
 
   switch (uname)
     case Linux
@@ -14,6 +24,7 @@ if status is-interactive
 
       set -Ux MOZ_ENABLE_WAYLAND 1
       set -Ux N_PREFIX '/home/nick/node_versions'
+      set -Ux PIPEWIRE_LATENCY '64/48000'
 
     case Darwin
       # All macOS specific commands
@@ -25,10 +36,6 @@ if status is-interactive
     echo $history[1]
   end
   abbr -a !! --position anywhere --function last_history_item
-
-  # ENV Vars
-  # This will run every new terminal instance
-  # envsource ~/.env
 end
 
 # >>> conda initialize >>>
