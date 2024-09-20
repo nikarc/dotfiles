@@ -46,7 +46,7 @@ M.mason_packages = {
 }
 M.lsp_servers = {
     "clangd",
-    "tsserver",
+    "ts_ls",
     "pyright",
     "lua_ls",
     "eslint",
@@ -62,7 +62,7 @@ M.lsp_servers = {
 }
 
 M.lsp_server_handlers = {
-  tsserver = {
+  ts_ls = {
     ["textDocument/publishDiagnostics"] = function(
       _,
       result,
@@ -73,7 +73,7 @@ M.lsp_server_handlers = {
         return
       end
 
-      -- ignore some tsserver diagnostics
+      -- ignore some ts_ls diagnostics
       local idx = 1
       while idx <= #result.diagnostics do
         local entry = result.diagnostics[idx]
