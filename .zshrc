@@ -404,4 +404,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source /home/nick/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
