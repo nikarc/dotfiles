@@ -21,6 +21,31 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
 
     return {
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          -- Custom comparator to prioritize EnumMembers
+          function(entry1, entry2)
+            local kind1 = entry1:get_kind()
+            local kind2 = entry2:get_kind()
+
+            if kind1 == cmp.lsp.CompletionItemKind.EnumMember and kind2 ~= cmp.lsp.CompletionItemKind.EnumMember then
+              return true
+            elseif kind2 == cmp.lsp.CompletionItemKind.EnumMember and kind1 ~= cmp.lsp.CompletionItemKind.EnumMember then
+              return false
+            end
+          end,
+          -- The built-in comparators
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },

@@ -9,6 +9,7 @@ if status is-interactive
   alias 'cat'='bat'
   alias 'pshell'='pipenv shell'
   alias 'pserv'='pipenv run uvicorn application.main:app --reload'
+  alias 'a'='pipenv run alembic'
   alias 'ahist'='pipenv run alembic history'
   alias 'auh'='pipenv run alembic upgrade head'
   alias 'adg'='pipenv run alembic downgrade'

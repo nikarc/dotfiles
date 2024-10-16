@@ -5,6 +5,35 @@ return {
   opts = {
     -- add any opts here
     provider = "openai"
+    -- provider = "ollama",
+    -- vendors = {
+    --   ollama = {
+    --     ["local"] = true,
+    --     endpoint = "127.0.0.1:11434/api",
+    --     model = "llama3.1:latest",
+    --     parse_curl_args = function(opts, code_opts)
+    --       local curl_args = {
+    --         url = opts.endpoint .. "/chat",
+    --         headers = {
+    --           ["Accept"] = "application/json",
+    --           ["Content-Type"] = "application/json",
+    --         },
+    --         body = {
+    --           model = opts.model,
+    --           messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+    --           max_tokens = 2048,
+    --           stream = true,
+    --         },
+    --       }
+    --       vim.api.nvim_out_write(tostring(curl_args))
+    --
+    --       return curl_args
+    --     end,
+    --     parse_response_data = function(data_stream, event_state, opts)
+    --       require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+    --     end,
+    --   },
+    -- },
   },
   -- if you want to download pre-built binary, then pass source=false. Make sure to follow instruction above.
   -- Also note that downloading prebuilt binary is a lot faster comparing to compiling from source.

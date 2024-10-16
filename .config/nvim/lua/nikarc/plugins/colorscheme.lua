@@ -1,7 +1,6 @@
 return {
-  {
-    "EdenEast/nightfox.nvim",
-  },
+  { "EdenEast/nightfox.nvim" },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -46,10 +45,18 @@ return {
         end,
       }
     end,
-    config = function(_, opts)
-      local tokyonight = require("tokyonight")
-      tokyonight.setup(opts)
-      tokyonight.load()
-    end,
+    -- config = function(_, opts)
+    --   local tokyonight = require("tokyonight")
+    --   tokyonight.setup(opts)
+    --   tokyonight.load()
+    -- end,
+    config = function ()
+      require("catppuccin").setup({
+        flavor = "mocha",
+        -- transparent_background = true,
+      })
+
+      vim.cmd.colorscheme("catppuccin")
+    end
   }
 }

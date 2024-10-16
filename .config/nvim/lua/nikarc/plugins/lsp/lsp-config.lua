@@ -97,5 +97,35 @@ return {
         }
       })
     end
+
+    lspconfig.clangd.setup {
+      capabilities = capabilities,
+      on_attach = function (_, bufnr)
+        on_attach(_, bufnr)
+
+        vim.lsp.set_log_level("debug")
+      end,
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders"
+      },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      root_dir = lspconfig.util.root_pattern(
+        '.clangd',
+        '.clang-tidy',
+        '.clang-format',
+        'compile_commands.json',
+        'compile_flags.txt',
+        'configure.ac',
+        '.git'
+      ),
+      init_options = {
+        fallbackFlags = { "-std=c++17" }
+      },
+    }
   end
 }

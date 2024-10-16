@@ -45,7 +45,8 @@ M.mason_packages = {
     "editorconfig-checker"
 }
 M.lsp_servers = {
-    "clangd",
+    -- Manually set up clangd
+    -- "clangd",
     "ts_ls",
     "pyright",
     "lua_ls",
