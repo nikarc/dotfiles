@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
+SETUVAR --export DOCKER_CLI_HINTS:false
 SETUVAR --export EDITOR:nvim
 SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/zulu\x2d17\x2ejdk/Contents/Home/
 SETUVAR --export MOZ_ENABLE_WAYLAND:1

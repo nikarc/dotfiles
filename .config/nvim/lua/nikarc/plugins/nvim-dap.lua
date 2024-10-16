@@ -25,11 +25,28 @@ return {
         program = "${file}";
         -- Automatically set the cwd to the workspace folder
         cwd = "${workspaceFolder}";
-        -- Python path; you can set this to a specific virtualenv if needed
         pythonPath = function()
-          return python_path
-        end;
+          -- Use activated virtualenv or fallback to default Python
+          local venv_path = os.getenv('VIRTUAL_ENV')
+          if venv_path then
+            return venv_path .. '/bin/python'
+          else
+            return python_path
+          end
+        end,
       },
     }
+
+    local opts = { noremap = true, silent = true }
+
+    vim.api.nvim_set_keymap('n', '<F5>', "<Cmd>lua require'dap'.continue()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<F10>', "<Cmd>lua require'dap'.step_over()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<F11>', "<Cmd>lua require'dap'.step_into()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<F12>', "<Cmd>lua require'dap'.step_out()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<Leader>b', "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<Leader>B', "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<Leader>lp', "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<Leader>dr', "<Cmd>lua require'dap'.repl.open()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<Leader>dl', "<Cmd>lua require'dap'.run_last()<CR>", opts)
   end,
 }
