@@ -45,7 +45,7 @@ map('n', '<Space>pp', '<cmd>SessionManager load_session<CR>')
 map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')
 
 -- Neotree
-map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
+-- map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
 
 -- Copy filename to clipboard
 map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true })
@@ -59,3 +59,6 @@ map('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
 -- Kill all buffers
 map('n', '<Space>kb', '<cmd>%bw<CR>', opts)
+
+-- Macros
+map('n', '<Leader>fb', ':FormatBuffer<CR>', opts)
