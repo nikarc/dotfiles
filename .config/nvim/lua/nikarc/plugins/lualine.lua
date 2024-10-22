@@ -44,7 +44,7 @@ return {
               end
               return loaded_bufs
             end,
-            icon = "﬘",
+            icon = "",
             color = { fg = "DarkCyan", gui = "bold" },
           },
           -- wpm.historic_graph
