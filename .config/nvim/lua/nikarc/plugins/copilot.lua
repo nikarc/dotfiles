@@ -7,9 +7,9 @@ return {
   config = function ()
     local accept_keymap = '<C-Enter>'
 
-    if not utils.is_linux() then
-      accept_keymap = '<C-e>'
-    end
+    -- if not utils.is_linux() then
+    --   accept_keymap = '<C-e>'
+    -- end
 
     require('copilot').setup({
       suggestion = {

@@ -9,6 +9,7 @@ opt.termguicolors = true -- enable 24-bit RGB colors
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
+vim.g.mapleader     = ' '
 opt.mouse 		      = ''
 opt.clipboard 		  = 'unnamedplus'
 

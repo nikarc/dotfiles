@@ -1,6 +1,5 @@
 return {
   { "EdenEast/nightfox.nvim" },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -50,11 +49,15 @@ return {
     --   tokyonight.setup(opts)
     --   tokyonight.load()
     -- end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function ()
-      require("catppuccin").setup({
-        flavor = "mocha",
-        -- transparent_background = true,
-      })
+      require("catppuccin").setup {
+        flavour = "macchiato"
+      }
 
       vim.cmd.colorscheme("catppuccin")
     end
