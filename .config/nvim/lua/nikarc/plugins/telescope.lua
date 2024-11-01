@@ -15,6 +15,7 @@ return {
     { "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>"},
     { "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>"},
     { "<C-b>", "<cmd>lua require('telescope.builtin').buffers()<CR>"},
+    { "<C-g>", "<cmd>lua require('telescope.builtin').resume()<CR>"},
     { "<C-m>", "<cmd>Telescope import<CR>"},
   },
   extensions = {
@@ -45,7 +46,7 @@ return {
       else
         return {
           horizontal = {
-            width = 0.9,
+            width = 0.99,
             -- preview_width = 50
           }
         }
