@@ -12,8 +12,9 @@ return {
         },
     },
     keys = {
-        { "<C-p>", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"},
+        { "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>"},
         { "<C-f>", "<cmd>lua require('telescope.builtin').live_grep()<CR>"},
+        -- { "<C-f>", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"},
         { "<C-b>", "<cmd>lua require('telescope.builtin').buffers()<CR>"},
         { "<C-g>", "<cmd>lua require('telescope.builtin').resume()<CR>"},
         { "<C-m>", "<cmd>Telescope import<CR>"},
