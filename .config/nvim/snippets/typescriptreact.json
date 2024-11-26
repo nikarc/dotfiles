@@ -61,31 +61,58 @@
   "RN View": {
     "prefix": "view",
     "description": "<View></View>",
-    "body": ["<View style={styles.$1}>", "   $2", "</View>"]
+    "body": [
+      "<View style={styles.$1}>",
+      "   $2",
+      "</View>"
+    ]
   },
   "RN View Empty": {
     "prefix": "eview",
     "description": "<View />",
-    "body": ["<View style={styles.$1} />"]
+    "body": [
+      "<View style={styles.$1} />"
+    ]
   },
   "RN StyledText": {
     "prefix": "StyledText",
     "description": "<StyledText />",
-    "body": ["<StyledText>$1</StyledText>"]
+    "body": [
+      "<StyledText>$1</StyledText>"
+    ]
   },
   "React Props Interface": {
     "prefix": "props",
     "description": "React Props Interface",
-    "body": ["interface Props {\n\t$1\n}"]
+    "body": [
+      "interface Props {\n\t$1\n}"
+    ]
   },
   "RN Navigation": {
     "prefix": "nav",
     "description": "React Navigation useAppNavigation",
-    "body": ["const navigation = useAppNavigation$1();"]
+    "body": [
+      "const navigation = useAppNavigation$1();"
+    ]
   },
   "RN Dispatch": {
     "prefix": "dispatch",
     "description": "React Redux useDispatch",
-    "body": ["const dispatch = useDispatch$1();"]
+    "body": [
+      "const dispatch = useDispatch$1();"
+    ]
+  },
+  "functional component": {
+    "prefix": "fc",
+    "description": "Create a functional component",
+    "body": [
+      "export const ${TM_FILENAME_BASE} = () => {",
+      " return (",
+      "   <div>",
+      "     $0",
+      "   </div>",
+      " );",
+      "};"
+    ]
   }
 }
