@@ -1,6 +1,8 @@
 ## Plugins
 
+[arrow-nvim.lua](https://github.com/otavioschwanck/arrow.nvim) -- Jump between buffers
 [autopairs.lua](https://github.com/windwp/autopairs)
+
 [avante-nvim.lua](https://github.com/yetone/avante.nvim)
 [bufferline.lua](https://github.com/akinsho/bufferline)
 [cmp.lua](https://github.com/hrsh7th/cmp)
@@ -30,6 +32,7 @@
 [session-manager.lua](https://github.com/Shatur/session-manager)
 [sibling-swap.lua](https://github.com/Wansmer/sibling-swap)
 [smear-cursor-nvim.lua](https://github.com/sphamba/smear-cursor.nvim)
+[snacks-nvim.lua](https://github.com/folke/snacks.nvim/tree/main) - [scratch buffer](https://github.com/folke/snacks.nvim/blob/main/docs/scratch.md)
 [telescope-import-nvim.lua](https://github.com/piersolenski/telescope-import.nvim)
 [telescope.lua](https://github.com/nvim-telescope/telescope.nvim)
 [tint-nvim.lua](https://github.com/levouh/tint.nvim)
