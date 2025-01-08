@@ -2,17 +2,22 @@
   "RN App selector": {
     "prefix": "selector",
     "description": "React Redux useSelector",
-    "body": [
-      "const $1 = useAppSelector$2($3);"
-    ]
+    "body": ["const $1 = useAppSelector$2($3);"]
   },
   "Use memo": {
     "prefix": "memo",
     "description": "React useMemo",
+    "body": ["const $1 = useMemo(() => {", "   $3", "}, [$2]);"]
+  },
+  "React Functional Component": {
+    "prefix": "rfc",
+    "description": "React Functional Component",
     "body": [
-      "const $1 = useMemo(() => {",
-      "   $3",
-      "}, [$2]);"
+      "export const ${TM_FILENAME_BASE} = (): React.ReactNode => {",
+      " return (",
+      "   <p>${1:TM_FILENAME_BASE}</p>",
+      " )",
+      "}"
     ]
   }
 }

@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter", --- Recommended
     },
-    enabled = true,
+    enabled = false,
     lazy = false, -- NOTE: NO NEED to Lazy load
     init = function()
         vim.opt.wrap = false -- Recommended

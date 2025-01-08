@@ -25,9 +25,9 @@ vim.g.node_host_prog = '~/n/n/versions/node/19.5.0/bin/node'
 -----------------------------------------------------------
 -- Indentation
 -----------------------------------------------------------
-opt.tabstop 		    = 4
-opt.softtabstop 	  = 4
-opt.shiftwidth 		  = 4
+opt.tabstop 		= 2
+opt.softtabstop 	= 2
+opt.shiftwidth 		= 2
 opt.expandtab 	    = true
 opt.smartindent     = true
 
@@ -102,67 +102,67 @@ local function center_text(strDict)
 end
 
 -- Custom start screen
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        local directory = vim.fn.argv(0)
-        if vim.fn.isdirectory(directory) == 1 then
-            vim.cmd("enew")  -- Create a new empty buffer
-            vim.api.nvim_buf_delete(1, { force = true })
-            vim.bo.buftype = "nofile"  -- Set buffer type to "nofile" so it's not associated with a file
-            vim.bo.bufhidden = "hide"  -- Keep the buffer hidden when abandoned
-            vim.bo.swapfile = false     -- Disable swap file for this buffer
-
-            -- Set custom text
-            local custom_text = {
-              "",
-              "",
-              "",
-              "                                    ███▄    █ ▓█████  ▒█████",
-              "                                 ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒",
-              "                                        ▓██  ▀█ ██▒▒███   ▒██░  ██▒",
-              "                                        ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░",
-              "                                                ▒██░   ▓██░░▒████▒░ ████▓▒░",
-              "                                    ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░",
-              "                             ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░",
-              "                  ░   ░ ░    ░   ░ ░ ░ ▒",
-              "      ░    ░  ░    ░ ░",
-              "",
-              "     =====       =====   =========  ========  ========",
-              "    \\\\ . .\\\\   //. . // ||. . . .|| \\\\. . .\\\\// . . //",
-              "    ||. . ||   || . .|| ||. . . .|| || . . .\\/ . . .||",
-              "    || . .||   ||. . || || . . . || ||. . . . . . . ||",
-              "    ||. . ||   || . .|| ||. . . .|| || . | . . . . .||",
-              "    || . .||   ||. _-|| ||-_ . _-|| ||-_.|\\ . . . . ||",
-              "    ||. . ||   ||-'  || ||  `-'  || ||  `|\\_ . .|. .||",
-              "    || . _||   ||    || ||       || ||   |\\ `-_/| . ||",
-              "    ||_-' ||  .|/    || ||       || ||   | \\  / |-_.||",
-              "    ||    ||_-'      || ||       || ||   | \\  / |  `||",
-              "    ||    `'         || ||       || ||   | \\  / |   ||",
-              "    ||            .===' `===. .===' /==. |  \\/  |   ||",
-              "    ||         .=='   \\_|-_ `=' _-|/   `==  \\/  |   ||",
-              "    ||      .=='    _-'    `-_-'   `-_  /|  \\/  |   ||",
-              "    ||   .=='    _-'                  `' |. /|  |   ||",
-              "    ||.=='    _-'                         `' |  /==.||",
-              "    =='    _-'                                \\/   `==",
-              "    \\   _-'                                    `-_   /",
-              "     `''                                          ``'",
-            }
-
-            -- Set the buffer lines
-            vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
-            vim.bo.modifiable = false  -- Set buffer to non-modifiable
-            vim.bo.readonly = true      -- Optionally, set the buffer to read-only
-            vim.wo.number = false
-            vim.wo.relativenumber = false
-            vim.wo.colorcolumn = ""
-
-            vim.api.nvim_create_autocmd("WinResized", {
-              callback = function()
-                vim.bo.modifiable = true
-                vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
-                vim.bo.modifiable = false
-              end
-            })
-        end
-    end
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         local directory = vim.fn.argv(0)
+--         if vim.fn.isdirectory(directory) == 1 then
+--             vim.cmd("enew")  -- Create a new empty buffer
+--             vim.api.nvim_buf_delete(1, { force = true })
+--             vim.bo.buftype = "nofile"  -- Set buffer type to "nofile" so it's not associated with a file
+--             vim.bo.bufhidden = "hide"  -- Keep the buffer hidden when abandoned
+--             vim.bo.swapfile = false     -- Disable swap file for this buffer
+--
+--             -- Set custom text
+--             local custom_text = {
+--               "",
+--               "",
+--               "",
+--               "                                    ███▄    █ ▓█████  ▒█████",
+--               "                                 ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒",
+--               "                                        ▓██  ▀█ ██▒▒███   ▒██░  ██▒",
+--               "                                        ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░",
+--               "                                                ▒██░   ▓██░░▒████▒░ ████▓▒░",
+--               "                                    ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░",
+--               "                             ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░",
+--               "                  ░   ░ ░    ░   ░ ░ ░ ▒",
+--               "      ░    ░  ░    ░ ░",
+--               "",
+--               "     =====       =====   =========  ========  ========",
+--               "    \\\\ . .\\\\   //. . // ||. . . .|| \\\\. . .\\\\// . . //",
+--               "    ||. . ||   || . .|| ||. . . .|| || . . .\\/ . . .||",
+--               "    || . .||   ||. . || || . . . || ||. . . . . . . ||",
+--               "    ||. . ||   || . .|| ||. . . .|| || . | . . . . .||",
+--               "    || . .||   ||. _-|| ||-_ . _-|| ||-_.|\\ . . . . ||",
+--               "    ||. . ||   ||-'  || ||  `-'  || ||  `|\\_ . .|. .||",
+--               "    || . _||   ||    || ||       || ||   |\\ `-_/| . ||",
+--               "    ||_-' ||  .|/    || ||       || ||   | \\  / |-_.||",
+--               "    ||    ||_-'      || ||       || ||   | \\  / |  `||",
+--               "    ||    `'         || ||       || ||   | \\  / |   ||",
+--               "    ||            .===' `===. .===' /==. |  \\/  |   ||",
+--               "    ||         .=='   \\_|-_ `=' _-|/   `==  \\/  |   ||",
+--               "    ||      .=='    _-'    `-_-'   `-_  /|  \\/  |   ||",
+--               "    ||   .=='    _-'                  `' |. /|  |   ||",
+--               "    ||.=='    _-'                         `' |  /==.||",
+--               "    =='    _-'                                \\/   `==",
+--               "    \\   _-'                                    `-_   /",
+--               "     `''                                          ``'",
+--             }
+--
+--             -- Set the buffer lines
+--             vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
+--             vim.bo.modifiable = false  -- Set buffer to non-modifiable
+--             vim.bo.readonly = true      -- Optionally, set the buffer to read-only
+--             vim.wo.number = false
+--             vim.wo.relativenumber = false
+--             vim.wo.colorcolumn = ""
+--
+--             vim.api.nvim_create_autocmd("WinResized", {
+--               callback = function()
+--                 vim.bo.modifiable = true
+--                 vim.api.nvim_buf_set_lines(0, 0, -1, false, center_text(custom_text))
+--                 vim.bo.modifiable = false
+--               end
+--             })
+--         end
+--     end
+-- })

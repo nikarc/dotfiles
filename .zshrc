@@ -22,6 +22,9 @@ export PATH=~/.emacs.d/bin:$PATH
 ## bin directory
 export PATH="$HOME/bin:$PATH"
 
+## env
+source ~/.env
+
 ## Rust Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -34,9 +37,11 @@ export N_PREFIX="$HOME/n/"
 # Histyory size
 export HISTSIZE=1000000000
 
-# Pacman
-export PKGEXT='.pkg.tar'
-export MAKEFLAGS="-j$(nproc)"
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+    # Pacman
+    export PKGEXT='.pkg.tar'
+    export MAKEFLAGS="-j$(nproc)"
+fi
 
 # Rbenv
 if [ -x "$(command -v rbenv)" ]; then
@@ -114,6 +119,7 @@ plugins=(
   zsh-syntax-highlighting
   dotenv
   zsh-autosuggestions
+  pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -159,6 +165,8 @@ if command -v bat &> /dev/null; then
     alias og_cat=cat
     alias cat=bat
 fi
+alias python="python3"
+alias pip="pip3"
 alias docs="cd $docs"
 alias focs="cd ~/Documents"
 alias work="cd $work"
@@ -255,6 +263,8 @@ fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 
 # Homebrew path
 export PATH="/opt/homebrew/bin:$PATH"
+# Homebrew auto update interval
+export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export PATH="$HOME/.local/bin:$PATH"
@@ -405,3 +415,12 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+eval "$(pyenv init -)"
+eval "$(command pyenv init --path)"
+
