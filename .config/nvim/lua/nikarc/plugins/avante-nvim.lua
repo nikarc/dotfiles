@@ -1,11 +1,15 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  enabled = false,
   lazy = false,
   opts = {
     -- add any opts here
-    provider = "openai"
+    provider = "claude",
+    -- windows = {
+    --   ask = {
+    --     floating = true
+    --   }
+    -- }
     -- provider = "ollama",
     -- vendors = {
     --   ollama = {

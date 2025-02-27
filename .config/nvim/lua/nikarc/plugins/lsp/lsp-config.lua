@@ -127,5 +127,17 @@ return {
         fallbackFlags = { "-std=c++17" }
       },
     }
+
+    local sourcekitCapabilities = require('cmp_nvim_lsp').default_capabilities()
+    sourcekitCapabilities.workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    }
+
+    lspconfig.sourcekit.setup {
+      capabilities = capabilities,
+      on_attach=on_attach,
+    }
   end
 }

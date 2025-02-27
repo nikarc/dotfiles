@@ -47,18 +47,18 @@ M.mason_packages = {
 M.lsp_servers = {
     -- Manually set up clangd
     -- "clangd",
-    "ts_ls",
-    "pyright",
-    "lua_ls",
-    "eslint",
     "bashls",
-    "yamlls",
-    "jsonls",
     "cssls",
-    "taplo",
-    "html",
+    "eslint",
     "graphql",
+    "html",
+    "jsonls",
+    "lua_ls",
+    "pyright",
     "tailwindcss",
+    "taplo",
+    "ts_ls",
+    "yamlls",
     -- "gopls",
 }
 
