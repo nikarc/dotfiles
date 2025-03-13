@@ -5,6 +5,9 @@ return {
   opts = {
     -- add any opts here
     provider = "claude",
+    claude = {
+      model = "claude-3-5-sonnet-20241022"
+    }
     -- windows = {
     --   ask = {
     --     floating = true
