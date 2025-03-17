@@ -62,3 +62,6 @@ map('n', '<Space>kb', '<cmd>%bw<CR>', opts)
 
 -- Macros
 map('n', '<Leader>fb', ':FormatBuffer<CR>', opts)
+
+-- Neo Minimap
+map('n', '<Space>mm', '<cmd>Neominimap toggle<CR>', opts)
