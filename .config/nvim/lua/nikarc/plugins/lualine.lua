@@ -4,6 +4,13 @@ return {
     'nvim-tree/nvim-web-devicons',
     opt = true,
   },
+  -- opts = {
+  --   sections = {
+  --     lualine_c = {
+  --       require('mssql').lualine_component,
+  --     }
+  --   }
+  -- },
   config = function()
     -- local wpm = require('wpm')
     local bubbles_theme = require("nightfox.util.lualine")("nightfox")

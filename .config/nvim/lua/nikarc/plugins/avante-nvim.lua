@@ -2,6 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
+  tag = "v0.0.22",
   opts = {
     -- add any opts here
     provider = "claude",
