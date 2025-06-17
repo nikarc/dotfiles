@@ -2,13 +2,15 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  tag = "v0.0.22",
+  -- tag = "v0.0.22",
   opts = {
     -- add any opts here
     provider = "claude",
-    claude = {
-      model = "claude-3-5-sonnet-20241022"
-    }
+    -- providers = {
+    --   claude = {
+    --     model = "claude-3-5-sonnet-20241022"
+    --   }
+    -- }
     -- windows = {
     --   ask = {
     --     floating = true

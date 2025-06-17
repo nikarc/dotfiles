@@ -34,6 +34,9 @@ export MANPAGER="nvim +Man!"
 # N node manager package
 export N_PREFIX="$HOME/n/"
 
+# Docker "what's next?" hints
+export DOCKER_CLI_HINTS=false
+
 # Histyory size
 export HISTSIZE=1000000000
 
