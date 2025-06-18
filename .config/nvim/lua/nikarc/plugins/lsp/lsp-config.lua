@@ -72,7 +72,7 @@ return {
       vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, opts)
 
       opts.desc = "Smart rename"
-      vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+      vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, opts)
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
