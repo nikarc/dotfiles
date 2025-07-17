@@ -6,8 +6,12 @@ return {
       null_ls.setup({
       sources = {
               -- Python formatters
-              null_ls.builtins.formatting.black,
-              null_ls.builtins.formatting.isort,
+              null_ls.builtins.formatting.black.with({
+                command = "/opt/homebrew/bin/black",
+              }),
+              null_ls.builtins.formatting.isort.with({
+                extra_args = { "--remove-redundant-aliases", "--profile", "black" }
+              }),
 
               -- Add other formatters you want
               null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
