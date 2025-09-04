@@ -265,7 +265,8 @@ fpath=($fpath "$ZSH_CUSTOM/themes/spaceship-prompt")
 # prompt spaceship
 
 # Homebrew path
-export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="/opt/home/bin:$PATH"
+export PATH="$HOME/brew/bin:$PATH"
 # Homebrew auto update interval
 export HOMEBREW_AUTO_UPDATE_SECS=604800
 
@@ -420,10 +421,11 @@ unset __conda_setup
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
-eval "$(pyenv init -)"
-eval "$(command pyenv init --path)"
+# eval "$(pyenv init -)"
+# eval "$(command pyenv init --path)"
 
+export PATH="/Users/Work/brew/opt/ruby/bin:$PATH"

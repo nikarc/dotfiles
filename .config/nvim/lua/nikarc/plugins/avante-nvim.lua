@@ -1,12 +1,20 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  enabled = false,
   lazy = false,
   -- tag = "v0.0.22",
   opts = {
     -- add any opts here
     provider = "claude",
+    -- provider = "openai",
+    -- providers = {
+    --   openai = {
+    --     model = "gpt-5",
+    --     extra_request_body = {
+    --       temperature = 1,
+    --     }
+    --   }
+    -- }
     -- providers = {
     --   claude = {
     --     model = "claude-3-5-sonnet-20241022"

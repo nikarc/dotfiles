@@ -56,6 +56,7 @@ return {
 
         return {
             defaults = {
+                find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
                 borderchars = {
                     prompt = { '▔', '▕', ' ', '▏', '🭽', '🭾', '▕', '▏' },
                     results = utils.border_chars_outer_thin_telescope,
