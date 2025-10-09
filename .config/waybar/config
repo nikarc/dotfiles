@@ -1,15 +1,27 @@
 {
     "layer": "top",
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
     "modules-right": [
-        "temperature",
         "clock"
     ],
+    "hyprland/workspaces": {
+        "format": "{name}: {windows}",
+        "format-window-separator": " ",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "󰗃",
+            "class<firefox>": "󰈹",
+            "class<kitty>": ""
+        }
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true
+    },
     "clock": {
         "format": "{:%a %b %d  %I:%M%p}"
     }
 }
-

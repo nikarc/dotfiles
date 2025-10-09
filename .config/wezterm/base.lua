@@ -22,11 +22,11 @@ return {
   -- font = wezterm.font 'Fira Code',
   -- font = wezterm.font 'Sarasa Term SC Nerd',
   scrollback_lines = 10000,
-  window_background_opacity = 0.82,
+  window_background_opacity = 0.2,
   keys = {
     {
       key = 'k',
-      mods = 'SUPER',
+      mods = 'SUPER|SHIFT',
       action = act.ClearScrollback 'ScrollbackAndViewport',
     },
     {

@@ -1,5 +1,4 @@
 status --is-interactive
-rbenv init - fish | source
 
 dotenv ~/.env
 

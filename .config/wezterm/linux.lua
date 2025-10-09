@@ -5,6 +5,6 @@ local wezterm = require 'wezterm'
 return {
   -- font = wezterm.font 'agave Nerd Font',
   font = wezterm.font 'Iosevka Nerd Font',
-  font_size = 18,
+  font_size = 20,
     -- font = wezterm.font 'JetBrains Mono Nerd Font',
 }
