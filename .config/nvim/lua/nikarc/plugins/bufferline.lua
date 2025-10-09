@@ -7,10 +7,10 @@ return {
   config = function()
     require("bufferline").setup({
       highlights = {
-        background = {
-          fg = utils.get_hl_color('Conceal'),
+        -- background = {
+          -- fg = utils.get_hl_color('Conceal'),
           -- bg = '<colour-value-here>',
-        },
+        -- },
         buffer_selected = {
           fg = utils.get_hl_color('Identifier'),
         },

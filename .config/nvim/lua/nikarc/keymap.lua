@@ -62,6 +62,7 @@ map('n', '<Space>kb', '<cmd>%bw<CR>', opts)
 
 -- Macros
 map('n', '<Leader>fb', ':FormatBuffer<CR>', opts)
+map('n', '<leader>cr', ':source $MYVIMRC<CR>', { desc = 'Reload config' })
 
 -- Neo Minimap
 map('n', '<Space>mm', '<cmd>Neominimap toggle<CR>', opts)
