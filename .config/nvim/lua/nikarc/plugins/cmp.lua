@@ -55,9 +55,10 @@ return {
         end,
       },
       formatting = {
-        format = lspkind.cmp_format({
-          before = require("tailwind-tools.cmp").lspkind_format,
-        }),
+        -- format = lspkind.cmp_format({
+        --   before = require("tailwind-tools.cmp").lspkind_format,
+        -- }),
+        format = lspkind.cmp_format(),
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping.select_next_item(),

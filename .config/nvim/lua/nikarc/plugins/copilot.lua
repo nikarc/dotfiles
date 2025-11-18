@@ -4,6 +4,7 @@ return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
+  enabled = false,
   config = function ()
     local accept_keymap = '<C-Enter>'
 
