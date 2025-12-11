@@ -1,5 +1,5 @@
 return {
   "sphamba/smear-cursor.nvim",
-  enabled = false,
+  -- enabled = false,
   opts = {},
 }
