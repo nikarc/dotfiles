@@ -139,5 +139,24 @@ return {
       capabilities = capabilities,
       on_attach=on_attach,
     }
+
+    lspconfig.emmet_ls.setup {
+      capabilities = capabilities,
+      filetypes = {
+        "css",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescriptreact",
+        "scss",
+      },
+      init_options = {
+        html = {
+          options = {
+            ["bem.enabled"] = true,
+          },
+        },
+      },
+    }
   end
 }

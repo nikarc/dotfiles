@@ -1,4 +1,107 @@
 local utils = require('nikarc.utils')
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local function toggle_telescope(opts)
+  opts = opts or {}
+
+  -- Get all terminal instances
+  local terminals = require("toggleterm.terminal").get_all()
+
+  -- Convert terminals to picker entries
+  local results = {}
+  for _, term in pairs(terminals) do
+    table.insert(results, {
+      id = term.id,
+      name = term.display_name or ("Terminal " .. term.id),
+      direction = term.direction,
+      cmd = term.cmd or "",
+      terminal = term,
+    })
+  end
+
+  pickers.new(opts, {
+    prompt_title = "Toggleterm Terminals",
+    finder = finders.new_table({
+      results = results,
+      entry_maker = function(entry)
+        return {
+          value = entry,
+          display = string.format("[%d] %s (%s) %s",
+            entry.id,
+            entry.name,
+            entry.direction,
+            entry.cmd ~= "" and "- " .. entry.cmd or ""
+          ),
+          ordinal = string.format("%d %s %s", entry.id, entry.name, entry.cmd),
+        }
+      end,
+    }),
+    sorter = conf.generic_sorter(opts),
+    attach_mappings = function(prompt_bufnr, map)
+      -- Default action: toggle terminal
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        selection.value.terminal:toggle()
+      end)
+
+      -- Delete terminal with <C-d>
+      map("i", "<C-d>", function()
+        local selection = action_state.get_selected_entry()
+        local current_picker = action_state.get_current_picker(prompt_bufnr)
+
+        -- Close/shutdown the terminal
+        selection.value.terminal:shutdown()
+
+        -- Remove from picker
+        current_picker:delete_selection(function(sel)
+          -- Optional: refresh the picker to show updated list
+        end)
+      end)
+
+      map("n", "<C-d>", function()
+        local selection = action_state.get_selected_entry()
+        local current_picker = action_state.get_current_picker(prompt_bufnr)
+
+        selection.value.terminal:shutdown()
+        current_picker:delete_selection(function(sel)
+        end)
+      end)
+
+      -- Rename terminal with <C-r>
+      map("i", "<C-r>", function()
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        vim.ui.input({ prompt = "Terminal name: " }, function(input)
+          if input then
+            selection.value.terminal.display_name = input
+            -- Reopen picker to show updated name
+            toggle_telescope(opts)
+          end
+        end)
+      end)
+
+      map("n", "<C-r>", function()
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        vim.ui.input({ prompt = "Terminal name: " }, function(input)
+          if input then
+            selection.value.terminal.display_name = input
+            toggle_telescope(opts)
+          end
+        end)
+      end)
+
+      return true
+    end,
+  }):find()
+end
 
 return {
   'akinsho/toggleterm.nvim',
@@ -46,19 +149,21 @@ return {
       end
     end
 
-    -- local Terminal  = require('toggleterm.terminal').Terminal
-    -- local lazygit = Terminal:new({
-    --   cmd = "lazygit",
-    --   hidden = true,
-    --   direction = 'float',
-    --   autochdir = true,
-    --   float_opts = float_opts(),
-    -- })
-    --
-    -- function _lazygit_toggle()
-    --   lazygit:toggle()
-    -- end
+    local Terminal  = require('toggleterm.terminal').Terminal
+    local lazygit = Terminal:new({
+      cmd = "lazygit",
+      hidden = true,
+      -- direction = 'float',
+      autochdir = true,
+      -- float_opts = float_opts(),
+    })
 
-    -- vim.api.nvim_set_keymap("n", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    function _lazygit_toggle()
+      lazygit:toggle()
+    end
+
+    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    vim.keymap.set("n", "<leader>tq", toggle_telescope, { desc = "Telescope Toggleterm" })
+    vim.keymap.set("n", "<leader>nt", "<cmd>TermNew<CR>", { desc = "Open new toggleterm terminal" })
   end,
 }
