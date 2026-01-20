@@ -1,4 +1,5 @@
 local utils = require('nikarc.utils')
+local path_utils = require('nikarc.utils.path')
 
 return {
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
@@ -54,28 +55,36 @@ return {
             end
         end
 
-        return {
-            defaults = {
-                find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-                borderchars = {
-                    prompt = { '▔', '▕', ' ', '▏', '🭽', '🭾', '▕', '▏' },
-                    results = utils.border_chars_outer_thin_telescope,
-                    preview = utils.border_chars_outer_thin_telescope,
-                },
-                -- path_display = {
-                --   'smart'
-                -- },
-                layout_config = layout()
-            },
-        }
-    end,
-    config = function ()
-        local telescope = require("telescope")
-
-        -- first setup telescope
-        telescope.setup()
-
-        -- then load the extension
-        telescope.load_extension("live_grep_args")
+    local function path_display(_, path)
+      local stripped_path, filename = path_utils.split_filepath(path)
+      if filename == stripped_path or stripped_path == "" then
+        return filename
+      end
+      return string.format("%s ~ %s", filename, stripped_path)
     end
+
+    return {
+      defaults = {
+        find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+        borderchars = {
+          prompt = { '▔', '▕', ' ', '▏', '🭽', '🭾', '▕', '▏' },
+          results = utils.border_chars_outer_thin_telescope,
+          preview = utils.border_chars_outer_thin_telescope,
+        },
+        path_display = {
+          'truncate'
+        },
+        layout_config = layout()
+      },
+    }
+  end,
+  config = function ()
+    local telescope = require("telescope")
+
+    -- first setup telescope
+    telescope.setup()
+
+    -- then load the extension
+    telescope.load_extension("live_grep_args")
+  end
 }
