@@ -105,7 +105,7 @@ end
 
 return {
   'akinsho/toggleterm.nvim',
-  version = "*",
+  -- version = "*",
   config = function()
     require("toggleterm").setup({
       open_mapping = [[<C-t>]],
@@ -158,11 +158,11 @@ return {
       -- float_opts = float_opts(),
     })
 
-    function _lazygit_toggle()
+    function LazygitToggle()
       lazygit:toggle()
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua LazygitToggle()<CR>", {noremap = true, silent = true})
     vim.keymap.set("n", "<leader>tq", toggle_telescope, { desc = "Telescope Toggleterm" })
     vim.keymap.set("n", "<leader>nt", "<cmd>TermNew<CR>", { desc = "Open new toggleterm terminal" })
   end,

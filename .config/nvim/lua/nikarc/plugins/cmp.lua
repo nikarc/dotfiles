@@ -6,8 +6,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
+    -- "L3MON4D3/LuaSnip",
+    -- "saadparwaiz1/cmp_luasnip",
     -- "rafamadriz/friendly-snippets",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-cmdline",
@@ -15,10 +15,10 @@ return {
   },
   opts = function ()
     local cmp = require"cmp"
-    local luasnip = require"luasnip"
+    -- local luasnip = require"luasnip"
     local lspkind = require"lspkind"
 
-    require('luasnip.loaders.from_vscode').lazy_load()
+    -- require('luasnip.loaders.from_vscode').lazy_load()
 
     return {
       sorting = {
@@ -49,11 +49,11 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = {
-        expand = function (args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
+      -- snippet = {
+      --   expand = function (args)
+      --     luasnip.lsp_expand(args.body)
+      --   end,
+      -- },
       formatting = {
         -- format = lspkind.cmp_format({
         --   before = require("tailwind-tools.cmp").lspkind_format,
@@ -68,7 +68,7 @@ return {
       }),
       sources = {
         {name = 'path'},
-        {name = 'luasnip', keyword_length = 2},
+        -- {name = 'luasnip', keyword_length = 2},
         {name = 'nvim_lsp', keyword_length = 1},
         {name = 'buffer', keyword_length = 3},
       }
