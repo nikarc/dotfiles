@@ -36,9 +36,12 @@ map('n', '<Space>x', '<cmd>!chmod +x %<CR>', { silent = true })
 map('n', ',,', 'A,<Esc>')
 map('n', ',;', 'A;<Esc>')
 
+-- Buffer stuff
 map('n', 'bb', vim.cmd.bp)
 map('n', 'bn', vim.cmd.bn)
 map('n', 'bw', vim.cmd.bw)
+map('n', 'bo', vim.cmd.only)
+map('n', '<Space>kb', '<cmd>%bw<CR>', opts) -- Kill all buffers
 
 -- Sessions
 map('n', '<Space>pp', '<cmd>SessionManager load_session<CR>')
@@ -58,12 +61,12 @@ map('n', '<Space>gb', '<cmd>Git blame_line<CR>')
 -- Manually call lsp formatter
 map('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
--- Kill all buffers
-map('n', '<Space>kb', '<cmd>%bw<CR>', opts)
-
 -- Macros
 map('n', '<Leader>fb', ':FormatBuffer<CR>', opts)
 map('n', '<leader>cr', ':source $MYVIMRC<CR>', { desc = 'Reload config' })
 
 -- Neo Minimap
 map('n', '<Space>mm', '<cmd>Neominimap toggle<CR>', opts)
+
+-- Yank without indent
+map('v', '<leader>si', "<cmd>'<,'>/^\\s\\+//e<CR>", opts)
