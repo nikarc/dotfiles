@@ -158,5 +158,24 @@ return {
         },
       },
     }
+
+    lspconfig.tailwindcss.setup({
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              -- Matches: className="..." or className={"..."}
+              { "className\\s*[=:]\\s*[\"'`]([^\"'`]*)[\"'`]" },
+              -- Matches: myClassName="..."
+              { "className\\s*[=:]\\s*[\"'`]([^\"'`]*)[\"'`]" },
+              -- Matches any prop ending in className
+              { "\\w+ClassName\\s*[=:]\\s*[\"'`]([^\"'`]*)[\"'`]" },
+              -- For cn(), clsx(), cva(), twMerge() etc.
+              { "(?:cn|clsx|cva|twMerge)\\(([^)]*)" , "[\"'`]([^\"'`]*)[\"'`]" },
+            },
+          },
+        },
+      },
+    })
   end
 }

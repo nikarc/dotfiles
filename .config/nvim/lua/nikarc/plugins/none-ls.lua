@@ -1,23 +1,33 @@
+utils = require('nikarc.utils')
+
 return {
   "nvimtools/none-ls.nvim",
   config = function ()
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     local null_ls = require("null-ls")
+    local is_linux = utils.is_linux()
+
+    local sources = {
+      null_ls.builtins.formatting.isort.with({
+        extra_args = { "--remove-redundant-aliases", "--profile", "black" }
+      }),
+
+      -- Add other formatters you want
+      null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
+      -- null_ls.builtins.diagnostics.eslint,
+    }
+
+    if not is_linux then
+      -- Python formatters
+      table.insert(sources, null_ls.builtins.formatting.black.with({
+        command = "/opt/homebrew/bin/black",
+      }))
+    end
+
+
     vim.keymap.set('n', '<Space>fb', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
     null_ls.setup({
-      sources = {
-        -- Python formatters
-        null_ls.builtins.formatting.black.with({
-          command = "/opt/homebrew/bin/black",
-        }),
-        null_ls.builtins.formatting.isort.with({
-          extra_args = { "--remove-redundant-aliases", "--profile", "black" }
-        }),
-
-        -- Add other formatters you want
-        null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
-        -- null_ls.builtins.diagnostics.eslint,
-      },
+      sources = sources,
       -- you can reuse a shared lspconfig on_attach callback here
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

@@ -48,7 +48,8 @@ map('n', '<Space>ps', '<cmd>SessionManager save_current_session<CR>')
 -- map('n', '<Space>b', '<cmd>Neotree reveal<CR>')
 
 -- Copy filename to clipboard
-map('n', '<Space>cf', ':let @+=expand("%")<CR>', { noremap = true, silent = true })
+vim.api.nvim_create_user_command("CopyRelPath", "call setreg('+', fnamemodify(expand('%'), ':.'))", {})
+map('n', '<Space>cf', '<cmd>CopyRelPath<CR>', { noremap = true, silent = true })
 
 -- Git
 map('n', '<Space>gs', '<cmd>Git<CR>')
