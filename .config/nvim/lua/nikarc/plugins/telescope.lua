@@ -79,11 +79,11 @@ return {
       },
     }
   end,
-  config = function ()
+  config = function (_, opts)
     local telescope = require("telescope")
 
     -- first setup telescope
-    telescope.setup()
+    telescope.setup(opts)
 
     -- then load the extension
     telescope.load_extension("live_grep_args")
