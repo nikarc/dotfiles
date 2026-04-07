@@ -13,7 +13,7 @@ return {
     }
   },
   config = function ()
-    local lspconfig = require("lspconfig")
+    local lspconfig = vim.lsp.config
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local function filterReactDTS(value)
@@ -87,7 +87,7 @@ return {
     end
 
     for _, server in ipairs(lsp_servers) do
-      lspconfig[server].setup({
+      vim.lsp.config(server, {
         capabilities = capabilities,
         on_attach = on_attach,
         flags = {
@@ -98,7 +98,7 @@ return {
       })
     end
 
-    lspconfig.clangd.setup {
+    vim.lsp.config('clangd', {
       capabilities = capabilities,
       on_attach = function (_, bufnr)
         on_attach(_, bufnr)
@@ -114,7 +114,7 @@ return {
         "--function-arg-placeholders"
       },
       filetypes = { "c", "cpp", "objc", "objcpp" },
-      root_dir = lspconfig.util.root_pattern(
+      root_markers = {
         '.clangd',
         '.clang-tidy',
         '.clang-format',
@@ -122,11 +122,11 @@ return {
         'compile_flags.txt',
         'configure.ac',
         '.git'
-      ),
+      },
       init_options = {
         fallbackFlags = { "-std=c++17" }
       },
-    }
+    })
 
     local sourcekitCapabilities = require('cmp_nvim_lsp').default_capabilities()
     sourcekitCapabilities.workspace = {
@@ -135,12 +135,12 @@ return {
       },
     }
 
-    lspconfig.sourcekit.setup {
+    vim.lsp.config('sourcekit', {
       capabilities = capabilities,
       on_attach=on_attach,
-    }
+    })
 
-    lspconfig.emmet_ls.setup {
+    vim.lsp.config('emmet_ls', {
       capabilities = capabilities,
       filetypes = {
         "css",
@@ -157,9 +157,9 @@ return {
           },
         },
       },
-    }
+    })
 
-    lspconfig.tailwindcss.setup({
+    vim.lsp.config('tailwindcss', {
       settings = {
         tailwindCSS = {
           experimental = {
