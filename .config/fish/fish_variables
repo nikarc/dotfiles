@@ -3,6 +3,7 @@
 SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
 SETUVAR --export DOCKER_CLI_HINTS:false
 SETUVAR --export EDITOR:nvim
+SETUVAR --export GTK_THEME:Breeze
 SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/zulu\x2d17\x2ejdk/Contents/Home/
 SETUVAR --export MOZ_ENABLE_WAYLAND:1
 SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d8192
