@@ -2,19 +2,37 @@ utils = require('nikarc.utils')
 
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = { "nvimtools/none-ls-extras.nvim" },
   config = function ()
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     local null_ls = require("null-ls")
     local is_linux = utils.is_linux()
+
+    local has_eslint_config = function(utils)
+      return utils.has_file({
+        "eslint.config.js",
+        "eslint.config.mjs",
+        ".eslintrc",
+        ".eslintrc.js",
+        ".eslintrc.json",
+        ".eslintrc.yml",
+      })
+    end
 
     local sources = {
       null_ls.builtins.formatting.isort.with({
         extra_args = { "--remove-redundant-aliases", "--profile", "black" }
       }),
 
-      -- Add other formatters you want
-      null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
-      -- null_ls.builtins.diagnostics.eslint,
+      require("none-ls.formatting.eslint_d").with({
+        condition = has_eslint_config,
+        prefer_local = "node_modules/.bin",
+      }),
+
+      null_ls.builtins.formatting.prettier.with({
+        condition = function(utils) return not has_eslint_config(utils) end,
+        prefer_local = "node_modules/.bin",
+      }),
     }
 
     if not is_linux then
