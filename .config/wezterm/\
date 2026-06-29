@@ -2,6 +2,6 @@ local wezterm = require 'wezterm'
 
 -- MacOS specific configuration
 return {
-  font_size = 14,
+  font_size = 16,
   window_background_opacity = 0.8,
 }
