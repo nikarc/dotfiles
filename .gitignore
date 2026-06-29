@@ -1,3 +1,6 @@
 .vim/plugged/*
 .fonts
 **/.DS_Store
+
+# Fish
+.config/fish/fish_variables
