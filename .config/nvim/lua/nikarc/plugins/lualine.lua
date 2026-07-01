@@ -4,40 +4,87 @@ return {
     'nvim-tree/nvim-web-devicons',
     opt = true,
   },
-  -- opts = {
-  --   sections = {
-  --     lualine_c = {
-  --       require('mssql').lualine_component,
-  --     }
-  --   }
-  -- },
   config = function()
-    -- local wpm = require('wpm')
     local bubbles_theme = require("nightfox.util.lualine")("nightfox")
 
     require('lualine').setup {
       options = {
         theme = bubbles_theme,
         component_separators = '|',
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
       },
       sections = {
         lualine_a = {
-          { 'mode', separator = { left = '' }, right_padding = 2 },
+          { 'mode', separator = { left = '' }, right_padding = 2 },
         },
         lualine_b = {
           {
             'filename',
             path = 1
           },
-          'branch'
+          'branch',
+          -- Show terminal info
+          {
+            function()
+              if vim.bo.filetype == 'toggleterm' then
+                local toggle_num = vim.b.toggle_number
+                local term_title = vim.b.term_title
+
+                if toggle_num then
+                  if term_title and term_title ~= '' then
+                    return string.format('Term %s: %s', toggle_num, term_title)
+                  else
+                    return string.format('Terminal %s', toggle_num)
+                  end
+                end
+              end
+              return ''
+            end,
+            icon = '',
+            color = { fg = '#98c379', gui = 'bold' },
+          },
         },
-        lualine_c = { 'fileformat' },
+        lualine_c = {
+          'fileformat',
+          -- Show all open terminals
+          {
+            function()
+              local terminals = require("toggleterm.terminal").get_all()
+              local result = {}
+
+              for _, term in pairs(terminals) do
+                local name
+
+                -- Priority: display_name > cmd > "shell"
+                if term.display_name and term.display_name ~= '' then
+                  name = term.display_name
+                elseif term.cmd and term.cmd ~= '' then
+                  -- Extract just the command name (first word)
+                  name = term.cmd:match("^%S+") or term.cmd
+                else
+                  -- For terminals without a specific command, try to get the shell process
+                  name = "shell"
+                end
+
+                table.insert(result, string.format('%d:%s', term.id, name))
+              end
+
+              if #result > 0 then
+                return table.concat(result, ' ')
+              end
+              return ''
+            end,
+            icon = '',
+            color = { fg = '#61afef' },
+            cond = function()
+              return vim.bo.filetype ~= 'toggleterm'
+            end,
+          },
+        },
         lualine_x = {},
         lualine_y = {
           'filetype',
           'progress',
-          -- wpm.wpm,
           -- Display number of loaded buffers
           {
             function()
@@ -51,13 +98,12 @@ return {
               end
               return loaded_bufs
             end,
-            icon = "",
+            icon = "",
             color = { fg = "DarkCyan", gui = "bold" },
           },
-          -- wpm.historic_graph
         },
         lualine_z = {
-          { 'location', separator = { right = '' }, left_padding = 2 },
+          { 'location', separator = { right = '' }, left_padding = 2 },
         },
       },
       inactive_sections = {

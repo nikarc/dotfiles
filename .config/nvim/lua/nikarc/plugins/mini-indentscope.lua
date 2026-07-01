@@ -1,3 +1,4 @@
 return {
-  'echasnovski/mini.indentscope', version = '*'
+  'echasnovski/mini.indentscope',
+  version = '*'
 }

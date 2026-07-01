@@ -44,3 +44,7 @@ if test -f /Users/nick/anaconda3/bin/conda
     eval /Users/nick/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 end
 # <<< conda initialize <<<
+
+if test -f $(which thefuck)
+  thefuck --alias | source
+end

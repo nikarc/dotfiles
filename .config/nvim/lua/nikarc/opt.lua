@@ -10,7 +10,7 @@ opt.termguicolors = true -- enable 24-bit RGB colors
 -- General
 -----------------------------------------------------------
 vim.g.mapleader     = ' '
-opt.mouse 		      = ''
+-- opt.mouse 		      = ''
 opt.clipboard 		  = 'unnamedplus'
 
 -- Send swap/undo files to somewhere else on the filesystem.

@@ -13,6 +13,7 @@ return {
     }
   },
   config = function ()
+    local lspconfig = vim.lsp.config
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local function filterReactDTS(value)
