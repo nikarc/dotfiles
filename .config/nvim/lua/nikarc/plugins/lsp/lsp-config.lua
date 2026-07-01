@@ -13,7 +13,6 @@ return {
     }
   },
   config = function ()
-    local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local function filterReactDTS(value)
@@ -37,7 +36,7 @@ return {
     end
 
     local function on_list(options)
-      -- [https://github.com/typescript-language-server/typescript-language-server/issues/216](https://github.com/typescript-language-server/typescript-language-server/issues/216)
+      -- https://github.com/typescript-language-server/typescript-language-server/issues/216
       local items = options.items
       if #items > 1 then
         items = filter(items, filterReactDTS)
@@ -86,23 +85,25 @@ return {
       })
     end
 
+    -- Generic servers from your list
     for _, server in ipairs(lsp_servers) do
-      lspconfig[server].setup({
+      vim.lsp.config(server, {
         capabilities = capabilities,
         on_attach = on_attach,
+        handlers = lsp_server_handlers[server],
         flags = {
           allow_incremental_sync = true,
           debounce_text_changes = 500,
-          handlers = lsp_server_handlers[server],
-        }
+        },
       })
+      vim.lsp.enable(server)
     end
 
-    lspconfig.clangd.setup {
+    -- clangd
+    vim.lsp.config("clangd", {
       capabilities = capabilities,
       on_attach = function (_, bufnr)
         on_attach(_, bufnr)
-
         vim.lsp.set_log_level("debug")
       end,
       cmd = {
@@ -114,7 +115,7 @@ return {
         "--function-arg-placeholders"
       },
       filetypes = { "c", "cpp", "objc", "objcpp" },
-      root_dir = lspconfig.util.root_pattern(
+      root_markers = {
         '.clangd',
         '.clang-tidy',
         '.clang-format',
@@ -122,22 +123,44 @@ return {
         'compile_flags.txt',
         'configure.ac',
         '.git'
-      ),
+      },
       init_options = {
         fallbackFlags = { "-std=c++17" }
       },
-    }
+    })
+    vim.lsp.enable("clangd")
 
-    local sourcekitCapabilities = require('cmp_nvim_lsp').default_capabilities()
+    -- sourcekit
+    local sourcekitCapabilities = vim.deepcopy(capabilities)
     sourcekitCapabilities.workspace = {
       didChangeWatchedFiles = {
         dynamicRegistration = true,
       },
     }
 
-    lspconfig.sourcekit.setup {
+    vim.lsp.config("sourcekit", {
+      capabilities = sourcekitCapabilities,
+      on_attach = on_attach,
+    })
+    vim.lsp.enable("sourcekit")
+
+    -- tailwindcss
+    vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
-      on_attach=on_attach,
-    }
+      on_attach = on_attach,
+    })
+    vim.lsp.enable("tailwindcss")
+
+    -- ltex
+    vim.lsp.config("ltex", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        ltex = {
+          language = 'en-US'
+        }
+      }
+    })
+    vim.lsp.enable("ltex")
   end
 }

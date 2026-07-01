@@ -2,6 +2,7 @@ local kind_icons = require("nikarc.utils").kind_icons
 
 return {
   "hrsh7th/nvim-cmp",
+  enabled = false,
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",
@@ -55,9 +56,7 @@ return {
         end,
       },
       formatting = {
-        format = lspkind.cmp_format({
-          before = require("tailwind-tools.cmp").lspkind_format,
-        }),
+        format = lspkind.cmp_format(),
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping.select_next_item(),
@@ -70,6 +69,10 @@ return {
         {name = 'luasnip', keyword_length = 2},
         {name = 'nvim_lsp', keyword_length = 1},
         {name = 'buffer', keyword_length = 3},
+        {
+          name = "lazydev",
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        }
       }
     }
   end
