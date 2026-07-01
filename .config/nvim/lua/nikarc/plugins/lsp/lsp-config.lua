@@ -6,7 +6,7 @@ return {
   "neovim/nvim-lspconfig",
   event = {"BufReadPre", "BufNewFile"},
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    -- "hrsh7th/cmp-nvim-lsp",
     {
       "antosha417/nvim-lsp-file-operations",
       config = true,
@@ -14,7 +14,7 @@ return {
   },
   config = function ()
     local lspconfig = vim.lsp.config
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local function filterReactDTS(value)
       return string.match(value.filename, 'react/index.d.ts') == nil and
@@ -75,7 +75,8 @@ return {
       vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, opts)
     end
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = {}
 
     for type, icon in ipairs(lsp_signs) do
       local hl = "DiagnosticSign" .. type
