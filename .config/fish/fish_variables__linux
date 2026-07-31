@@ -1,13 +1,15 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
+SETUVAR --export ANDROID_HOME:/home/nick/Android/Sdk
+SETUVAR --export ANDROID_SDK_ROOT:/home/nick/Android/Sdk
 SETUVAR --export DOCKER_CLI_HINTS:false
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GTK_THEME:Breeze
-SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/zulu\x2d17\x2ejdk/Contents/Home/
+SETUVAR --export JAVA_HOME:/usr/lib/jvm/java\x2d17\x2dopenjdk
 SETUVAR --export MOZ_ENABLE_WAYLAND:1
 SETUVAR --export NODE_OPTIONS:\x2d\x2dmax\x2dold\x2dspace\x2dsize\x3d8192
 SETUVAR --export N_PREFIX:/home/nick/node_versions
+SETUVAR --export OLLAMA_API_BASE:http\x3a//127\x2e0\x2e0\x2e1\x3a11434
 SETUVAR --export PIPEWIRE_LATENCY:64/48000
 SETUVAR --export PIPEWIRE_QUANTUM:128/48000
 SETUVAR --export REACT_EDITOR:nvim
@@ -16,4 +18,4 @@ SETUVAR --export WEZTERM_CONFIG_DIR:/home/nick/\x2econfig/wezterm
 SETUVAR --export WEZTERM_CONFIG_FILE:/home/nick/\x2econfig/wezterm/wezterm\x2elua
 SETUVAR --export XDG_CONFIG_HOME:/home/nick/\x2econfig
 SETUVAR __fish_initialized:4300
-SETUVAR --export fish_user_paths:/home/nick/\x2elocal/bin\x1e/var/lib/snapd/snap/bin\x1e/home/nick/node_versions/bin\x1e/home/nick/node_versions\x1e/opt/homebrew/opt/ruby\x402\x2e7/bin\x1e\x7e/nick/\x2enpm\x2dglobal/bin\x1e/home/nick/\x2enpm\x2dglobal/bin\x1e/home/nick/\x2enpm\x2dglobal\x1e/opt/homebrew/bin\x1e\x7e/nick/\x2erbenv/shims\x1e\x7e/nick/\x2ervm\x1e/opt/homebrew/lib\x1e/opt/homebrew/lib/ruby/gems\x1e\x7e/nick/\x2emaestro/bin\x1e\x7e/nick/Library/Android/sdk/emulator\x1e\x7e/nick/Library/Android/sdk/platform\x2dtools\x1e/Users/nickarcuri/\x2enpm\x2dglobal/bin\x1e/Users/nickarcuri/\x2ecargo/bin
+SETUVAR --export fish_user_paths:/home/nick/dotenvx\x1e/home/nick/\x2elocal/bin\x1e/var/lib/snapd/snap/bin\x1e/home/nick/node_versions/bin\x1e/home/nick/node_versions\x1e/opt/homebrew/opt/ruby\x402\x2e7/bin\x1e\x7e/nick/\x2enpm\x2dglobal/bin\x1e/home/nick/\x2enpm\x2dglobal/bin\x1e/home/nick/\x2enpm\x2dglobal\x1e/opt/homebrew/bin\x1e\x7e/nick/\x2erbenv/shims\x1e\x7e/nick/\x2ervm\x1e/opt/homebrew/lib\x1e/opt/homebrew/lib/ruby/gems\x1e\x7e/nick/\x2emaestro/bin\x1e\x7e/nick/Library/Android/sdk/emulator\x1e\x7e/nick/Library/Android/sdk/platform\x2dtools\x1e/Users/nickarcuri/\x2enpm\x2dglobal/bin\x1e/Users/nickarcuri/\x2ecargo/bin

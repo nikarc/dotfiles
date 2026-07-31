@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
+SETUVAR --export ANDROID_HOME:/Users/nickarcuri/Library/Android/sdk
 SETUVAR --export DOCKER_CLI_HINTS:false
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GTK_THEME:Breeze
