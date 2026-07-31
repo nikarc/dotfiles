@@ -2,7 +2,6 @@ local constants = require("lua.constants")
 local mainMod = constants.mainMod
 
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(constants.browser))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(constants.terminal))
@@ -25,6 +24,9 @@ hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+
+hl.bind("print", hl.dsp.exec_cmd('bind = , print, exec, grim -g "$(slurp)" - | wl-copy'))
+hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("~/Applications/Flameshot-14.0.0.x86_64.AppImage gui"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
