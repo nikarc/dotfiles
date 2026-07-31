@@ -19,9 +19,36 @@ return {
       })
     end
 
+    local has_biome_config = function(utils)
+      return utils.has_file({ "biome.json", "biome.jsonc" })
+    end
+
+    local has_prettier_config = function(utils)
+      return utils.has_file({
+        ".prettierrc",
+        ".prettierrc.json",
+        ".prettierrc.yml",
+        ".prettierrc.yaml",
+        ".prettierrc.json5",
+        ".prettierrc.js",
+        ".prettierrc.cjs",
+        ".prettierrc.mjs",
+        "prettier.config.js",
+        "prettier.config.cjs",
+        "prettier.config.mjs",
+        ".prettierrc.toml",
+      })
+    end
+
     local sources = {
       null_ls.builtins.formatting.isort.with({
         extra_args = { "--remove-redundant-aliases", "--profile", "black" }
+      }),
+
+      null_ls.builtins.formatting.biome.with({
+        condition = has_biome_config,
+        prefer_local = "node_modules/.bin",
+        args = { "check", "--write", "--unsafe", "--stdin-file-path", "$FILENAME" },
       }),
 
       require("none-ls.formatting.eslint_d").with({
@@ -30,7 +57,11 @@ return {
       }),
 
       null_ls.builtins.formatting.prettier.with({
-        condition = function(utils) return not has_eslint_config(utils) end,
+        condition = function(utils)
+          return has_prettier_config(utils)
+            and not has_eslint_config(utils)
+            and not has_biome_config(utils)
+        end,
         prefer_local = "node_modules/.bin",
       }),
     }
