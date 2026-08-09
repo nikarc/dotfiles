@@ -15,6 +15,7 @@ return {
       -- Add other formatters you want
       null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
       -- null_ls.builtins.diagnostics.eslint,
+      -- null_ls.builtins.diagnostics.ruff,
     }
 
     if not is_linux then

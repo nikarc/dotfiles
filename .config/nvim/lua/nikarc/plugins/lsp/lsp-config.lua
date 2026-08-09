@@ -7,6 +7,7 @@ return {
   event = {"BufReadPre", "BufNewFile"},
   dependencies = {
     -- "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.lib",
     {
       "antosha417/nvim-lsp-file-operations",
       config = true,
@@ -76,7 +77,6 @@ return {
     end
 
     -- local capabilities = cmp_nvim_lsp.default_capabilities()
-    local capabilities = {}
 
     for type, icon in ipairs(lsp_signs) do
       local hl = "DiagnosticSign" .. type
@@ -90,7 +90,6 @@ return {
     -- Generic servers from your list
     for _, server in ipairs(lsp_servers) do
       vim.lsp.config(server, {
-        capabilities = capabilities,
         on_attach = on_attach,
         handlers = lsp_server_handlers[server],
         flags = {
@@ -103,7 +102,6 @@ return {
 
     -- clangd
     vim.lsp.config("clangd", {
-      capabilities = capabilities,
       on_attach = function (_, bufnr)
         on_attach(_, bufnr)
         vim.lsp.set_log_level("debug")
@@ -133,29 +131,27 @@ return {
     vim.lsp.enable("clangd")
 
     -- sourcekit
-    local sourcekitCapabilities = vim.deepcopy(capabilities)
-    sourcekitCapabilities.workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    }
-
-    vim.lsp.config("sourcekit", {
-      capabilities = sourcekitCapabilities,
-      on_attach = on_attach,
-    })
-    vim.lsp.enable("sourcekit")
+    -- local sourcekitCapabilities = vim.deepcopy(capabilities)
+    -- sourcekitCapabilities.workspace = {
+    --   didChangeWatchedFiles = {
+    --     dynamicRegistration = true,
+    --   },
+    -- }
+    --
+    -- vim.lsp.config("sourcekit", {
+    --   capabilities = sourcekitCapabilities,
+    --   on_attach = on_attach,
+    -- })
+    -- vim.lsp.enable("sourcekit")
 
     -- tailwindcss
     vim.lsp.config("tailwindcss", {
-      capabilities = capabilities,
       on_attach = on_attach,
     })
     vim.lsp.enable("tailwindcss")
 
     -- ltex
     vim.lsp.config("ltex", {
-      capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         ltex = {

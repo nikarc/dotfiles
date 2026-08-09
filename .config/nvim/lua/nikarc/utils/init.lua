@@ -55,6 +55,7 @@ M.lsp_servers = {
     "jsonls",
     "lua_ls",
     "pyright",
+    "ruff",
     -- "tailwindcss",
     "taplo",
     "ts_ls",
