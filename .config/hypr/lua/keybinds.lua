@@ -1,6 +1,8 @@
 local constants = require("lua.constants")
 local mainMod = constants.mainMod
 
+-- hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("wofi --show drun"))
+
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
@@ -64,9 +66,12 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- Browsers
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(constants.browser .. " -P default-release"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(constants.browser .. " -P dev-edition-default"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(constants.browser .. "-developer-edition"))
 
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("PIPEWIRE_QUANTUM=128/48000 pw-jack reaper")) -- DAW
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("GDK_SCALE=2 PIPEWIRE_QUANTUM=128/48000 pw-jack reaper")) -- DAW
 
 -- Windows
 hl.bind(mainMod .. " + Tab", hl.dsp.window.bring_to_top)
+
+-- Figma
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("figma-linux --force-device-scale-factor=1.5"))
