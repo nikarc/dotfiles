@@ -12,8 +12,26 @@ return {
         extra_args = { "--remove-redundant-aliases", "--profile", "black" }
       }),
 
-      -- Add other formatters you want
-      null_ls.builtins.formatting.prettier, -- for JS/TS/CSS/etc
+      -- Biome (what `ultracite fix` runs under the hood). `check --write` applies
+      -- format + safe lint fixes + import sorting, unlike the builtin's `format`.
+      null_ls.builtins.formatting.biome.with({
+        args = {
+          "check",
+          "--write",
+          "--stdin-file-path",
+          "$FILENAME",
+        },
+        condition = function(u)
+          return u.root_has_file({ "biome.json", "biome.jsonc" })
+        end,
+      }),
+
+      -- Prettier for everything that isn't a biome project
+      null_ls.builtins.formatting.prettier.with({
+        condition = function(u)
+          return not u.root_has_file({ "biome.json", "biome.jsonc" })
+        end,
+      }),
       -- null_ls.builtins.diagnostics.eslint,
       -- null_ls.builtins.diagnostics.ruff,
     }

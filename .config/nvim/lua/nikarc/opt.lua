@@ -39,6 +39,7 @@ opt.relativenumber	= true
 opt.showmatch      	= true -- highlight matching parenthesis
 -- opt.foldmethod     	= 'none' -- enable folding (default 'foldmarker')
 -- opt.foldmethod      = 'manual'
+opt.foldenable      = false -- never auto-close folds, regardless of what a ftplugin/plugin sets foldmethod/foldexpr to
 opt.colorcolumn    	= '80' -- line lenght marker at 80 columns
 opt.splitright     	= true -- vertical split to the right
 opt.splitbelow     	= true -- horizontal split to the bottom

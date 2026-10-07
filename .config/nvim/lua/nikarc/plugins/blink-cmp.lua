@@ -26,21 +26,35 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
 
-    -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+      -- Tab/Shift-Tab cycle through the completion menu; fall back to
+      -- normal Tab (indent/snippet jump) when the menu isn't open
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+
+      -- Enter accepts the selected completion item; falls back to a
+      -- normal newline when the menu isn't open
+      ['<CR>'] = { 'accept', 'fallback' },
+    },
+
+    -- Show the documentation popup (jsdoc/type info) automatically as you
+    -- navigate the completion menu
+    completion = { documentation = { auto_show = true } },
 
     -- (Default) list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
-    sources = { default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer' } },
+    sources = {
+      default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
 
-    providers = {
-      lazydev = {
-        name = "LazyDev",
-        module = "lazydev.integrations.blink",
-        -- make lazydev completions top priority (see `:h blink.cmp`)
-        score_offset = 100,
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
       },
     },
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

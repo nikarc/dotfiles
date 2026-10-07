@@ -46,3 +46,8 @@ require("nikarc.lazy")
 require("nikarc.globals")
 require("nikarc.filetypes")
 require("nikarc.macros")
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})

@@ -76,7 +76,7 @@ return {
       vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, opts)
     end
 
-    -- local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     for type, icon in ipairs(lsp_signs) do
       local hl = "DiagnosticSign" .. type
@@ -92,6 +92,7 @@ return {
       vim.lsp.config(server, {
         on_attach = on_attach,
         handlers = lsp_server_handlers[server],
+        capabilities = capabilities,
         flags = {
           allow_incremental_sync = true,
           debounce_text_changes = 500,
@@ -106,6 +107,7 @@ return {
         on_attach(_, bufnr)
         vim.lsp.set_log_level("debug")
       end,
+      capabilities = capabilities,
       cmd = {
         "clangd",
         "--background-index",
@@ -147,12 +149,14 @@ return {
     -- tailwindcss
     vim.lsp.config("tailwindcss", {
       on_attach = on_attach,
+      capabilities = capabilities,
     })
     vim.lsp.enable("tailwindcss")
 
     -- ltex
     vim.lsp.config("ltex", {
       on_attach = on_attach,
+      capabilities = capabilities,
       settings = {
         ltex = {
           language = 'en-US'

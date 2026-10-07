@@ -1,9 +1,8 @@
 local utils = require('nikarc.utils')
-local path_utils = require('nikarc.utils.path')
 
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.4',
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
     {
@@ -19,7 +18,6 @@ return {
     -- { "<C-f>", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>"},
     { "<C-b>", "<cmd>lua require('telescope.builtin').buffers()<CR>"},
     { "<C-g>", "<cmd>lua require('telescope.builtin').resume()<CR>"},
-    { "<C-m>", "<cmd>Telescope import<CR>"},
   },
   extensions = {
     fzy_native = {
@@ -54,14 +52,6 @@ return {
           }
         }
       end
-    end
-
-    local function path_display(_, path)
-      local stripped_path, filename = path_utils.split_filepath(path)
-      if filename == stripped_path or stripped_path == "" then
-        return filename
-      end
-      return string.format("%s ~ %s", filename, stripped_path)
     end
 
     return {

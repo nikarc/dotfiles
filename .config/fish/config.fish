@@ -1,6 +1,6 @@
 status --is-interactive
 
-dotenv ~/.env
+# dotenv ~/.env
 
 if status is-interactive
   # Commands to run in interactive sessions can go here
@@ -47,4 +47,19 @@ end
 
 if test -f $(which thefuck)
   thefuck --alias | source
+end
+
+# Android SDK — needed by `expo run:android` / Gradle (macOS, Android Studio install)
+if test -d $HOME/Library/Android/sdk
+  set -gx ANDROID_HOME $HOME/Library/Android/sdk
+  set -gx ANDROID_SDK_ROOT $ANDROID_HOME
+  fish_add_path -g $ANDROID_HOME/platform-tools
+  fish_add_path -g $ANDROID_HOME/emulator
+  fish_add_path -g $ANDROID_HOME/cmdline-tools/latest/bin
+end
+
+# JDK bundled with Android Studio (JetBrains Runtime), used by Gradle
+if test -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+  set -gx JAVA_HOME "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+  fish_add_path -g $JAVA_HOME/bin
 end
