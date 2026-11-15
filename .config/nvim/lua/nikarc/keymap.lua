@@ -70,3 +70,6 @@ map('n', '<Space>mm', '<cmd>Neominimap toggle<CR>', opts)
 
 -- Yank without indent
 map('v', '<leader>si', "<cmd>'<,'>/^\\s\\+//e<CR>", opts)
+
+map('i', '<C-e>', '<Esc>A', opts)
+map('i', '<C-a>', '<Esc>I', opts)

@@ -17,6 +17,10 @@ return {
     local lspconfig = vim.lsp.config
     -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+    vim.keymap.set("n", "<Space>e", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+    vim.keymap.set("n", "[e", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Previous error" })
+    vim.keymap.set("n", "]e", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next error" })
+
     local function filterReactDTS(value)
       return string.match(value.filename, 'react/index.d.ts') == nil and
         string.match(value.filename, 'styled-components/index.d.ts') == nil
@@ -63,14 +67,14 @@ return {
       opts.desc = "Hover typedef"
       vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
 
-      opts.desc = "Show diagnostic float"
-      vim.keymap.set('n', '<Space>e', function() vim.diagnostic.open_float() end, opts)
-
-      opts.desc = "Previous error"
-      vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, opts)
-
-      opts.desc = "Next error"
-      vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, opts)
+      -- opts.desc = "Show diagnostic float"
+      -- vim.keymap.set('n', '<Space>e', function() vim.diagnostic.open_float() end, opts)
+      --
+      -- opts.desc = "Previous error"
+      -- vim.keymap.set('n', '[e', function() vim.diagnostic.goto_prev() end, opts)
+      --
+      -- opts.desc = "Next error"
+      -- vim.keymap.set('n', ']e', function() vim.diagnostic.goto_next() end, opts)
 
       opts.desc = "Smart rename"
       vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename, opts)
